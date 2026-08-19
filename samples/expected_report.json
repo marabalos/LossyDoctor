@@ -1,0 +1,35 @@
+{
+  "app": "LossyDoctor",
+  "app_version": "0.1.0",
+  "analysis_schema": 1,
+  "summary": {
+    "discovered": 3,
+    "processed": 3,
+    "ok": 1,
+    "with_findings": 2,
+    "skipped": 0,
+    "failed": 0
+  },
+  "files": [
+    {
+      "display_name": "01 - Intro.mp3",
+      "detected_container": "MPEG_AUDIO",
+      "detected_codec": "mp3",
+      "playability": "PLAYABLE",
+      "pcm_recovery_class": "NOT_ASSESSED",
+      "final_status": ["OK"]
+    },
+    {
+      "display_name": "02 - Wrong extension.wma",
+      "detected_codec": "mp3",
+      "issues": [{"code": "EXTENSION_CONTENT_MISMATCH"}],
+      "final_status": ["ANOMALY_UNCHANGED"]
+    },
+    {
+      "display_name": "03 - Truncated.mp3",
+      "issues": [{"code": "TRUNCATED_MPEG_FRAME"}],
+      "pcm_recovery_class": "AMBIGUOUS",
+      "final_status": ["ANOMALY_UNCHANGED"]
+    }
+  ]
+}

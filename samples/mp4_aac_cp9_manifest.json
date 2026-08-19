@@ -1,0 +1,62 @@
+{
+  "authority": "ASSESSMENT_ONLY_NO_PUBLICATION",
+  "cases": {
+    "00_healthy_no_recovery_required.m4a": {
+      "expected_eligible": false,
+      "expected_issue_codes": [],
+      "expected_pcm_class": "NOT_REQUIRED",
+      "expected_playability": "PLAYABLE",
+      "expected_reason": "RECOVERY_NOT_REQUIRED_FOR_PLAYABLE_SOURCE",
+      "sha256": "602dd9c75387d2348251c13f26832d4bb2da22fc99376ee828357cd28bc73b08"
+    },
+    "01_unique_mdat_wrong_offset_complete_clean.m4a": {
+      "expected_eligible": true,
+      "expected_issue_codes": [
+        "MP4_CHUNK_OFFSET_OUTSIDE_MDAT",
+        "MP4_ACCESS_UNIT_OUTSIDE_MDAT",
+        "MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH"
+      ],
+      "expected_pcm_class": "COMPLETE_CLEAN",
+      "expected_playability": "UNPLAYABLE",
+      "expected_reason": "UNIQUE_MDAT_EXACTLY_COVERED_AND_CANONICAL_PCM_PROVEN",
+      "sha256": "1beeda9de025e52c80fba176065f03bf6601a10051fc3c28df384825d97f059a"
+    },
+    "02_extra_byte_inside_mdat_ambiguous.m4a": {
+      "expected_eligible": false,
+      "expected_issue_codes": [
+        "MP4_CHUNK_OFFSET_OUTSIDE_MDAT",
+        "MP4_ACCESS_UNIT_OUTSIDE_MDAT",
+        "MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH"
+      ],
+      "expected_pcm_class": "MP4_AAC_RECOVERY_BLOCKED",
+      "expected_playability": "UNPLAYABLE",
+      "expected_reason": "PARTIAL_RECOVERY_BLOCKED_AMBIGUOUS_EXTRA_MDAT_BYTES",
+      "sha256": "0cf26ef887ab1df053a3621f90ae981f6c92df4ac9ed2d4f967b900ba037afa6"
+    },
+    "03_sample_sizes_overrun_mdat.m4a": {
+      "expected_eligible": false,
+      "expected_issue_codes": [
+        "MP4_CHUNK_OFFSET_OUTSIDE_MDAT",
+        "MP4_ACCESS_UNIT_OUTSIDE_MDAT",
+        "MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH"
+      ],
+      "expected_pcm_class": "MP4_AAC_RECOVERY_BLOCKED",
+      "expected_playability": "UNPLAYABLE",
+      "expected_reason": "PARTIAL_RECOVERY_BLOCKED_UNPROVEN_MDAT_CHUNK_ORIGIN",
+      "sha256": "973fda2012ecbbdfec0f18be9bbd746df6306a6cb134993b03627c2ed386a2a8"
+    },
+    "04_invalid_sample_description_reference.m4a": {
+      "expected_eligible": false,
+      "expected_issue_codes": [
+        "MP4_ACCESS_UNIT_DESCRIPTION_INVALID",
+        "MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH"
+      ],
+      "expected_pcm_class": "MP4_AAC_RECOVERY_BLOCKED",
+      "expected_playability": "UNPLAYABLE",
+      "expected_reason": "ISSUE_SET_OUTSIDE_UNIQUE_CHUNK_OFFSET_SCOPE",
+      "sha256": "806169f145d1f48723bd7824484ec6d4da2edc7512739df958caaa92eceeca81"
+    }
+  },
+  "checkpoint": "CP9",
+  "policy": "MP4_AAC_UNIQUE_MDAT_COMPLETE_CLEAN_ASSESSMENT"
+}

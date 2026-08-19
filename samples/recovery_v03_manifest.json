@@ -1,0 +1,73 @@
+{
+  "expected_summary": {
+    "failed": 0,
+    "ok": 2,
+    "processed": 8,
+    "with_findings": 6
+  },
+  "generator": "tests/generate_fixtures.py",
+  "master": {
+    "expected": "OK / NOT_REQUIRED",
+    "file": "00_healthy_master.mp3",
+    "sha256": "ea339461a26e5c4f3ecccd8d4cd48c8604544bd153b219609e740ebdcd01d555"
+  },
+  "mutations": {
+    "damage-delete-payload.mp3": {
+      "expected_pcm_class": "PARTIAL_CLEAN",
+      "frame_index": 20,
+      "kind": "DELETE_PAYLOAD_BYTES",
+      "offset": 12681,
+      "removed_bytes": 23,
+      "sha256": "ac1b786c28d3275d5b538bbd91e346e5d012191276806e3fc2e6096b6c2c8578"
+    },
+    "damage-final-truncate.mp3": {
+      "cut_offset": 31293,
+      "expected_pcm_class": "PARTIAL_CLEAN",
+      "kind": "TRUNCATE_TAIL",
+      "removed_bytes": 97,
+      "sha256": "8c3983d6d84f3eb9032c5eda44b31565a103a5a9bbe7789266c2b150418a173e"
+    },
+    "damage-half-file-cut.mp3": {
+      "cut_offset": 16029,
+      "expected_pcm_class": "PARTIAL_CLEAN",
+      "frame_index": 25,
+      "kind": "TRUNCATE_MID_STREAM",
+      "removed_bytes": 15361,
+      "sha256": "795212f701b248066803b563cff78a4f00b8657bd694455b9985e9785d767a43"
+    },
+    "damage-insert-junk.mp3": {
+      "expected_pcm_class": "PARTIAL_CLEAN",
+      "inserted_bytes": 37,
+      "kind": "INSERT_BYTES_BETWEEN_FRAMES",
+      "offset": 12581,
+      "sha256": "e821e8e14c0df2c3062da5cc592f7d8a1d27a58087dec8308f50c543ad63390d"
+    },
+    "damage-payload-bitflip-undetectable.mp3": {
+      "byte_mask": 1,
+      "expected_detection": "NOT_GUARANTEED_BY_STRUCTURE_OR_DECODER",
+      "expected_pcm_class": "NOT_REQUIRED (known undetectable-without-CRC regression)",
+      "frame_index": 25,
+      "kind": "PAYLOAD_BIT_FLIP_NO_CRC",
+      "offset": 16331,
+      "sha256": "00d93f397b2297e457e4fa132eb9af993c0763c5b6a2f195f99c95561f7fa016"
+    },
+    "damage-reservoir-backpointer.mp3": {
+      "expected_pcm_class": "PARTIAL_CLEAN",
+      "forced_main_data_begin": 511,
+      "frame_index": 0,
+      "kind": "IMPOSSIBLE_MAIN_DATA_BEGIN",
+      "offset": 48,
+      "sha256": "f04edf9432e50f19e6d412a83d93bdfe04bce3408fb4e19efa0ee82707d7236a"
+    },
+    "damage-single-bit-header.mp3": {
+      "byte_mask": 1,
+      "expected_pcm_class": "COMPLETE_CLEAN",
+      "frame_index": 20,
+      "kind": "SINGLE_BIT_HEADER_FLIP",
+      "offset": 12581,
+      "sha256": "54d4a1be2a2c59dcdf08f2ae604d5f2a27ce6a5a77a2d5f8e1f48d6fe448632f"
+    }
+  },
+  "purpose": "LossyDoctor v0.3 controlled MPEG recovery regression corpus",
+  "schema": 1
+}

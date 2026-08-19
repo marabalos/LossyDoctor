@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "app_version": "0.18.0",
+  "corpus": "parameter_segments_v18",
+  "cases": {
+    "00_uniform_control.mp3": {
+      "expected": "OK",
+      "segments": 1,
+      "hard_transitions": 0,
+      "soft_transitions": 0,
+      "sha256": "7d62665c34286ade7be84dcd777d18632c4c3a578de33ef5cc2b0261c5889886"
+    },
+    "01_bitrate_variation_control.mp3": {
+      "expected": "OK",
+      "segments": 1,
+      "hard_transitions": 0,
+      "soft_transitions": 0,
+      "bitrate_values": [
+        96,
+        192
+      ],
+      "sha256": "a50ae419f32b2441e4e2691511ae2833c92f535c3361335b57efe90923979ccb"
+    },
+    "02_channel_mode_variation.mp3": {
+      "expected": "OK",
+      "segments": 2,
+      "hard_transitions": 0,
+      "soft_transitions": 1,
+      "interpretation": "ENCODING_MODE_VARIATION",
+      "sha256": "71f575a6077d196ab5aeb070c241e02e5e3a8393dcf4643d2a4389fab1fa31df"
+    },
+    "03_coherent_hard_concat.mp3": {
+      "expected": "ANOMALY_UNCHANGED",
+      "segments": 2,
+      "hard_transitions": 1,
+      "issue_codes": [
+        "MPEG_COHERENT_PARAMETER_CONCATENATION"
+      ],
+      "interpretation": "COHERENT_CONCATENATION",
+      "sha256": "733af0c495501d81ed76a8dbe0ad930b0c961569060b91062fd930dbaca586f8"
+    },
+    "04_parameter_change_after_gap.mp3": {
+      "expected": "ANOMALY_UNCHANGED",
+      "segments": 2,
+      "hard_transitions": 1,
+      "issue_codes": [
+        "MPEG_SYNC_LOSS",
+        "MPEG_PARAMETER_CHANGE_AFTER_RESYNC"
+      ],
+      "interpretation": "PARAMETER_CHANGE_AFTER_RESYNC",
+      "sha256": "6871b43b51e0bcb0a416ece8829ad6ee5c97c3302ade42f48d11acbe4a7a27e1"
+    },
+    "05_layer_change_concat.mpa": {
+      "expected": "ANOMALY_UNCHANGED",
+      "segments": 2,
+      "hard_transitions": 1,
+      "issue_codes": [
+        "MPEG_COHERENT_PARAMETER_CONCATENATION"
+      ],
+      "changed_fields": [
+        "layer",
+        "channel_mode"
+      ],
+      "sha256": "c7132452bfe95997c979da9abdbe0e0f1cd4168111ad38f2ed14fb89035fc574"
+    },
+    "06_channel_count_concat.mp3": {
+      "expected": "ANOMALY_UNCHANGED",
+      "segments": 2,
+      "hard_transitions": 1,
+      "issue_codes": [
+        "MPEG_COHERENT_PARAMETER_CONCATENATION"
+      ],
+      "changed_fields": [
+        "channels",
+        "channel_mode"
+      ],
+      "sha256": "e400ed6a685746fa4d1102e8795d7d4edbc7eff3df4b48cdaffebda16dc1a15f"
+    }
+  },
+  "expected_run": {
+    "processed": 7,
+    "ok": 3,
+    "with_findings": 4,
+    "failed": 0,
+    "repaired_outputs_created": 0,
+    "lossless_outputs_created": 0,
+    "outputs_reused": 0,
+    "candidates_rejected": 0
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "app_version": "0.15.0",
+  "corpus": "crc_l2_v15",
+  "fixture_encoder": "TwoLAME 0.4.0 error protection",
+  "cases": {
+    "00_mpeg1_l2_table1_crc_healthy.mp2": {"sha256":"bb3e62da0427a45a0836e6a5893771351ba9c7cd1851ce4353ec70bb607b830e","expected":"OK","protected_frames":39,"crc_mismatches":0,"allocation_table_index":1},
+    "01_l2_crc_word_corrupt.mp2": {"sha256":"85937228d744debe884cbb81b4b114e722984c54dbca1af1a3fd8bab0bcf1f0e","expected":"ANOMALY_UNCHANGED","protected_frames":39,"crc_mismatches":1,"allocation_table_index":1},
+    "02_l2_scfsi_corrupt.mp2": {"sha256":"6b29508ffbf618527154ac69a8c0e893a1f88c8ba9a0a7b9af85354285f7cc5d","expected":"ANOMALY_UNCHANGED","protected_frames":39,"crc_mismatches":1,"allocation_table_index":1},
+    "03_mpeg1_l2_table0_joint_crc_healthy.mp2": {"sha256":"e61ce0b1f93b3595688adce719994bed324b433c7840f58e68466f6b1f6ec7fa","expected":"OK","protected_frames":42,"crc_mismatches":0,"allocation_table_index":0,"joint_stereo_bound":4},
+    "04_mpeg1_l2_table2_crc_healthy.mp2": {"sha256":"7f3576deb31d0d0bdb44dd23d89a8e75a136cc2874a33648d5dd36f12f4f8e7c","expected":"OK","protected_frames":39,"crc_mismatches":0,"allocation_table_index":2},
+    "05_mpeg1_l2_table3_crc_healthy.mp2": {"sha256":"ab89c8e4c4d23fef252c8fcfdf8f0fab2490a337823f70696e771b9b522d39b8","expected":"OK","protected_frames":28,"crc_mismatches":0,"allocation_table_index":3},
+    "06_mpeg2_l2_table4_crc_healthy.mp2": {"sha256":"cccd506224908de3ee6350413a40f3ff91d170be616fa1287e5ef95b33b4ff1a","expected":"OK","protected_frames":20,"crc_mismatches":0,"allocation_table_index":4},
+    "07_mpeg1_l2_unprotected_control.mp2": {"sha256":"86c6ecc8daef2c806cd11c442cd2a63721d66f0bb7978ebd2ee5bbe56f32ca83","expected":"OK","protected_frames":0,"crc_mismatches":0,"allocation_table_index":null}
+  },
+  "expected_run": {"processed":8,"ok":6,"with_findings":2,"failed":0,"repaired_outputs_created":0,"lossless_outputs_created":0,"outputs_reused":0,"candidates_rejected":0}
+}

@@ -1,0 +1,89 @@
+{
+  "app_version": "0.40.0",
+  "cases": {
+    "00_healthy_wmav2_recovery_control.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 0,
+      "sha256": "7a91e0c79b2481811c2a0e700875350ee5a73b3aedd237acc42b8e27a2f224f2"
+    },
+    "01_healthy_wmav1_recovery_control.wma": {
+      "expected_complete_media_objects": 33,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 0,
+      "sha256": "3a75172d7404c5a8393a2db7723913b328703f1d7576d95a65368a2fd4d5b404"
+    },
+    "02_wmav2_single_mid_gap_recover.wma": {
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 1,
+      "sha256": "6762938fb84714f2b09503a803bc0f80f4ad499b4b80d35cb6751a7710f9d870"
+    },
+    "03_wmav1_single_mid_gap_recover.wma": {
+      "expected_complete_media_objects": 32,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 1,
+      "sha256": "72c64c4b9b16cb9c857666bcdf9af4cb00f9e707cac358a21bbf30555242a820"
+    },
+    "04_wmav2_double_mid_gap_recover.wma": {
+      "expected_complete_media_objects": 42,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 1,
+      "sha256": "af24bd1a8939ddd547d12475acd705748f3c33226b1f211d7132557926fd84e8"
+    },
+    "05_wmav1_double_mid_gap_recover.wma": {
+      "expected_complete_media_objects": 31,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 1,
+      "sha256": "faa5c8d928052b8f693019fced45b81c28734a7dd863eab64c7ef7f2e0ac9127"
+    },
+    "06_wmav2_late_gap_recover.wma": {
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 1,
+      "sha256": "f85424c259cd0d6e8e58ec4d52731c479f36540ded5377b10da477cec624ed2e"
+    },
+    "07_timestamp_jump_report_only.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "expected_recovery_outputs": 0,
+      "sha256": "b976e51bfaf93f98985f0b66204a75fc4bd4f58f825e4b6083a12b5ad49c4bfc"
+    },
+    "08_incomplete_media_object_blocked.wma": {
+      "expected_complete_media_objects": 32,
+      "expected_incomplete_media_objects": 1,
+      "expected_parser_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "expected_recovery_outputs": 0,
+      "sha256": "01ee6e99fc03053483a360da6116b70ecbcd0ad2b7ed0fa85a544e61a92a41b8"
+    }
+  },
+  "expected_first_run": {
+    "failed": 0,
+    "findings": 7,
+    "lossless": 5,
+    "ok": 2,
+    "processed": 9,
+    "repaired": 0,
+    "reused": 0
+  },
+  "expected_second_run": {
+    "failed": 0,
+    "findings": 7,
+    "lossless": 0,
+    "ok": 2,
+    "processed": 9,
+    "repaired": 0,
+    "reused": 5
+  },
+  "policy": "0.40-wma-converged-suffix-recovery-1"
+}

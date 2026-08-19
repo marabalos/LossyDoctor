@@ -1,0 +1,31 @@
+{
+  "authority": "EXPLICIT_UNSUPPORTED_NO_OUTPUT",
+  "cases": {
+    "00_two_aac_audio_tracks.m4a": {
+      "aac_track_count": 2,
+      "audio_track_count": 2,
+      "sha256": "845c7b149b10eaf1021083006915532a8ce7cce70cf043aebfca4a741ad22565",
+      "skip_reason": "MP4 con varias pistas de audio es incompatible con LossyDoctor V1",
+      "supported": false
+    }
+  },
+  "checkpoint": "CP24",
+  "generator": {
+    "ffmpeg_arguments": [
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "<source>",
+      "-map",
+      "0:a:0",
+      "-map",
+      "0:a:0",
+      "-c",
+      "copy",
+      "<output>"
+    ],
+    "source": "samples/mp4_aac_cp8/00_healthy_single_edit_44100_stereo.m4a"
+  },
+  "policy": "MP4_AAC_MULTIPLE_AUDIO_TRACKS_INCOMPATIBLE"
+}

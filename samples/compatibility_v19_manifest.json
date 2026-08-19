@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "purpose": "v0.19 observed compatibility/provenance corpus; no encoder guessing",
+  "cases": {
+    "00_lame_cbr_info.mp3": {
+      "sha256": "708f273bfd8ff70e0c669aaa55947baa4b07f20254f078c27dc47d0603ee1711",
+      "size": 17135
+    },
+    "01_lame_vbr_xing.mp3": {
+      "sha256": "6ed515d36a24ef7cf99e84cb9e21d54c2d2e5f9223d18a9b65ef461708f1c3c7",
+      "size": 5465
+    },
+    "02_ffmpeg_libshine.mp3": {
+      "sha256": "1977a15479b58808bbaad9089ca031a878c4bc3dcf01e39b53e1b6a475c837b2",
+      "size": 16344
+    },
+    "03_mpeg25_mono_8k.mp3": {
+      "sha256": "9850f8b97db28d04d2f46183eefe02b831987606d34f187c38fdb5eab2f7d491",
+      "size": 3716
+    },
+    "04_lame_crc_protected.mp3": {
+      "sha256": "46f71c7e476c151a4025834cfe23fe3c96e56e4243795af40219119ef81bf891",
+      "size": 17135
+    },
+    "05_twolame_mp2.mp2": {
+      "sha256": "bd13fb5c0ba19dcc341dd026682ea51f58ee91b25cef34019dd5b140200eba40",
+      "size": 24414
+    },
+    "06_id3v1_no_seek_header.mp3": {
+      "sha256": "3b1b1f96dea7409d6f5282262d4f6afc15d8aca6df4e801b31a86acea94a2853",
+      "size": 16846
+    },
+    "07_id3v23_ffmpeg.mp3": {
+      "sha256": "aa1c565321f69864ade5bf82a5cab0ef3dbb696dc9d9522fb8dfa1f0e771cfe3",
+      "size": 12922
+    }
+  }
+}

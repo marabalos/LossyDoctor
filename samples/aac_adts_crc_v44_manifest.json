@@ -1,0 +1,101 @@
+{
+  "app_version": "0.44.0",
+  "authority": "AAC_ADTS_FRAME_CRC_AUTHORITY",
+  "cases": {
+    "00_healthy_crc_absent_control.aac": {
+      "expected_complete_frames": 53,
+      "expected_crc_present_frames": 0,
+      "expected_crc_validation": "CRC_NOT_PRESENT",
+      "expected_issues": [],
+      "expected_multi_header_crc_authenticated": 0,
+      "expected_multi_header_crc_checked": 0,
+      "expected_multi_header_crc_mismatch": 0,
+      "expected_multi_position_invalid": 0,
+      "expected_protection_mode_changes": 0,
+      "sha256": "db39febaf95390fe7439219e44493095a52efb6a5b57f93e1725dfa93a1ea1b8"
+    },
+    "01_healthy_single_rdb_crc_present_deferred.aac": {
+      "expected_complete_frames": 53,
+      "expected_crc_present_frames": 53,
+      "expected_crc_validation": "SINGLE_RDB_CRC_PRESENT_AUTHENTICATION_DEFERRED",
+      "expected_issues": [],
+      "expected_multi_header_crc_authenticated": 0,
+      "expected_multi_header_crc_checked": 0,
+      "expected_multi_header_crc_mismatch": 0,
+      "expected_multi_position_invalid": 0,
+      "expected_protection_mode_changes": 0,
+      "sha256": "d2f8a8d9b21e41c4deac2e5d12a62ab4cd11fa061029b5779c011e6b4a844c92"
+    },
+    "02_protection_mode_change.aac": {
+      "expected_complete_frames": 53,
+      "expected_crc_present_frames": 28,
+      "expected_crc_validation": "SINGLE_RDB_CRC_PRESENT_AUTHENTICATION_DEFERRED",
+      "expected_issues": [
+        "AAC_ADTS_PROTECTION_MODE_CHANGE"
+      ],
+      "expected_multi_header_crc_authenticated": 0,
+      "expected_multi_header_crc_checked": 0,
+      "expected_multi_header_crc_mismatch": 0,
+      "expected_multi_position_invalid": 0,
+      "expected_protection_mode_changes": 28,
+      "sha256": "9664079d3314e6d7853132d7e5b2f50fd861392d3d15bfd593047c396b50021d"
+    },
+    "03_multi_rdb_header_crc_mismatch.aac": {
+      "expected_complete_frames": 52,
+      "expected_crc_present_frames": 52,
+      "expected_crc_validation": "SUPPORTED_MULTI_RDB_HEADER_CRC_MISMATCH_DETECTED",
+      "expected_issues": [
+        "AAC_ADTS_HEADER_CRC_MISMATCH"
+      ],
+      "expected_multi_header_crc_authenticated": 0,
+      "expected_multi_header_crc_checked": 1,
+      "expected_multi_header_crc_mismatch": 1,
+      "expected_multi_position_invalid": 0,
+      "expected_protection_mode_changes": 0,
+      "sha256": "d626141601c2cde271b4f19dd2942782b5bd108291573bc3ce8ff6b1a3a8569a"
+    },
+    "04_multi_rdb_position_invalid.aac": {
+      "expected_complete_frames": 52,
+      "expected_crc_present_frames": 52,
+      "expected_crc_validation": "SUPPORTED_MULTI_RDB_HEADER_CRC_SCOPES_AUTHENTICATED",
+      "expected_issues": [
+        "AAC_ADTS_RAW_DATA_BLOCK_POSITION_INVALID"
+      ],
+      "expected_multi_header_crc_authenticated": 1,
+      "expected_multi_header_crc_checked": 1,
+      "expected_multi_header_crc_mismatch": 0,
+      "expected_multi_position_invalid": 1,
+      "expected_protection_mode_changes": 0,
+      "sha256": "9c5dc0afac18104692a3fbdc089af241c54e0a3e3d06689eff9154052dc4484d"
+    },
+    "05_truncated_protected_final_frame.aac": {
+      "expected_complete_frames": 52,
+      "expected_crc_present_frames": 52,
+      "expected_crc_validation": "SINGLE_RDB_CRC_PRESENT_AUTHENTICATION_DEFERRED",
+      "expected_issues": [
+        "AAC_ADTS_TRUNCATED_FRAME"
+      ],
+      "expected_multi_header_crc_authenticated": 0,
+      "expected_multi_header_crc_checked": 0,
+      "expected_multi_header_crc_mismatch": 0,
+      "expected_multi_position_invalid": 0,
+      "expected_protection_mode_changes": 0,
+      "sha256": "e4b0a16f93ec49ed0edfd70698072b53c30d1b777dd839f78e480cdbe43921a9"
+    },
+    "06_protected_interframe_sync_gap.aac": {
+      "expected_complete_frames": 53,
+      "expected_crc_present_frames": 53,
+      "expected_crc_validation": "SINGLE_RDB_CRC_PRESENT_AUTHENTICATION_DEFERRED",
+      "expected_issues": [
+        "AAC_ADTS_SYNC_LOSS"
+      ],
+      "expected_multi_header_crc_authenticated": 0,
+      "expected_multi_header_crc_checked": 0,
+      "expected_multi_header_crc_mismatch": 0,
+      "expected_multi_position_invalid": 0,
+      "expected_protection_mode_changes": 0,
+      "sha256": "fcac254f4f2fd192e3dbe044c3645f7ab6a15b322ba365b340f20d614093ec7d"
+    }
+  },
+  "policy": "0.44-aac-adts-frame-provenance-crc-audit-1"
+}

@@ -1,0 +1,40 @@
+{
+  "authority": "CANONICAL_TIMELINE_LOSSLESS_EXPORT_ONLY_ON_PROVEN_PCM_DIFFERENCE",
+  "cases": {
+    "00_two_contiguous_media_edits.m4a": {
+      "canonical_pcm_sha256": "09b85e00d7e53e07939ae8f03ae78f0e05a0e672f8c023fe2e2f1cd0f3367ab0",
+      "direct_decoder_pcm_sha256": "5bd97bb385b53ab34ddda45f5ef1d29428752db4fb4141812d973c575a2d7a27",
+      "direct_decoder_samples": 53084,
+      "presentation_samples": 52920,
+      "source": "samples/mp4_aac_cp19/00_two_contiguous_media_edits.m4a",
+      "source_sha256": "7708ec290901eaf8e15ffc83bc5ec75af396f91c4dbaf3e68e4a1901dffdcc6c"
+    },
+    "01_three_reordered_media_edits.m4a": {
+      "canonical_pcm_sha256": "24a25d073bcd94c5210cec0eb264736bd6f98087254283ecd160ff657988183f",
+      "direct_decoder_pcm_sha256": "17c639741938e9419e001c4c22e0e35f6469837f5e120d2618728f71cf6f6a2f",
+      "direct_decoder_samples": 54040,
+      "presentation_samples": 52920,
+      "source": "samples/mp4_aac_cp19/01_three_reordered_media_edits.m4a",
+      "source_sha256": "9fe859e33d1ea8c83f04bb34edce3b32920aee30192b411dc6731051c79f5a99"
+    },
+    "02_empty_then_media_edit.m4a": {
+      "canonical_pcm_sha256": "9f8264a075126b899dcb4bb397ec8b4e5f96f30b0aad0728d77ffa48ab000bd9",
+      "direct_decoder_pcm_sha256": "e6c75a4c9cd5dde517bb37d12acff6c8e7f18d9b44e6e2c928ebb5fd07dafb10",
+      "direct_decoder_samples": 48510,
+      "presentation_samples": 52920,
+      "source": "samples/mp4_aac_cp19/02_empty_then_media_edit.m4a",
+      "source_sha256": "12b7f143fdae523e7ec4f052694fdea66ef0a0d61e4ea784cd5867ac216a44eb"
+    },
+    "00_healthy_five_fragments.m4a": {
+      "canonical_pcm_sha256": "e098a472d4ad890021f165879f9354de4b89fc633472500f5547786ffb77bf67",
+      "direct_decoder_pcm_sha256": "bf4cdb7ce1a8c4691d1035783330b05ae0f1ed47b3f54e81562e9b3ae18ee755",
+      "direct_decoder_samples": 54272,
+      "presentation_samples": 53944,
+      "source": "samples/mp4_aac_cp21/00_healthy_five_fragments.m4a",
+      "source_sha256": "e83e19affcf79388c547646cf0253ef1633c730602647003513a3f14b1960e6b"
+    }
+  },
+  "checkpoint": "CP23",
+  "materialization": "MP4_AAC_CANONICAL_COMPLEX_PRESENTATION_FROM_AUTHENTICATED_ACCESS_UNITS",
+  "policy": "MP4_AAC_CANONICAL_TIMELINE_LOSSLESS_EXPORT"
+}

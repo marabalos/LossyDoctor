@@ -1,0 +1,55 @@
+# Python: bytecode and local tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Local virtual environments
+.venv/
+venv/
+
+# Portable runtime and downloaded/prepared dependencies.
+# Keep them physically in place; Git only tracks the directory placeholder.
+/runtime/*
+!/runtime/.gitkeep
+
+/cache/*
+!/cache/.gitkeep
+
+# Per-machine operational state
+/state/*
+!/state/.gitkeep
+
+# Generated run evidence
+/logs/*
+!/logs/.gitkeep
+
+/reports/*
+!/reports/.gitkeep
+
+# Temporary work files
+/temp/*
+!/temp/.gitkeep
+*.part
+*.tmp
+
+# LossyDoctor-generated outputs and derivation sidecars
+*.lossydoctor-manifest.json
+* \[repaired*\].*
+* \[extension-fixed*\].*
+* \[recovered-*\].*
+
+# Local-only multimedia test corpus
+/samples/**/*.mp3
+/samples/**/*.mp2
+/samples/**/*.aac
+/samples/**/*.m4a
+/samples/**/*.ogg
+/samples/**/*.opus
+/samples/**/*.wma
+/samples/**/*.wav
+/samples/**/*.flac

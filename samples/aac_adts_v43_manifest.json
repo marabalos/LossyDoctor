@@ -1,0 +1,116 @@
+{
+  "app_version": "0.43.0",
+  "authority": "AAC_ADTS_AUDIT_AUTHORITY",
+  "cases": {
+    "00_healthy_aac_lc_44100_stereo.aac": {
+      "expected_channel_configurations": [
+        2
+      ],
+      "expected_complete_frames": 53,
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE",
+      "expected_sample_rates_hz": [
+        44100
+      ],
+      "expected_sync_gaps": 0,
+      "expected_truncated_final_frame": false,
+      "sha256": "ea21bf3d43e827004a54abd015d3c91de5039d534bce7c838100cbe6962d60a4"
+    },
+    "01_healthy_aac_lc_48000_mono.aac": {
+      "expected_channel_configurations": [
+        1
+      ],
+      "expected_complete_frames": 44,
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE",
+      "expected_sample_rates_hz": [
+        48000
+      ],
+      "expected_sync_gaps": 0,
+      "expected_truncated_final_frame": false,
+      "sha256": "1bfdf6760a80ab6f073a93d2ebd95e3aecf7925f89a7d58f1258e5164b586bd3"
+    },
+    "02_invalid_sampling_index.aac": {
+      "expected_channel_configurations": [
+        2
+      ],
+      "expected_complete_frames": 52,
+      "expected_issues": [
+        "AAC_ADTS_SAMPLING_INDEX_INVALID"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_sample_rates_hz": [
+        44100
+      ],
+      "expected_sync_gaps": 0,
+      "expected_truncated_final_frame": false,
+      "sha256": "8c08509fc44d4b877c79a670838bf72076323e0add0819b680926ad0f5a503ad"
+    },
+    "03_invalid_frame_length.aac": {
+      "expected_channel_configurations": [
+        2
+      ],
+      "expected_complete_frames": 52,
+      "expected_issues": [
+        "AAC_ADTS_FRAME_LENGTH_INVALID"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_sample_rates_hz": [
+        44100
+      ],
+      "expected_sync_gaps": 0,
+      "expected_truncated_final_frame": false,
+      "sha256": "8fc91d1108dc0ddc96de33a450cf1eea27eefb7ca1515a50dc5d68bc7c20077d"
+    },
+    "04_truncated_final_frame.aac": {
+      "expected_channel_configurations": [
+        2
+      ],
+      "expected_complete_frames": 52,
+      "expected_issues": [
+        "AAC_ADTS_TRUNCATED_FRAME"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_sample_rates_hz": [
+        44100
+      ],
+      "expected_sync_gaps": 0,
+      "expected_truncated_final_frame": true,
+      "sha256": "dcd302d9107dc6542891860743f1628a18c3b4d9f0049515dee93efadb62999a"
+    },
+    "05_midstream_parameter_change.aac": {
+      "expected_channel_configurations": [
+        2
+      ],
+      "expected_complete_frames": 53,
+      "expected_issues": [
+        "AAC_ADTS_PARAMETER_CHANGE"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_sample_rates_hz": [
+        44100,
+        48000
+      ],
+      "expected_sync_gaps": 0,
+      "expected_truncated_final_frame": false,
+      "sha256": "4b8c3c9dd4a1578b84c8fd3000fd6bacb49240e42b8c47cb0878186ef5895d8d"
+    },
+    "06_interframe_sync_gap.aac": {
+      "expected_channel_configurations": [
+        2
+      ],
+      "expected_complete_frames": 53,
+      "expected_issues": [
+        "AAC_ADTS_SYNC_LOSS"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_sample_rates_hz": [
+        44100
+      ],
+      "expected_sync_gaps": 1,
+      "expected_truncated_final_frame": false,
+      "sha256": "6d1d7d64f4a67bd006d5ad581c1bc4be19da003484f41db638bd12ef029575f4"
+    }
+  },
+  "policy": "0.43-aac-adts-deep-audit-1"
+}

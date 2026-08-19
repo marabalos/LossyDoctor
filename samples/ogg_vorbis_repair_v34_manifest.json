@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "purpose": "v0.34 safe CRC-authenticated Ogg/Vorbis page recapture; CRC rewrite and sequence renumber remain blocked",
+  "cases": {
+    "00_healthy_control.ogg": {
+      "sha256": "3f954df87d8e505bed476e0bfa3199d72dfdf5af431b80244a34d7af2dec1ea1",
+      "size": 16226,
+      "expected_issues": []
+    },
+    "01_prefix_junk_recapture.ogg": {
+      "sha256": "addae51ec3899638bad2e57a8c0640031bf9173851847b16c37b46f8608eaeb4",
+      "size": 16256,
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ]
+    },
+    "02_interpage_junk_recapture.ogg": {
+      "sha256": "f46e65a2accc4227a2dde2af64cde0777ad391209fe9b03a7292ec2c8538736d",
+      "size": 16265,
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ]
+    },
+    "03_suffix_junk_recapture.ogg": {
+      "sha256": "9e554b1a0b8937453fc931ddb358a1b42eee693da9d0f73f9968256eab296177",
+      "size": 16256,
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ]
+    },
+    "04_crc_mismatch_blocked.ogg": {
+      "sha256": "2bb886e7e9a5725d16a99394b859db281a5af6f7df809ab783ea55e3e48082bd",
+      "size": 16226,
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ]
+    },
+    "05_sequence_gap_blocked.ogg": {
+      "sha256": "91af850b143212fd7dd3fdd404edb2cae85a220227c9d2d992d1973c627d71d9",
+      "size": 16226,
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ]
+    },
+    "06_junk_plus_crc_blocked.ogg": {
+      "sha256": "4a108bfd97dba72e4d6d12fc0acbbd7d18fca5e19d7f2014497a4ba86ba08eb6",
+      "size": 16257,
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_CRC_MISMATCH"
+      ]
+    }
+  },
+  "app_version": "0.34.0",
+  "policy": "0.34-ogg-vorbis-safe-page-recapture-1",
+  "expected_first_run": {
+    "processed": 7,
+    "ok": 1,
+    "findings": 6,
+    "failed": 0,
+    "repaired": 3,
+    "lossless": 1,
+    "reused": 0
+  },
+  "expected_second_run": {
+    "processed": 7,
+    "ok": 1,
+    "findings": 6,
+    "failed": 0,
+    "repaired": 0,
+    "lossless": 0,
+    "reused": 4
+  }
+}

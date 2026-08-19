@@ -1,0 +1,65 @@
+{
+  "app_version": "0.13.0",
+  "cases": {
+    "00_healthy_vbri_v1.mp3": {
+      "expected_final_status": [
+        "OK"
+      ],
+      "sha256": "1590bce93493d4e63099df3d85fa5e5e64b5f873a7f67122bb5ab13b6aab1188"
+    },
+    "01_vbri_coupled_corrupt.mp3": {
+      "expected_changed_fields": [
+        "VBRI_BYTE_COUNT",
+        "VBRI_FRAME_COUNT",
+        "VBRI_TOC"
+      ],
+      "expected_final_status": [
+        "REPAIRED_SAFE"
+      ],
+      "expected_issues": [
+        "VBRI_FRAME_COUNT_MISMATCH",
+        "VBRI_BYTE_COUNT_MISMATCH",
+        "VBRI_TOC_MISMATCH"
+      ],
+      "expected_repair": "REFRESH_VBRI_METADATA",
+      "master": "00_healthy_vbri_v1.mp3",
+      "sha256": "2fa89f175978f85743adcc1fc126de4c17a454f8593e3f9fc9e76c8edc2467e1"
+    },
+    "02_vbri_layout_unprovable.mp3": {
+      "expected_final_status": [
+        "ANOMALY_UNCHANGED"
+      ],
+      "expected_repair_status": "BLOCKED",
+      "sha256": "79ef9eb6fb4339330326c61c3f9220646696a3ee5b6f493a44293311be4927d6"
+    },
+    "03_vbri_structural_damage.mp3": {
+      "expected_final_status": [
+        "ANOMALY_UNCHANGED"
+      ],
+      "expected_repair_status": "BLOCKED",
+      "sha256": "95af815d8ab3f4099ed92ded349014ffe5501cc484c4a948eed35fba5138bee6"
+    }
+  },
+  "corpus": "vbri_v13",
+  "expected_first_run": {
+    "candidates_rejected": 0,
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 0,
+    "processed": 4,
+    "repaired_outputs_created": 1,
+    "with_findings": 3
+  },
+  "expected_second_run": {
+    "candidates_rejected": 0,
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 1,
+    "processed": 4,
+    "repaired_outputs_created": 0,
+    "with_findings": 3
+  },
+  "schema_version": 1
+}

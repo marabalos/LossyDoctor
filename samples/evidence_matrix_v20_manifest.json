@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "corpus": "evidence_matrix_v20",
+  "cases": {
+    "00_consistent_healthy.mp3": {
+      "issues": [],
+      "interpretation": "CONSISTENT",
+      "sha256": "10a762847f2acfaa7b85ff3167dd5069b8e14ea40f757164fe7295cf8bfed749",
+      "size": 6816
+    },
+    "01_isolated_crc_inconsistency.mp3": {
+      "issues": [
+        "MPEG_CRC_MISMATCH"
+      ],
+      "interpretation": "ISOLATED_CRC_INCONSISTENCY",
+      "sha256": "5fa833cf8ae38ea7738d1d75fa35d7831a13ca2720b69d489ab123cac32bfcc7",
+      "size": 22568
+    },
+    "02_reservoir_resync_damage.mp3": {
+      "issues": [
+        "MPEG_SYNC_LOSS",
+        "XING_BYTE_COUNT_MISMATCH"
+      ],
+      "interpretation": "CORROBORATED_STRUCTURAL_DAMAGE",
+      "sha256": "dac09f868b6828e849d5fe07a2e6d868d596a383f1f88f1d00f7d892dbdf4d6c",
+      "size": 7249
+    },
+    "03_isolated_seek_metadata_nonconformance.mp3": {
+      "issues": [
+        "XING_BYTE_COUNT_MISMATCH"
+      ],
+      "interpretation": "ISOLATED_METADATA_NONCONFORMANCE",
+      "sha256": "944844121ede00eced5e40df3f3446a35026e333efcf51ee8333b32d4f54fd1e",
+      "size": 6634
+    },
+    "04_coherent_heterogeneity.mp3": {
+      "issues": [
+        "MPEG_COHERENT_PARAMETER_CONCATENATION"
+      ],
+      "interpretation": "COHERENT_HETEROGENEITY",
+      "sha256": "113257aa29f37b94858a29309f86c2beb635db66b2ae803a5a9ba2f00598a8c8",
+      "size": 18389
+    },
+    "05_multisignal_structural_damage.mp3": {
+      "issues": [
+        "MPEG_SYNC_LOSS",
+        "MPEG_PARAMETER_CHANGE_AFTER_RESYNC"
+      ],
+      "interpretation": "CORROBORATED_STRUCTURAL_DAMAGE",
+      "sha256": "4aaf0733a6affd935d0451b880f443e6f8f0ed2a1e5ecaf632140005c768a72e",
+      "size": 18408
+    },
+    "06_multidomain_nonconformance.mp3": {
+      "issues": [
+        "MPEG_TRAILING_UNKNOWN_BYTES",
+        "MPEG_CRC_MISMATCH"
+      ],
+      "interpretation": "MULTI_DOMAIN_NONCONFORMANCE",
+      "sha256": "4225c7258aa77cfd5e9873913b607f5cb43fb1294b933845c4f2ba50682fb300",
+      "size": 22583
+    }
+  }
+}

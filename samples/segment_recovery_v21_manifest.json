@@ -1,0 +1,40 @@
+{
+  "app_version": "0.21.0",
+  "cases": {
+    "00_playable_coherent_control.mp3": {
+      "sha256": "733af0c495501d81ed76a8dbe0ad930b0c961569060b91062fd930dbaca586f8"
+    },
+    "01_unplayable_sample_rate_concat.mp3": {
+      "sha256": "794574bb85b8d3f8e847c5806a1f34b156993e3ac6249ebb07ecd808467db8a8"
+    },
+    "02_unplayable_layer_concat.mpa": {
+      "sha256": "776e6da6100599ce608de5248dc666758472b3a28370f737bff87f00e00318b1"
+    },
+    "03_unplayable_channel_concat.mp3": {
+      "sha256": "4c1bb6e85ee66b697cc05dc45038c3e2dcd6db072aa8a20b8b24d7d3c5dc5199"
+    },
+    "04_unplayable_after_gap_negative.mp3": {
+      "sha256": "411a05bf13c2393e6f011aad277dac416676173e4450abf7f6d4a92b2c172088"
+    }
+  },
+  "corpus": "segment_recovery_v21",
+  "expected_first_run": {
+    "failed": 0,
+    "findings": 5,
+    "lossless": 6,
+    "ok": 0,
+    "processed": 5,
+    "repaired": 0,
+    "reused": 0
+  },
+  "expected_second_run": {
+    "failed": 0,
+    "findings": 5,
+    "lossless": 0,
+    "ok": 0,
+    "processed": 5,
+    "repaired": 0,
+    "reused": 6
+  },
+  "schema_version": 1
+}

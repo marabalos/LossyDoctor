@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "purpose": "v0.25 strict MPEG preservation hierarchy adversarial acceptance; every fixture is binary-distinct from historical corpus",
+  "expected_first_run_summary": {
+    "processed": 7,
+    "ok": 0,
+    "findings": 7,
+    "failed": 0,
+    "repaired": 1,
+    "lossless": 10,
+    "reused": 0
+  },
+  "expected_second_run_summary": {
+    "processed": 7,
+    "ok": 0,
+    "findings": 7,
+    "failed": 0,
+    "repaired": 0,
+    "lossless": 0,
+    "reused": 11
+  },
+  "cases": {
+    "00_tier1_bitstream_repair.mp3": {
+      "sha256": "6c891e65038014e42d6784d5896063b81ebe4436997545e0d0d0f4cda5cd16d8",
+      "size": 97347,
+      "expected_tier": "TIER_1_VERIFIED_BITSTREAM_REPAIR",
+      "expected_output_count": 1,
+      "expected_derivation_kind": "REPAIRED_SAFE"
+    },
+    "01_tier2_complete_lossless.mp3": {
+      "sha256": "a8f7fada77ca83f3df2b4dcc98ab51820fd2f80bfc343d487d8ec00d49d4db3e",
+      "size": 97983,
+      "expected_tier": "TIER_2_COMPLETE_LOSSLESS_RECOVERY",
+      "expected_output_count": 1,
+      "expected_derivation_kind": "RECOVERED_LOSSLESS"
+    },
+    "02_tier3_exact_timeline_partial.mp3": {
+      "sha256": "073d66b794c35cacd9b368f375c35b8cd95f1667652322a0fc560f3970b7a1f5",
+      "size": 97973,
+      "expected_tier": "TIER_3_EXACT_TIMELINE_PARTIAL_RECOVERY",
+      "expected_output_count": 1,
+      "expected_derivation_kind": "RECOVERED_PARTIAL_LOSSLESS"
+    },
+    "03_tier4_coherent_segmented.mp3": {
+      "sha256": "e18f67f2c64a21bbe85e2f23a6c0af6168ef60a454618bf4352425c55bcb4504",
+      "size": 12258,
+      "expected_tier": "TIER_4_COHERENT_SEGMENTED_RECOVERY",
+      "expected_output_count": 2,
+      "expected_derivation_kind": "RECOVERED_SEGMENTED_LOSSLESS"
+    },
+    "04_tier5_bracketed_segmented_partial.mp3": {
+      "sha256": "4b192b38fcd0404387e61deb5a43d97b5adcb98f67fec7a1636b4c940009ddf5",
+      "size": 26468,
+      "expected_tier": "TIER_5_BRACKETED_SEGMENTED_PARTIAL_RECOVERY",
+      "expected_output_count": 3,
+      "expected_derivation_kind": "RECOVERED_SEGMENTED_PARTIAL_LOSSLESS"
+    },
+    "05_tier6_segmented_open_proven.mp3": {
+      "sha256": "e04984cd5bbfc357c97df35b5b38782648f8fffc3c72a4841f7488a45f503b13",
+      "size": 12161,
+      "expected_tier": "TIER_6_OPEN_PROVEN_REGION_RECOVERY",
+      "expected_output_count": 2,
+      "expected_derivation_kind": "RECOVERED_SEGMENTED_OPEN_PARTIAL_LOSSLESS"
+    },
+    "06_tier6_homogeneous_open_proven.mp3": {
+      "sha256": "92b2399cce8ef944342602c67a8cb5eca52daaca8c20daea8e3a685dcd796baa",
+      "size": 26260,
+      "expected_tier": "TIER_6_OPEN_PROVEN_REGION_RECOVERY",
+      "expected_output_count": 1,
+      "expected_derivation_kind": "RECOVERED_HOMOGENEOUS_OPEN_PARTIAL_LOSSLESS"
+    }
+  }
+}

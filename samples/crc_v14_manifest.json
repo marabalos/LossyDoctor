@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "app_version": "0.14.0",
+  "corpus": "crc_v14",
+  "fixture_provenance": {
+    "encoder": "LAME 3.100",
+    "protected_option": "-p",
+    "vbr_tag": "disabled with -t",
+    "purpose": "static evidence corpus for MPEG Layer III CRC audit; runtime does not depend on LAME"
+  },
+  "cases": {
+    "00_mpeg1_l3_crc_healthy.mp3": {
+      "sha256": "a9482cfec73f804a42bb175bbc3351d3a672ebe519f8fd7b9c370e50593430de",
+      "expected": "OK",
+      "protected_frames": 40,
+      "crc_mismatches": 0
+    },
+    "01_crc_word_corrupt.mp3": {
+      "sha256": "4e7f87c809ace9e37c01adf47a42307ff7747bfdf88ab27c0aad3654c22d958e",
+      "expected": "ANOMALY_UNCHANGED",
+      "protected_frames": 40,
+      "crc_mismatches": 1,
+      "mutated_region": "stored CRC word only"
+    },
+    "02_sideinfo_private_bit_corrupt.mp3": {
+      "sha256": "c866e339071fda7343f8fe9b9c6f74fea77a5186f63d6b52758183a85c6fce46",
+      "expected": "ANOMALY_UNCHANGED",
+      "protected_frames": 40,
+      "crc_mismatches": 1,
+      "mutated_region": "protected Layer III side-info private bit"
+    },
+    "03_mpeg2_l3_crc_healthy.mp3": {
+      "sha256": "14fe951e9cbeeccb6d61375bf2fa8617d46368104b990a2bc17d8f9dc9a094c8",
+      "expected": "OK",
+      "protected_frames": 41,
+      "crc_mismatches": 0
+    },
+    "04_unprotected_control.mp3": {
+      "sha256": "68453f36a1423556912408057d5a611fed382964f7236effb188bab4bf60fa67",
+      "expected": "OK",
+      "protected_frames": 0,
+      "crc_mismatches": 0
+    }
+  },
+  "expected_run": {
+    "processed": 5,
+    "ok": 3,
+    "with_findings": 2,
+    "failed": 0,
+    "repaired_outputs_created": 0,
+    "lossless_outputs_created": 0,
+    "outputs_reused": 0,
+    "candidates_rejected": 0
+  }
+}

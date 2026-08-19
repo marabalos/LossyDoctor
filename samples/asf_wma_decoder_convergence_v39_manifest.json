@@ -1,0 +1,62 @@
+{
+  "app_version": "0.39.0",
+  "cases": {
+    "00_healthy_wmav2_convergence_control.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "68dd91d185ac1baa99cb728ec8005cb25a58b57e47261849926f3af07b75b05f"
+    },
+    "01_healthy_wmav1_convergence_control.wma": {
+      "expected_complete_media_objects": 33,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "fd20a863a40b19a3821790c4106f19bf33f7633df59b7a46b93a92a13ba4392b"
+    },
+    "02_wmav2_single_mid_gap.wma": {
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "0e7ffa7e940ef45db0e6bd9d8c146e7bd760d8c3097b2034bbc323c50be36920"
+    },
+    "03_wmav1_single_mid_gap.wma": {
+      "expected_complete_media_objects": 32,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "33bc03b5f990281f93ee8d52658e19150dbe1dcd380e9adf1269da169cb18e35"
+    },
+    "04_wmav2_double_mid_gap.wma": {
+      "expected_complete_media_objects": 42,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "d44ea65c7ee276ac814b265a810ab8fc85a2c05c8c9a8cd3cd71f09ea28ed3b9"
+    },
+    "05_wmav1_double_mid_gap.wma": {
+      "expected_complete_media_objects": 31,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "c6cf1d09850c8676d46ef465a5a5e521548bc07c873d844d3b15d5c4b2ca5ac4"
+    },
+    "06_wmav2_late_gap.wma": {
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "e49ab7d49078df08e5595fc17fa3a39e1457d8f6b6e07b19a67517f6fef14ce8"
+    },
+    "07_timestamp_jump_without_missing_object.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "5ac95b37369a01e71967d7c33f66650db462e2037d2e5e6cc9383427132c293d"
+    },
+    "08_incomplete_media_object_negative.wma": {
+      "expected_complete_media_objects": 32,
+      "expected_incomplete_media_objects": 1,
+      "expected_parser_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "sha256": "70dabb715a7ca46290ff7d6bde481468b25a6b30a7cdd9a5a1dd8fffffdddb9a"
+    }
+  },
+  "policy": "0.39-asf-wma-decoder-convergence-evidence-1"
+}

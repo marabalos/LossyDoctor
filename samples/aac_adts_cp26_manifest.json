@@ -1,0 +1,25 @@
+{
+  "authority": "EXACT_PCM_PRESENTATION_AUDIT_ONLY_NO_OUTPUT",
+  "cases": {
+    "healthy_44100_stereo": {
+      "canonical_pcm_sha256": "43e71c3fe5190eb12054833988828e63259ba935728b08d08df39008e41691d0",
+      "presentation_samples": 54272,
+      "source": "samples/aac_adts_v43/00_healthy_aac_lc_44100_stereo.aac",
+      "source_sha256": "ea21bf3d43e827004a54abd015d3c91de5039d534bce7c838100cbe6962d60a4"
+    },
+    "healthy_48000_mono": {
+      "canonical_pcm_sha256": "83106934848389220e5869fbbedbd2dc4b06bf74520fbceaa5e273841b8b6658",
+      "presentation_samples": 45056,
+      "source": "samples/aac_adts_v43/01_healthy_aac_lc_48000_mono.aac",
+      "source_sha256": "1bfdf6760a80ab6f073a93d2ebd95e3aecf7925f89a7d58f1258e5164b586bd3"
+    },
+    "single_rdb_crc_scope_deferred": {
+      "canonical_pcm_sha256": "43e71c3fe5190eb12054833988828e63259ba935728b08d08df39008e41691d0",
+      "presentation_samples": 54272,
+      "source": "samples/aac_adts_crc_v44/01_healthy_single_rdb_crc_present_deferred.aac",
+      "source_sha256": "d2f8a8d9b21e41c4deac2e5d12a62ab4cd11fa061029b5779c011e6b4a844c92"
+    }
+  },
+  "checkpoint": "CP26",
+  "policy": "AAC_ADTS_EXACT_CONTIGUOUS_PCM_PRESENTATION"
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "purpose": "v0.27 Ogg CRC-authenticated page recapture and output-gain preservation policy",
+  "cases": {
+    "00_healthy_gain_policy.opus": {
+      "sha256": "c911188c52eed710ea092e6bd950d8ec80a04c8b69fc270e3916e22c8c70f2d3",
+      "size": 16417,
+      "expected_issues": []
+    },
+    "01_prefix_junk_recapture.opus": {
+      "sha256": "b5e2ad95984338e42a4b41eba09de9d696dae3c3ee0e498621c466cfdcfa09d4",
+      "size": 16446,
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ]
+    },
+    "02_interpage_junk_recapture.opus": {
+      "sha256": "b660cd8673a4f0c6a657772eec62c1de34ba5249638fe25165a6ab64a4518879",
+      "size": 16459,
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ]
+    },
+    "03_suffix_junk_recapture.opus": {
+      "sha256": "6dd015dc83772341437c0003b58103093ee3a0ae5a4e804a0ee8264ddbe8bb69",
+      "size": 16447,
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ]
+    },
+    "04_crc_mismatch_blocked.opus": {
+      "sha256": "0dd892ac8e82a8b7a7097b42a9119654a3722e6a14b6d7a2233e46fae5f26ef3",
+      "size": 16417,
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ]
+    },
+    "05_sequence_gap_blocked.opus": {
+      "sha256": "1d1d73c906b7377266de8a9cac2aa4b3ebc03115933a236418c10847c2e8ec05",
+      "size": 16417,
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ]
+    },
+    "06_truncated_page_blocked.opus": {
+      "sha256": "715c9c20f2f992fc353f2b5fe8ad5eeab81870eff1fedc66036ba0d7f4c0f014",
+      "size": 16306,
+      "expected_issues": [
+        "OGG_TRUNCATED_PAGE",
+        "OGG_OPUS_EOS_MISSING"
+      ]
+    }
+  }
+}

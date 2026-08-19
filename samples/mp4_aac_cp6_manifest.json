@@ -1,0 +1,69 @@
+{
+  "authority": "AUDIT_ONLY_NO_REPAIR_OR_RECOVERY",
+  "cases": {
+    "00_healthy_aac_lc_44100_stereo.m4a": {
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS",
+      "expected_sample_count": 53,
+      "expected_timescale": 44100,
+      "expected_track_id": 1,
+      "sha256": "602dd9c75387d2348251c13f26832d4bb2da22fc99376ee828357cd28bc73b08"
+    },
+    "01_healthy_aac_lc_48000_mono.m4a": {
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS",
+      "expected_sample_count": 39,
+      "expected_timescale": 48000,
+      "expected_track_id": 1,
+      "sha256": "f452370423d3676e5b8d6cfd6bad71a1d50d69b06d8a542c1dfbba87948e5cc8"
+    },
+    "02_stsz_sample_count_mismatch.m4a": {
+      "expected_issues": [
+        "MP4_SAMPLE_COUNT_MISMATCH"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "expected_sample_count": 52,
+      "expected_timescale": 44100,
+      "expected_track_id": 1,
+      "sha256": "fb27cd5fd5c0f11380e02beb27b4506d31a121c62470c080dd7e916ceda63ce6"
+    },
+  "03_chunk_offset_outside_mdat.m4a": {
+      "expected_issues": [
+        "MP4_CHUNK_OFFSET_OUTSIDE_MDAT"
+      ],
+      "expected_playability": "UNPLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "expected_sample_count": 53,
+      "expected_timescale": 44100,
+      "expected_track_id": 1,
+      "sha256": "1beeda9de025e52c80fba176065f03bf6601a10051fc3c28df384825d97f059a"
+    },
+    "04_media_duration_mismatch.m4a": {
+      "expected_issues": [
+        "MP4_MEDIA_DURATION_MISMATCH"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "expected_sample_count": 53,
+      "expected_timescale": 44100,
+      "expected_track_id": 1,
+      "sha256": "77e77c515dd2f86d0c928c6020ef54414fe55ad6b49e47ebd8127c8fafaee41f"
+    },
+    "05_trailing_unknown_bytes.m4a": {
+      "expected_issues": [
+        "MP4_TRAILING_BYTES"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "expected_sample_count": 53,
+      "expected_timescale": 44100,
+      "expected_track_id": 1,
+      "sha256": "2ffa7eca7299e2b969bbcff2fe1f67a0a7d48a65ade0f6eca45f3e4e337d75b6"
+    }
+  },
+  "checkpoint": "CP6",
+  "policy": "MP4_AAC_STRUCTURAL_AUDIT_ONLY_NO_REPAIR_OR_RECOVERY"
+}

@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "version": "0.26.0",
+  "purpose": "Ogg/Opus deep structural audit: pages, CRC, sequencing, headers, TOC-derived timing and granule positions; audit-only",
+  "cases": {
+    "00_healthy_stereo.opus": {
+      "sha256": "dd64bb3291c17330e4f72dc916d9e220e972b5d1a87f77092727d3261bf49216",
+      "size": 18919,
+      "expected_issues": []
+    },
+    "01_healthy_output_gain.opus": {
+      "sha256": "8a219799237ef985c12adbaa4eadf8ccb8dd068b169dca816bf7215a4e5bc043",
+      "size": 18919,
+      "expected_issues": []
+    },
+    "02_crc_mismatch.opus": {
+      "sha256": "7b712be1f5bfb8cfaa3b37973fa8b07987d647f00db125a7f9388ff21839255d",
+      "size": 18919,
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ]
+    },
+    "03_sequence_gap.opus": {
+      "sha256": "720b6c74ef0c006b743c27256e3529435076672ebb1a302a406d6b65b14a5d8a",
+      "size": 18919,
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ]
+    },
+    "04_invalid_end_trim.opus": {
+      "sha256": "bac5317ec0c0610caf2253ec9674240000c066a0c8f0ac7812e902bcdc95d268",
+      "size": 18919,
+      "expected_issues": [
+        "OPUS_END_TRIM_INVALID"
+      ]
+    },
+    "05_missing_eos.opus": {
+      "sha256": "3bc52f2d3b99cd35475e9694de8d465b289079f870c265247f75b5c5d1f827c7",
+      "size": 18919,
+      "expected_issues": [
+        "OPUS_GRANULE_DELTA_MISMATCH",
+        "OGG_OPUS_EOS_MISSING"
+      ]
+    }
+  }
+}

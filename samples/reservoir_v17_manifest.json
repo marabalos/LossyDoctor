@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "app_version": "0.17.0",
+  "corpus": "reservoir_v17",
+  "cases": {
+    "00_reservoir_healthy.mp3": {
+      "sha256": "1704f9238a57b800e16748295da1319a4c2165ef5eb9611feb1f5c9016a89810",
+      "expected": "OK",
+      "frames": 53,
+      "frames_with_backreferences": 52,
+      "max_main_data_begin_bytes": 480,
+      "max_dependency_backspan_frames": 2,
+      "fully_provable_frames": 53
+    },
+    "01_reservoir_disabled.mp3": {
+      "sha256": "997c713300666d7bb71c3a39310ded0c9d805bc6218a27b11f22d3b1abeaad71",
+      "expected": "OK",
+      "frames": 53,
+      "frames_with_backreferences": 0,
+      "max_main_data_begin_bytes": 0,
+      "fully_provable_frames": 53
+    },
+    "02_reservoir_gap.mp3": {
+      "sha256": "519e766650ca95ca73fc2b2fe710f704871ee91789a094eb025b91a6e36cefd5",
+      "expected": "ANOMALY_UNCHANGED",
+      "expected_issue": "MPEG_SYNC_LOSS",
+      "observed_frames": 52,
+      "unresolved_pre_segment_frame_indices": [14, 15],
+      "fully_provable_frames": 50
+    }
+  },
+  "expected_run": {
+    "processed": 3,
+    "ok": 2,
+    "with_findings": 1,
+    "failed": 0,
+    "repaired_outputs_created": 0,
+    "lossless_outputs_created": 0,
+    "outputs_reused": 0,
+    "candidates_rejected": 0
+  }
+}

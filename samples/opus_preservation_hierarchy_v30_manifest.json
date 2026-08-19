@@ -1,0 +1,92 @@
+{
+  "cases": {
+    "00_healthy_hierarchy_control.opus": {
+      "expected_issues": [],
+      "expected_output_count": 0,
+      "expected_tier": "NO_ACTION_REQUIRED",
+      "sha256": "fd0ae4abae285be46fa5ae374afee39e4c82cb5312b9f18a4dec0d8fed5c0255"
+    },
+    "01_tier1_verified_recapture.opus": {
+      "expected_derivation_kind": "REPAIRED_SAFE",
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ],
+      "expected_output_count": 1,
+      "expected_tier": "TIER_1_VERIFIED_OGG_BITSTREAM_REPAIR",
+      "sha256": "f6673e937e3911aec68c1d702b0e5cbf3aeb0f99140a40ee0b4129c25698476f"
+    },
+    "02_tier2_missing_page_exact_eos.opus": {
+      "expected_derivation_kind": "RECOVERED_OPUS_PROVEN_REGION_LOSSLESS",
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "OPUS_GRANULE_DELTA_MISMATCH"
+      ],
+      "expected_output_count": 2,
+      "expected_tier": "TIER_2_PROVEN_REGION_RECOVERY_AUTHENTICATED_EOS",
+      "sha256": "c25c0dd7a32cd3564517fbde8fd41ae2749844311c2308a8d31da975ab2ff43d"
+    },
+    "03_tier2_crc_page_exact_eos.opus": {
+      "expected_derivation_kind": "RECOVERED_OPUS_PROVEN_REGION_LOSSLESS",
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_output_count": 2,
+      "expected_tier": "TIER_2_PROVEN_REGION_RECOVERY_AUTHENTICATED_EOS",
+      "sha256": "337c152b017bda8af476c6dc02d72b39b4a178a5d7788cd5972ff6739e65f43d"
+    },
+    "04_tier3_truncated_open_region.opus": {
+      "expected_derivation_kind": "RECOVERED_OPUS_PROVEN_REGION_LOSSLESS",
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_TRUNCATED_PAGE",
+        "OGG_INCOMPLETE_PACKET_AT_EOF",
+        "OGG_OPUS_EOS_MISSING"
+      ],
+      "expected_output_count": 1,
+      "expected_tier": "TIER_3_OPEN_OR_TRUNCATED_PROVEN_REGION_RECOVERY",
+      "sha256": "50eb247e6b22dc261a028989deafa6340491a685fc5e84ab45d5b377ad1fee4a"
+    },
+    "05_tier4_playable_crc_report_only.opus": {
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_output_count": 0,
+      "expected_tier": "TIER_4_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "sha256": "cc9e62c8c80bba325c958b73e9fa6115a8e47550d52f60d014f85df47a33d8e2"
+    },
+    "06_tier4_playable_sequence_report_only.opus": {
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ],
+      "expected_output_count": 0,
+      "expected_tier": "TIER_4_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "sha256": "03c507c65b453abbc28de1a43941ce2e3bd843ccc8eba60e7bc9c4109e2830c5"
+    }
+  },
+  "description": "Ogg Opus preservation hierarchy adversarial corpus",
+  "end_trim_samples_48k": 480,
+  "eos_page_sequence": 11,
+  "expected_first_run": {
+    "failed": 0,
+    "findings": 6,
+    "lossless": 5,
+    "ok": 1,
+    "processed": 7,
+    "repaired": 1,
+    "reused": 0
+  },
+  "expected_second_run": {
+    "failed": 0,
+    "findings": 6,
+    "lossless": 0,
+    "ok": 1,
+    "processed": 7,
+    "repaired": 0,
+    "reused": 6
+  },
+  "policy": "OPUS_PRESERVATION_HIERARCHY_STRICT_V1",
+  "split_page_sequence": 10,
+  "version": "0.30.0"
+}

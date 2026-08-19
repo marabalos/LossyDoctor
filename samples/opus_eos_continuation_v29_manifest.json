@@ -1,0 +1,44 @@
+{
+  "cases": {
+    "00_healthy_continued_eos_trim.opus": {
+      "expected_issues": [],
+      "sha256": "50efaa64b3f1cc80ae0383ff53986082d0a95af5223067bbcbe6c7ac09618153"
+    },
+    "01_unplayable_missing_page_continued_tail.opus": {
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "OPUS_GRANULE_DELTA_MISMATCH"
+      ],
+      "sha256": "9e7ac1bd58df0e89a2de37e4c3c036c2a62dfa84d9e8d5fd8576545292ad0449"
+    },
+    "02_unplayable_crc_page_continued_tail.opus": {
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "sha256": "016ae28b112be82bb34a036965d5541cb559ccca30a2db006d397c1775a3bb1c"
+    },
+    "03_unplayable_crc_first_half_continued_packet.opus": {
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "sha256": "6265b48d8def1d1dbfb2ee4cbb7fc4644c1dd25e7b68140f79199916c0e84e95"
+    },
+    "04_unplayable_truncated_continued_eos.opus": {
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_TRUNCATED_PAGE",
+        "OGG_INCOMPLETE_PACKET_AT_EOF",
+        "OGG_OPUS_EOS_MISSING"
+      ],
+      "sha256": "da9692b7dced05e1ae2ad71a3532e3caaaeac647f354fd10fbfb2751d1a67fc9"
+    }
+  },
+  "description": "Ogg Opus exact EOS trim and cross-page packet provenance fixtures",
+  "end_trim_samples_48k": 480,
+  "eos_page_sequence": 11,
+  "split_page_sequence": 10,
+  "version": "0.29.0"
+}

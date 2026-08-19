@@ -1,0 +1,14 @@
+LossyDoctor
+Copyright (C) 2026 Diego AMEO
+
+SPDX-FileCopyrightText: Copyright (C) 2026 Diego AMEO
+SPDX-License-Identifier: GPL-3.0-or-later
+
+El código fuente propio de LossyDoctor se distribuye bajo los términos de la
+GNU General Public License, versión 3 o posterior. Consulte LICENSE.
+
+El nombre LossyDoctor, su logotipo y demás identificadores oficiales no se
+licencian bajo la GPL. Consulte TRADEMARKS.md.
+
+Las dependencias redistribuidas conservan sus propios avisos y licencias.
+Consulte THIRD_PARTY_NOTICES.md.

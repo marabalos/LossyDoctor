@@ -1,0 +1,12 @@
+{
+  "authority": "SAFE_SINGLE_CHUNK_OFFSET_REPAIR_PRECEDES_PCM",
+  "checkpoint": "CP11",
+  "corpus_source": "samples/mp4_aac_cp9",
+  "expected_aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+  "expected_first_status": "CREATED",
+  "expected_pcm_sha256": "09b85e00d7e53e07939ae8f03ae78f0e05a0e672f8c023fe2e2f1cd0f3367ab0",
+  "expected_repair_spec_id": "MP4_REWRITE_SINGLE_CHUNK_OFFSET_TO_UNIQUE_MDAT",
+  "expected_second_status": "REUSED",
+  "positive_source": "01_unique_mdat_wrong_offset_complete_clean.m4a",
+  "source_sha256": "1beeda9de025e52c80fba176065f03bf6601a10051fc3c28df384825d97f059a"
+}

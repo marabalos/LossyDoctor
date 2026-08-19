@@ -1,0 +1,11 @@
+# LossyDoctor — configuración Codex del repositorio
+# El routing de tareas está gobernado por AGENTS.md.
+
+model_reasoning_effort = "low"
+model_verbosity = "low"
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[agents]
+enabled = false

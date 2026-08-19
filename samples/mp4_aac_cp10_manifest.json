@@ -1,0 +1,33 @@
+{
+  "authority": "COMPLETE_CLEAN_LOSSLESS_EXPORT",
+  "cases": {
+    "00_healthy_no_recovery_required.m4a": {
+      "expected_outputs": 0,
+      "source_sha256": "602dd9c75387d2348251c13f26832d4bb2da22fc99376ee828357cd28bc73b08"
+    },
+    "01_unique_mdat_wrong_offset_complete_clean.m4a": {
+      "expected_derivation_kind": "RECOVERED_LOSSLESS",
+      "expected_first_status": "CREATED",
+      "expected_materialization": "MP4_AAC_CANONICAL_PRESENTATION_FROM_BYTE_PRESERVED_ACCESS_UNITS",
+      "expected_pcm_sha256": "09b85e00d7e53e07939ae8f03ae78f0e05a0e672f8c023fe2e2f1cd0f3367ab0",
+      "expected_sample_count": 52920,
+      "expected_second_status": "REUSED",
+      "source_sha256": "1beeda9de025e52c80fba176065f03bf6601a10051fc3c28df384825d97f059a"
+    },
+    "02_extra_byte_inside_mdat_ambiguous.m4a": {
+      "expected_outputs": 0,
+      "source_sha256": "0cf26ef887ab1df053a3621f90ae981f6c92df4ac9ed2d4f967b900ba037afa6"
+    },
+    "03_sample_sizes_overrun_mdat.m4a": {
+      "expected_outputs": 0,
+      "source_sha256": "973fda2012ecbbdfec0f18be9bbd746df6306a6cb134993b03627c2ed386a2a8"
+    },
+    "04_invalid_sample_description_reference.m4a": {
+      "expected_outputs": 0,
+      "source_sha256": "806169f145d1f48723bd7824484ec6d4da2edc7512739df958caaa92eceeca81"
+    }
+  },
+  "checkpoint": "CP10",
+  "corpus_source": "samples/mp4_aac_cp9",
+  "policy": "MP4_AAC_COMPLETE_CLEAN_LOSSLESS_EXPORT"
+}

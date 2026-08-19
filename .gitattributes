@@ -1,0 +1,20 @@
+# Canonical text representation and checkout format
+* text=auto eol=lf
+
+# Windows launcher: LF is intentional and supported on Windows 10+
+*.bat text eol=lf
+
+# Executables and binary/audio fixtures must never be normalized
+*.exe binary
+*.bin binary
+*.aac binary
+*.mp2 binary
+*.mp3 binary
+*.mpa binary
+*.m4a binary
+*.mp4 binary
+*.ogg binary
+*.opus binary
+*.wma binary
+*.flac binary
+*.zip binary

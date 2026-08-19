@@ -1,0 +1,78 @@
+{
+  "cases": {
+    "00_healthy_stereo_44100.ogg": {
+      "expected_final_granule": 66150,
+      "expected_issues": [],
+      "expected_mode_counts": {
+        "0": 1,
+        "1": 66
+      },
+      "sha256": "fd2e296e211e0192c3aaa66483902d46f4171d9430c38dfc85c38bd89db73231"
+    },
+    "01_healthy_mode_transitions.ogg": {
+      "expected_final_granule": 105840,
+      "expected_issues": [],
+      "expected_mode_counts": {
+        "0": 64,
+        "1": 96
+      },
+      "sha256": "f0f356dd09059ec77ce15b9b3bb49add5e4c638bf7fc6717d4e16cdfa0407623"
+    },
+    "02_crc_mismatch.ogg": {
+      "expected_final_granule": 105840,
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_mode_counts": {
+        "0": 64,
+        "1": 96
+      },
+      "sha256": "fa00fa54a372436abce1c1cd8048a814f863e583fc4ad13817324c2142c4e3b2"
+    },
+    "03_sequence_gap.ogg": {
+      "expected_final_granule": 105840,
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ],
+      "expected_mode_counts": {
+        "0": 64,
+        "1": 96
+      },
+      "sha256": "21ccb6c6c8b453340fb8007ccdf91751693f442d31e43ff25ed89e3e298c9973"
+    },
+    "04_invalid_ident_blocksize.ogg": {
+      "expected_final_granule": 105840,
+      "expected_issues": [
+        "VORBIS_IDENTIFICATION_HEADER_INVALID",
+        "VORBIS_AUDIO_PACKET_HEADER_INVALID",
+        "VORBIS_GRANULE_DELTA_MISMATCH"
+      ],
+      "expected_mode_counts": {},
+      "sha256": "5e9345eb6311a78b99d6a6133d54f20112a1eedff36a6c55f5b9dedd5e6e7517"
+    },
+    "05_granule_mismatch.ogg": {
+      "expected_final_granule": 105840,
+      "expected_issues": [
+        "VORBIS_GRANULE_DELTA_MISMATCH"
+      ],
+      "expected_mode_counts": {
+        "0": 64,
+        "1": 96
+      },
+      "sha256": "ea92d9e6266cbb724860ae589a254c227b839ba86729f5247d3106485f47d185"
+    },
+    "06_missing_eos.ogg": {
+      "expected_final_granule": 105920,
+      "expected_issues": [
+        "OGG_VORBIS_EOS_MISSING"
+      ],
+      "expected_mode_counts": {
+        "0": 64,
+        "1": 96
+      },
+      "sha256": "a352948d98a2059267faaac07f36abfc533a58705539715af98dbb91e0130e36"
+    }
+  },
+  "policy": "0.31-ogg-vorbis-deep-audit-1",
+  "schema": 1
+}

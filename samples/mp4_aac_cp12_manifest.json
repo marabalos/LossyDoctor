@@ -1,0 +1,30 @@
+{
+  "authority": "MP4_AAC_PRESERVATION_HIERARCHY_STRICT_V1",
+  "cases": {
+    "00_healthy_no_recovery_required.m4a": {
+      "expected_default_tier": "NO_ACTION_REQUIRED",
+      "sha256": "602dd9c75387d2348251c13f26832d4bb2da22fc99376ee828357cd28bc73b08"
+    },
+    "01_unique_mdat_wrong_offset_complete_clean.m4a": {
+      "expected_default_tier": "TIER_1_VERIFIED_AAC_BITSTREAM_REPAIR",
+      "expected_repair_disabled_tier": "TIER_2_COMPLETE_CLEAN_LOSSLESS_RECOVERY",
+      "sha256": "1beeda9de025e52c80fba176065f03bf6601a10051fc3c28df384825d97f059a"
+    },
+    "02_extra_byte_inside_mdat_ambiguous.m4a": {
+      "expected_default_tier": "TIER_3_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "sha256": "0cf26ef887ab1df053a3621f90ae981f6c92df4ac9ed2d4f967b900ba037afa6"
+    },
+    "03_sample_sizes_overrun_mdat.m4a": {
+      "expected_default_tier": "TIER_3_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "sha256": "973fda2012ecbbdfec0f18be9bbd746df6306a6cb134993b03627c2ed386a2a8"
+    },
+    "04_invalid_sample_description_reference.m4a": {
+      "expected_default_tier": "TIER_1_VERIFIED_AAC_BITSTREAM_REPAIR",
+      "sha256": "806169f145d1f48723bd7824484ec6d4da2edc7512739df958caaa92eceeca81"
+    }
+  },
+  "checkpoint": "CP12",
+  "corpus": "mp4_aac_cp9",
+  "corpus_source": "samples/mp4_aac_cp9",
+  "policy": "MP4_AAC_PRESERVATION_HIERARCHY_STRICT_V1"
+}

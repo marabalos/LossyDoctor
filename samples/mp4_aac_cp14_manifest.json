@@ -1,0 +1,18 @@
+{
+  "authority": "SAFE_STSZ_SAMPLE_COUNT_REPAIR",
+  "cases": {
+    "02_stsz_sample_count_mismatch.m4a": {
+      "expected_aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "expected_output_sha256": "602dd9c75387d2348251c13f26832d4bb2da22fc99376ee828357cd28bc73b08",
+      "expected_pcm_sha256": "09b85e00d7e53e07939ae8f03ae78f0e05a0e672f8c023fe2e2f1cd0f3367ab0",
+      "expected_replacement_sample_count": 53,
+      "original_sample_count": 52,
+      "sha256": "fb27cd5fd5c0f11380e02beb27b4506d31a121c62470c080dd7e916ceda63ce6"
+    }
+  },
+  "checkpoint": "CP14",
+  "control": "00_healthy_aac_lc_44100_stereo.m4a",
+  "corpus": "mp4_aac_cp6",
+  "expected_repair_spec_id": "MP4_REWRITE_STSZ_SAMPLE_COUNT_TO_PROVEN_PHYSICAL_TABLE",
+  "policy": "MP4_AAC_SAFE_STSZ_SAMPLE_COUNT_REPAIR"
+}

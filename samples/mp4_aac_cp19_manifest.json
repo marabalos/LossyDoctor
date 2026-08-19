@@ -1,0 +1,46 @@
+{
+  "authority": "AUDIT_ONLY_NO_REPAIR_OR_RECOVERY",
+  "cases": {
+    "00_two_contiguous_media_edits.m4a": {
+      "expected_issues": [],
+      "expected_presentation_sample_count": 52920,
+      "expected_window_determined": true,
+      "expected_window_reason": "VALIDATED_MULTI_EDIT_PRESENTATION_AUDIT_ONLY",
+      "sha256": "7708ec290901eaf8e15ffc83bc5ec75af396f91c4dbaf3e68e4a1901dffdcc6c"
+    },
+    "01_three_reordered_media_edits.m4a": {
+      "expected_issues": [],
+      "expected_presentation_sample_count": 52920,
+      "expected_window_determined": true,
+      "expected_window_reason": "VALIDATED_MULTI_EDIT_PRESENTATION_AUDIT_ONLY",
+      "sha256": "9fe859e33d1ea8c83f04bb34edce3b32920aee30192b411dc6731051c79f5a99"
+    },
+    "02_empty_then_media_edit.m4a": {
+      "expected_issues": [],
+      "expected_presentation_sample_count": 52920,
+      "expected_window_determined": true,
+      "expected_window_reason": "VALIDATED_MULTI_EDIT_PRESENTATION_AUDIT_ONLY",
+      "sha256": "12b7f143fdae523e7ec4f052694fdea66ef0a0d61e4ea784cd5867ac216a44eb"
+    },
+    "03_second_edit_rate_unsupported.m4a": {
+      "expected_issues": [
+        "MP4_EDIT_LIST_RATE_UNSUPPORTED"
+      ],
+      "expected_presentation_sample_count": null,
+      "expected_window_determined": false,
+      "expected_window_reason": "NON_UNIT_MEDIA_RATE",
+      "sha256": "ccfc8645c93e717af9398e8e34f336c695d70406102469df71df29b8f45c23c7"
+    },
+    "04_second_edit_outside_media.m4a": {
+      "expected_issues": [
+        "MP4_EDIT_LIST_MEDIA_RANGE_INVALID"
+      ],
+      "expected_presentation_sample_count": null,
+      "expected_window_determined": false,
+      "expected_window_reason": "MEDIA_RANGE_OUTSIDE_MDHD",
+      "sha256": "4fc507c79c33574617492e64614dbfe1adba46b6066e0cdf0b5f788266212e90"
+    }
+  },
+  "checkpoint": "CP19",
+  "policy": "MP4_AAC_MULTI_EDIT_PRESENTATION_AUDIT_ONLY"
+}

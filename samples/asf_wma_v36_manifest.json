@@ -1,0 +1,97 @@
+{
+  "app_version": "0.36.0",
+  "policy": "0.36-asf-wma-deep-audit-1",
+  "authority": "AUDIT_ONLY_NO_REPAIR_OR_RECOVERY",
+  "cases": {
+    "00_healthy_wmav2.wma": {
+      "sha256": "dedf4362f19010b197560b2d0c902178f2b84822bd5ee93cab395f2ca4375167",
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE",
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_declared_packets": 11,
+      "expected_physical_complete_packets": 11,
+      "expected_packet_remainder_bytes": 0
+    },
+    "01_healthy_wmav1.wma": {
+      "sha256": "c4683399edfd6d91ed8a7617c581179a476682282f52f36f6d7328636cf12367",
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE",
+      "expected_format_tag": "0x0160",
+      "expected_sample_rate": 22050,
+      "expected_channels": 1,
+      "expected_declared_packets": 5,
+      "expected_physical_complete_packets": 5,
+      "expected_packet_remainder_bytes": 0
+    },
+    "02_file_size_mismatch.wma": {
+      "sha256": "db7f82a57d6278dc401e015639e319e22b7ca265937548d2ed8d55e3d85c0682",
+      "expected_issues": [
+        "ASF_FILE_SIZE_MISMATCH"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_declared_packets": 11,
+      "expected_physical_complete_packets": 11,
+      "expected_packet_remainder_bytes": 0
+    },
+    "03_packet_count_mismatch.wma": {
+      "sha256": "a3b188f73df807c1e5e2b074d1fced1ec9375ec7b9d1677b62b2587d18d060f8",
+      "expected_issues": [
+        "ASF_DATA_PACKET_COUNT_MISMATCH"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_declared_packets": 12,
+      "expected_physical_complete_packets": 11,
+      "expected_packet_remainder_bytes": 0
+    },
+    "04_truncated_data_packet.wma": {
+      "sha256": "b0fe1d024c3cca1d7890b79be36294c16415939b5e1ae306781dec74403b7d6e",
+      "expected_issues": [
+        "ASF_FILE_SIZE_MISMATCH",
+        "ASF_DATA_OBJECT_TRUNCATED",
+        "ASF_DATA_PACKET_COUNT_MISMATCH",
+        "ASF_PARTIAL_DATA_PACKET_AT_END"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_declared_packets": 11,
+      "expected_physical_complete_packets": 10,
+      "expected_packet_remainder_bytes": 2867
+    },
+    "05_invalid_waveformatex_tag.wma": {
+      "sha256": "d31ff38f1670eb92e03f5312557872abc4dd86f17cbfe5e0a942ceb6fbb490ad",
+      "expected_issues": [
+        "ASF_WMA_WAVEFORMATEX_INVALID"
+      ],
+      "expected_playability": "UNPLAYABLE",
+      "expected_format_tag": "0x9999",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_declared_packets": 11,
+      "expected_physical_complete_packets": 11,
+      "expected_packet_remainder_bytes": 0
+    },
+    "06_nonmonotonic_send_time.wma": {
+      "sha256": "389ffc87e951961a146fc91fb470326ffaaae69a627fc3a13f870b8eedc40cf8",
+      "expected_issues": [
+        "ASF_PACKET_SEND_TIME_NONMONOTONIC"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_declared_packets": 11,
+      "expected_physical_complete_packets": 11,
+      "expected_packet_remainder_bytes": 0
+    }
+  }
+}

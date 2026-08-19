@@ -1,0 +1,86 @@
+{
+  "app_version": "0.42.0",
+  "policy": "0.42-wma-preservation-hierarchy-1",
+  "hierarchy_policy": "WMA_PRESERVATION_HIERARCHY_STRICT_V1",
+  "cases": {
+    "00_healthy_no_action.wma": {
+      "sha256": "b9b32fc11918c90e817fd999dd9ef77a87f4a286791ab5dbeb218a4440e085e1",
+      "expected_tier": "NO_ACTION_REQUIRED",
+      "expected_selected_output_count": 0,
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE"
+    },
+    "01_tier1_wmav2_multi_region.wma": {
+      "sha256": "69dc64c733c185546a6349bd44cfed2179357e68e3b53b8dd4b3630f46dbbfdd",
+      "expected_tier": "TIER_1_PROVEN_MULTI_REGION_RECOVERY",
+      "expected_selected_output_count": 3,
+      "expected_issues": [
+        "ASF_WMA_DEMUX_TIMELINE_DISCONTINUITY"
+      ],
+      "expected_playability": "PLAYABLE"
+    },
+    "02_tier1_wmav1_multi_region.wma": {
+      "sha256": "2cd68ce9c34f9de1e2199a48fe41012111404b5b78f0fb85352579e11fa19f5f",
+      "expected_tier": "TIER_1_PROVEN_MULTI_REGION_RECOVERY",
+      "expected_selected_output_count": 3,
+      "expected_issues": [
+        "ASF_WMA_DEMUX_TIMELINE_DISCONTINUITY"
+      ],
+      "expected_playability": "PLAYABLE"
+    },
+    "03_tier2_wmav2_single_suffix.wma": {
+      "sha256": "afb96f2d930622ebf8514d7336c9fc84d2e7eac6cb4ded3963b8d06f04316060",
+      "expected_tier": "TIER_2_PROVEN_CONVERGED_SUFFIX_RECOVERY",
+      "expected_selected_output_count": 1,
+      "expected_issues": [
+        "ASF_WMA_DEMUX_TIMELINE_DISCONTINUITY"
+      ],
+      "expected_playability": "PLAYABLE"
+    },
+    "04_tier2_wmav1_single_suffix.wma": {
+      "sha256": "38022d384a46c1e0f30bdf4ceeecdffc9e842a34f449927547c845bb4fc37edc",
+      "expected_tier": "TIER_2_PROVEN_CONVERGED_SUFFIX_RECOVERY",
+      "expected_selected_output_count": 1,
+      "expected_issues": [
+        "ASF_WMA_DEMUX_TIMELINE_DISCONTINUITY"
+      ],
+      "expected_playability": "PLAYABLE"
+    },
+    "05_tier3_timestamp_report_only.wma": {
+      "sha256": "d936f048e42b20d8b0e8d18880952d1e6fc6d116bb227affc9cae5d753237c1f",
+      "expected_tier": "TIER_3_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "expected_selected_output_count": 0,
+      "expected_issues": [
+        "ASF_WMA_DEMUX_TIMELINE_DISCONTINUITY"
+      ],
+      "expected_playability": "PLAYABLE"
+    },
+    "06_tier3_incomplete_object_report_only.wma": {
+      "sha256": "804dba0efdbc681cfe535dbc46b0bb8f6929812c5c586f3f66356859bc8ccbc0",
+      "expected_tier": "TIER_3_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "expected_selected_output_count": 0,
+      "expected_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "expected_playability": "PLAYABLE"
+    }
+  },
+  "expected_first_run": {
+    "processed": 7,
+    "ok": 1,
+    "findings": 6,
+    "failed": 0,
+    "repaired": 0,
+    "lossless": 8,
+    "reused": 0
+  },
+  "expected_second_run": {
+    "processed": 7,
+    "ok": 1,
+    "findings": 6,
+    "failed": 0,
+    "repaired": 0,
+    "lossless": 0,
+    "reused": 8
+  }
+}

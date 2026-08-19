@@ -1,0 +1,16 @@
+{
+  "authority": "AUDIT_ONLY_NO_REPAIR_OR_RECOVERY",
+  "cases": {
+    "00_healthy_five_fragments.m4a": {
+      "aac_access_unit_count": 53,
+      "aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "canonical_presentation_pcm_s32le_sha256": "e098a472d4ad890021f165879f9354de4b89fc633472500f5547786ffb77bf67",
+      "decoded_media_sample_count": 54272,
+      "decoded_tail_padding_samples_excluded": 328,
+      "presentation_sample_count": 53944,
+      "source_sha256": "e83e19affcf79388c547646cf0253ef1633c730602647003513a3f14b1960e6b"
+    }
+  },
+  "checkpoint": "CP22",
+  "policy": "MP4_AAC_FRAGMENTED_PRESENTATION_PCM_PROVENANCE_AUDIT_ONLY"
+}

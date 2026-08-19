@@ -1,0 +1,53 @@
+{
+  "cases": {
+    "00_healthy_master_xing.mp3": {
+      "expected": "OK / no derivative",
+      "sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7"
+    },
+    "01_unplayable_known_gap.mp3": {
+      "expected": "RECOVERED_PARTIAL_LOSSLESS single FLAC with SYNTHESIZED_GAP_SILENCE",
+      "expected_clean_regions": [
+        [
+          0,
+          44975
+        ],
+        [
+          48431,
+          176400
+        ]
+      ],
+      "expected_zero_gap_samples": 3456,
+      "mutation": "malformed ID3v2 size + two-bit MPEG header corruption",
+      "sha256": "b5744004d4afaa7be6c682fedc00a96ecf658aef9e4aaadce9a13b2382b9184f",
+      "source_master": "00_healthy_master_xing.mp3"
+    },
+    "02_healthy_master_no_xing.mp3": {
+      "expected": "OK / no derivative",
+      "sha256": "4cc2145c3103997ffbc55e6592727d7aa284cdec56cf46642d34e37d1247cc58"
+    },
+    "03_unplayable_unknown_gap.mp3": {
+      "deleted_bytes": 100,
+      "deletion_master_byte_end": 25321,
+      "deletion_master_byte_start": 25221,
+      "expected": "RECOVERED_PARTIAL_LOSSLESS independent parts, no invented timeline",
+      "expected_parts": 2,
+      "mutation": "malformed ID3v2 size + delete 100 payload bytes",
+      "sha256": "7b27f43c9f094040c65cade2ab416f12389a70d3aeaeda664f0f8e9ca33edd84",
+      "source_master": "02_healthy_master_no_xing.mp3"
+    }
+  },
+  "expected_first_run": {
+    "failed": 0,
+    "lossless_outputs_created": 3,
+    "ok": 2,
+    "processed": 4,
+    "with_findings": 2
+  },
+  "expected_second_run": {
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "outputs_reused": 3
+  },
+  "purpose": "LossyDoctor v0.5 partial-lossless acceptance corpus",
+  "schema_version": 1
+}

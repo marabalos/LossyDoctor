@@ -1,0 +1,33 @@
+{
+  "app_version": "0.7.0",
+  "cases": {
+    "00_mp3_named_wma.wma": {
+      "expected": "REPAIRED_SAFE",
+      "sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7"
+    },
+    "01_wma_named_mp3.mp3": {
+      "expected": "REPAIRED_SAFE",
+      "sha256": "cb8e79b5310fa69c12fd2fc2d9bd0241026c007ad1d94e0b8ce6707eb80998f3"
+    },
+    "02_opus_named_bin.bin": {
+      "expected": "REPAIRED_SAFE",
+      "sha256": "8f68ee532b515007532bd200af7d0bf4b798b3ca771a73fa89486a35c35cd23e"
+    },
+    "03_aac_mp4_named_mp3.mp3": {
+      "expected": "BLOCKED_MEDIUM_CONFIDENCE",
+      "sha256": "a5c128530064629b7b18f5bc5694100270d63c19b295c4679987db398b4a4cbf"
+    }
+  },
+  "corpus": "extension_v07",
+  "expected_first_run": {
+    "outputs_reused": 0,
+    "processed": 4,
+    "repaired_outputs_created": 3
+  },
+  "expected_second_run": {
+    "outputs_reused": 3,
+    "processed": 4,
+    "repaired_outputs_created": 0
+  },
+  "schema_version": 1
+}

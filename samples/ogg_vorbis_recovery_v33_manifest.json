@@ -1,0 +1,127 @@
+{
+  "app_version": "0.33.0",
+  "cases": {
+    "00_healthy_reference.ogg": {
+      "expected_eligible": false,
+      "expected_issues": [],
+      "expected_output_count": 0,
+      "expected_pcm_class": "NOT_REQUIRED",
+      "expected_playability": "PLAYABLE",
+      "expected_regions": [],
+      "sha256": "cdd7bf21ab2088939934982c673d38fcdf403ab9c304ac633ad617836906d1e3"
+    },
+    "01_unplayable_missing_middle_page.ogg": {
+      "expected_eligible": true,
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "VORBIS_GRANULE_DELTA_MISMATCH",
+        "VORBIS_EOS_TRIM_INVALID"
+      ],
+      "expected_output_count": 2,
+      "expected_pcm_class": "VORBIS_PROVEN_REGIONS",
+      "expected_playability": "UNPLAYABLE",
+      "expected_regions": [
+        [
+          0,
+          39488
+        ],
+        [
+          60992,
+          88200
+        ]
+      ],
+      "sha256": "1f8267968481168e227d11dc8503fcfbeb65ece5bc54173dd1f092d1dd62501b"
+    },
+    "02_unplayable_crc_middle_page.ogg": {
+      "expected_eligible": true,
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_output_count": 2,
+      "expected_pcm_class": "VORBIS_PROVEN_REGIONS",
+      "expected_playability": "UNPLAYABLE",
+      "expected_regions": [
+        [
+          0,
+          39488
+        ],
+        [
+          60992,
+          88200
+        ]
+      ],
+      "sha256": "fcb27f87749eb31308a857fffb627a942c6b53a49fceaeae68adf2385d151315"
+    },
+    "03_unplayable_truncated_tail.ogg": {
+      "expected_eligible": true,
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_TRUNCATED_PAGE",
+        "OGG_INCOMPLETE_PACKET_AT_EOF",
+        "OGG_VORBIS_EOS_MISSING"
+      ],
+      "expected_output_count": 1,
+      "expected_pcm_class": "VORBIS_PROVEN_REGIONS",
+      "expected_playability": "UNPLAYABLE",
+      "expected_regions": [
+        [
+          0,
+          87616
+        ]
+      ],
+      "sha256": "d264b64fddcc40c201cb4f1bf693aadac66ee0da89bcbfc9358b4b93a2a35e02"
+    },
+    "04_playable_sequence_gap_control.ogg": {
+      "expected_eligible": false,
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ],
+      "expected_output_count": 0,
+      "expected_pcm_class": "POLICY_BLOCKED_PLAYABLE",
+      "expected_playability": "PLAYABLE",
+      "expected_regions": [],
+      "sha256": "217fadac47d23a2764012903b71d7d5c1d73482fac66dfcb5764d71b9e02e36c"
+    },
+    "05_unplayable_invalid_header_negative.ogg": {
+      "expected_eligible": false,
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "VORBIS_IDENTIFICATION_HEADER_INVALID",
+        "VORBIS_AUDIO_PACKET_HEADER_INVALID",
+        "VORBIS_GRANULE_DELTA_MISMATCH",
+        "VORBIS_GRANULE_DELTA_MISMATCH",
+        "VORBIS_GRANULE_DELTA_MISMATCH",
+        "VORBIS_GRANULE_DELTA_MISMATCH"
+      ],
+      "expected_output_count": 0,
+      "expected_pcm_class": "VORBIS_RECOVERY_BLOCKED",
+      "expected_playability": "UNPLAYABLE",
+      "expected_regions": [],
+      "sha256": "f4590544fd30cef03d360c26bf2b9f396d014f9b6c6c95b7397192aa38f1b713"
+    }
+  },
+  "expected_summary_first_run": {
+    "failed": 0,
+    "findings": 5,
+    "lossless": 5,
+    "ok": 1,
+    "processed": 6,
+    "repaired": 0,
+    "reused": 0
+  },
+  "expected_summary_second_run": {
+    "failed": 0,
+    "findings": 5,
+    "lossless": 0,
+    "ok": 1,
+    "processed": 6,
+    "repaired": 0,
+    "reused": 5
+  },
+  "policy": "0.33-ogg-vorbis-proven-region-recovery-1",
+  "reference_file": "00_healthy_reference.ogg",
+  "schema_version": 1
+}

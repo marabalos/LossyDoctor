@@ -1,0 +1,37 @@
+{
+  "app_version": "0.8.0",
+  "cases": {
+    "00_healthy_master.mp3": {
+      "expected": "OK",
+      "sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7"
+    },
+    "01_bad_id3_repairable.mp3": {
+      "expected": "REPAIRED_SAFE",
+      "sha256": "7d4a87587a2894b08b4def4bc1d414699b996988f45b7d0788592167cc482729"
+    },
+    "02_bad_id3_ambiguous.mp3": {
+      "expected": "RECOVERED_LOSSLESS",
+      "sha256": "cbfdfc6f0a54282d1b6c46138cd620491f1223b556e0f29b433c0de9e5e8e8ca"
+    }
+  },
+  "corpus": "id3_repair_v08",
+  "expected_first_run": {
+    "failed": 0,
+    "lossless_outputs_created": 1,
+    "ok": 1,
+    "outputs_reused": 0,
+    "processed": 3,
+    "repaired_outputs_created": 1,
+    "with_findings": 2
+  },
+  "expected_second_run": {
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 2,
+    "processed": 3,
+    "repaired_outputs_created": 0,
+    "with_findings": 2
+  },
+  "schema_version": 1
+}

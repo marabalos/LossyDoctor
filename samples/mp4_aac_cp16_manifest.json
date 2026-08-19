@@ -1,0 +1,28 @@
+{
+  "authority": "PARTIAL_RECOVERY_REQUIRES_STRUCTURALLY_PROVEN_CHUNK_ORIGIN",
+  "cases": {
+    "02_extra_byte_inside_mdat_ambiguous.m4a": {
+      "declared_sample_bytes": 19655,
+      "expected_reason": "PARTIAL_RECOVERY_BLOCKED_AMBIGUOUS_EXTRA_MDAT_BYTES",
+      "mdat_payload_bytes": 19656,
+      "sha256": "0cf26ef887ab1df053a3621f90ae981f6c92df4ac9ed2d4f967b900ba037afa6",
+      "unassigned_mdat_bytes": 1
+    },
+    "03_sample_sizes_overrun_mdat.m4a": {
+      "declared_sample_bytes": 19656,
+      "expected_reason": "PARTIAL_RECOVERY_BLOCKED_UNPROVEN_MDAT_CHUNK_ORIGIN",
+      "expected_test_only_prefix_aac_essence_sha256": "052ea1228eaf72213ac234b3ae210c5a873d1d4bf85c92502e4daec5d65e245d",
+      "expected_test_only_prefix_pcm_s32le_sha256": "2ca0a26d998d45ceda17cb19e074f1c8dd7643e4c974c7d9492d5ba9d6026db4",
+      "expected_test_only_presentation_samples": 52224,
+      "mdat_payload_bytes": 19655,
+      "sha256": "973fda2012ecbbdfec0f18be9bbd746df6306a6cb134993b03627c2ed386a2a8",
+      "terminal_declared_overrun_bytes": 1,
+      "testable_prefix_access_unit_count": 52,
+      "testable_prefix_bytes": 19303
+    }
+  },
+  "checkpoint": "CP16",
+  "control": "samples/mp4_aac_cp9/00_healthy_no_recovery_required.m4a",
+  "corpus": "mp4_aac_cp9",
+  "policy": "MP4_AAC_PARTIAL_RECOVERY_PROVENANCE_GATE"
+}

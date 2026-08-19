@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "policy": "0.32-ogg-vorbis-proven-packet-evidence-1",
+  "cases": {
+    "00_healthy_cross_page_eos.ogg": {
+      "sha256": "fd1c892f03d01ae3c7575ab6acc50c5445e00991ee19b6394ab6764534b48ed9",
+      "expected_issues": [],
+      "expected_candidate_region_count": 1,
+      "expected_authenticated_audio_packets": 88,
+      "expected_cross_page_audio_packets": 1,
+      "expected_authenticated_cross_page_audio_packets": 1
+    },
+    "01_missing_middle_page.ogg": {
+      "sha256": "8686a01fc6e1daad75eb2aa88d5dabaf1b46c3fbcf5fe0b0e06256fc58336fbd",
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "VORBIS_GRANULE_DELTA_MISMATCH",
+        "VORBIS_EOS_TRIM_INVALID"
+      ],
+      "expected_candidate_region_count": 2,
+      "expected_authenticated_audio_packets": 68,
+      "expected_cross_page_audio_packets": 1,
+      "expected_authenticated_cross_page_audio_packets": 1
+    },
+    "02_crc_middle_page.ogg": {
+      "sha256": "4f4ce106b6a83db575c16101eefcb809e6999d89cfeed8375d7e85bcc2414b24",
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_candidate_region_count": 2,
+      "expected_authenticated_audio_packets": 68,
+      "expected_cross_page_audio_packets": 1,
+      "expected_authenticated_cross_page_audio_packets": 1
+    },
+    "03_sequence_gap_no_loss.ogg": {
+      "sha256": "f0f94ac2d02be22f1a48781c8f08d9a9dd9329ab5fd3298d6e1ee813ff726493",
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ],
+      "expected_candidate_region_count": 2,
+      "expected_authenticated_audio_packets": 88,
+      "expected_cross_page_audio_packets": 1,
+      "expected_authenticated_cross_page_audio_packets": 1
+    },
+    "04_truncated_continued_tail.ogg": {
+      "sha256": "f6c089ec769b0fe662637ebf1696f6ecef29379962f29de4a8823a362348dab3",
+      "expected_issues": [
+        "OGG_TRUNCATED_PAGE",
+        "OGG_INCOMPLETE_PACKET_AT_EOF",
+        "OGG_VORBIS_EOS_MISSING"
+      ],
+      "expected_candidate_region_count": 1,
+      "expected_authenticated_audio_packets": 87,
+      "expected_cross_page_audio_packets": 0,
+      "expected_authenticated_cross_page_audio_packets": 0
+    },
+    "05_crc_first_half_continued_packet.ogg": {
+      "sha256": "09033be3cbe83b66363408b0e437e56a2dc0eac8890776d62a32f6fbeee22675",
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_candidate_region_count": 1,
+      "expected_authenticated_audio_packets": 87,
+      "expected_cross_page_audio_packets": 1,
+      "expected_authenticated_cross_page_audio_packets": 0
+    }
+  }
+}

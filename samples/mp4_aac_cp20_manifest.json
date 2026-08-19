@@ -1,0 +1,34 @@
+{
+  "authority": "AUDIT_ONLY_NO_REPAIR_OR_RECOVERY",
+  "cases": {
+    "00_two_contiguous_media_edits.m4a": {
+      "aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "canonical_pcm_sha256": "09b85e00d7e53e07939ae8f03ae78f0e05a0e672f8c023fe2e2f1cd0f3367ab0",
+      "segments": [
+        {"au_count": 26, "au_first": 1, "au_last": 26, "kind": "MEDIA", "pcm_sha256": "66cfcf29d49d10c103fbb27c80ce469722f5e12e8ce811e52ff7c7e7c28efc6e", "sample_count": 26460},
+        {"au_count": 27, "au_first": 26, "au_last": 52, "kind": "MEDIA", "pcm_sha256": "aae7fba87a08dbcc86621ac8fb3a6fd9d3ea058fba4cf83902dca5400b75837a", "sample_count": 26460}
+      ],
+      "source_sha256": "7708ec290901eaf8e15ffc83bc5ec75af396f91c4dbaf3e68e4a1901dffdcc6c"
+    },
+    "01_three_reordered_media_edits.m4a": {
+      "aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "canonical_pcm_sha256": "24a25d073bcd94c5210cec0eb264736bd6f98087254283ecd160ff657988183f",
+      "segments": [
+        {"au_count": 18, "au_first": 18, "au_last": 35, "kind": "MEDIA", "pcm_sha256": "5067b107db23e0ed73bac06616621a240dd616728fc2115d5d03b984509f0d04", "sample_count": 17640},
+        {"au_count": 18, "au_first": 1, "au_last": 18, "kind": "MEDIA", "pcm_sha256": "935a734ef853b01715629f4e288de5efecd5a8dbcf04fa385f80045f3c6c7d5b", "sample_count": 17640},
+        {"au_count": 18, "au_first": 35, "au_last": 52, "kind": "MEDIA", "pcm_sha256": "fac973fc6ea288930028a15e90e0b216fd11dbd3b0b797645b9066282f0b5e39", "sample_count": 17640}
+      ],
+      "source_sha256": "9fe859e33d1ea8c83f04bb34edce3b32920aee30192b411dc6731051c79f5a99"
+    },
+    "02_empty_then_media_edit.m4a": {
+      "aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "canonical_pcm_sha256": "9f8264a075126b899dcb4bb397ec8b4e5f96f30b0aad0728d77ffa48ab000bd9",
+      "segments": [
+        {"au_count": 0, "au_first": null, "au_last": null, "kind": "EMPTY", "pcm_sha256": "bbedee5dfcea434db6efff108afd2884244f5c2e8a894824f1c78bd78b70d740", "sample_count": 4410},
+        {"au_count": 48, "au_first": 1, "au_last": 48, "kind": "MEDIA", "pcm_sha256": "e6c75a4c9cd5dde517bb37d12acff6c8e7f18d9b44e6e2c928ebb5fd07dafb10", "sample_count": 48510}
+      ],
+      "source_sha256": "12b7f143fdae523e7ec4f052694fdea66ef0a0d61e4ea784cd5867ac216a44eb"
+    }
+  },
+  "checkpoint": "CP20"
+}

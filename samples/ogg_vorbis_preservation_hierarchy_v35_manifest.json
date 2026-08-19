@@ -1,0 +1,93 @@
+{
+  "app_version": "0.35.0",
+  "policy": "0.35-vorbis-preservation-hierarchy-1",
+  "hierarchy_policy": "VORBIS_PRESERVATION_HIERARCHY_STRICT_V1",
+  "expected_first_run": {
+    "processed": 7,
+    "ok": 1,
+    "findings": 6,
+    "failed": 0,
+    "repaired": 1,
+    "lossless": 5,
+    "reused": 0
+  },
+  "expected_second_run": {
+    "processed": 7,
+    "ok": 1,
+    "findings": 6,
+    "failed": 0,
+    "repaired": 0,
+    "lossless": 0,
+    "reused": 6
+  },
+  "cases": {
+    "00_healthy_hierarchy_control.ogg": {
+      "sha256": "eb116ac2b8717d204843e492d50cc290cd94867250e73f0a551d6218b7370cf5",
+      "expected_issues": [],
+      "expected_playability": "PLAYABLE",
+      "expected_tier": "NO_ACTION_REQUIRED",
+      "expected_selected_output_count": 0
+    },
+    "01_tier1_verified_recapture.ogg": {
+      "sha256": "b3d40b4e2f7dbdacf43a37ca9c15a4ad0da344dc58bb463c7e3ab44bd750dc13",
+      "expected_issues": [
+        "OGG_SYNC_LOSS"
+      ],
+      "expected_playability": "UNPLAYABLE",
+      "expected_tier": "TIER_1_VERIFIED_OGG_BITSTREAM_REPAIR",
+      "expected_selected_output_count": 1
+    },
+    "02_tier2_missing_page_exact_eos.ogg": {
+      "sha256": "742832c5f8da5a270818046b95e2ef5203113c1e5d8c85239f75e61093014c4f",
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "VORBIS_GRANULE_DELTA_MISMATCH",
+        "VORBIS_EOS_TRIM_INVALID"
+      ],
+      "expected_playability": "UNPLAYABLE",
+      "expected_tier": "TIER_2_PROVEN_REGION_RECOVERY_AUTHENTICATED_EOS",
+      "expected_selected_output_count": 2
+    },
+    "03_tier2_crc_page_exact_eos.ogg": {
+      "sha256": "bc1b8ac2e6f6aa85d75c91179a53f07e0e1f62d7f13da2db9f828d7ce06a4a57",
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_playability": "UNPLAYABLE",
+      "expected_tier": "TIER_2_PROVEN_REGION_RECOVERY_AUTHENTICATED_EOS",
+      "expected_selected_output_count": 2
+    },
+    "04_tier3_truncated_open_region.ogg": {
+      "sha256": "d86e44e4b38cc6845bcb56121871a79601484b732020ab8ac5b139e0962e3b51",
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_TRUNCATED_PAGE",
+        "OGG_INCOMPLETE_PACKET_AT_EOF",
+        "OGG_VORBIS_EOS_MISSING"
+      ],
+      "expected_playability": "UNPLAYABLE",
+      "expected_tier": "TIER_3_OPEN_OR_TRUNCATED_PROVEN_REGION_RECOVERY",
+      "expected_selected_output_count": 1
+    },
+    "05_tier4_playable_crc_report_only.ogg": {
+      "sha256": "43c9dd7149d313835d3759c9017f7c389595502ab9f3ac2d580676f2329cce12",
+      "expected_issues": [
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_tier": "TIER_4_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "expected_selected_output_count": 0
+    },
+    "06_tier4_playable_sequence_report_only.ogg": {
+      "sha256": "c9cb0b02012676fb4e1ddc46fcb7e549d94f7320fab9903dc463f3b479708c45",
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY"
+      ],
+      "expected_playability": "PLAYABLE",
+      "expected_tier": "TIER_4_REPORT_ONLY_INSUFFICIENT_EVIDENCE",
+      "expected_selected_output_count": 0
+    }
+  }
+}

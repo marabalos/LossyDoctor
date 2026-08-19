@@ -1,0 +1,151 @@
+{
+  "app_version": "0.37.0",
+  "policy": "0.37-asf-wma-media-object-provenance-1",
+  "purpose": "ASF/WMA media-object fragment provenance evidence only; no repair/recovery authority",
+  "cases": {
+    "00_healthy_fragmented_wmav2.wma": {
+      "sha256": "29666e293ba6a244d6bdb445d4f6a2de927779c41f6c7c9c7fea302376960bae",
+      "expected_issues": [],
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_fragmented_media_objects": 44,
+      "expected_multi_packet_media_objects": 44,
+      "expected_bad_objects": []
+    },
+    "01_healthy_fragmented_wmav1.wma": {
+      "sha256": "65406ca863ed47e21ad5a06d5ba86f578f9343b83c0e80413e387dded98ffd93",
+      "expected_issues": [],
+      "expected_format_tag": "0x0160",
+      "expected_sample_rate": 22050,
+      "expected_channels": 1,
+      "expected_complete_media_objects": 33,
+      "expected_incomplete_media_objects": 0,
+      "expected_fragmented_media_objects": 33,
+      "expected_multi_packet_media_objects": 33,
+      "expected_bad_objects": []
+    },
+    "02_internal_fragment_gap.wma": {
+      "sha256": "fe1462085ee463f4ec62c95ca1e8d9b807f1eb8f28eed719ce32ae7fd9636be8",
+      "expected_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "expected_format_tag": "0x0160",
+      "expected_sample_rate": 22050,
+      "expected_channels": 1,
+      "expected_complete_media_objects": 32,
+      "expected_incomplete_media_objects": 1,
+      "expected_fragmented_media_objects": 33,
+      "expected_multi_packet_media_objects": 33,
+      "expected_bad_objects": [
+        {
+          "media_object_number": 1,
+          "completion": "INTERNAL_GAP",
+          "gaps": [
+            [
+              174,
+              348
+            ]
+          ],
+          "overlaps": []
+        }
+      ]
+    },
+    "03_fragment_bounds_invalid.wma": {
+      "sha256": "88c1fb356dd11dd995a8aca2e9ba751f4c38c894d7eb61402f18c960215bf68a",
+      "expected_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_BOUNDS_INVALID"
+      ],
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 1,
+      "expected_fragmented_media_objects": 44,
+      "expected_multi_packet_media_objects": 44,
+      "expected_bad_objects": [
+        {
+          "media_object_number": 1,
+          "completion": "FRAGMENT_BOUNDS_INVALID",
+          "gaps": [],
+          "overlaps": []
+        }
+      ]
+    },
+    "04_fragment_overlap.wma": {
+      "sha256": "be81d9ce0986be212d73844e52e229441646142c6e5eee4f70d19ca72ff36baa",
+      "expected_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_OVERLAP"
+      ],
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 1,
+      "expected_fragmented_media_objects": 44,
+      "expected_multi_packet_media_objects": 44,
+      "expected_bad_objects": [
+        {
+          "media_object_number": 1,
+          "completion": "FRAGMENT_OVERLAP",
+          "gaps": [],
+          "overlaps": [
+            [
+              360,
+              374
+            ]
+          ]
+        }
+      ]
+    },
+    "05_replicated_time_mismatch.wma": {
+      "sha256": "5b4d67d7e61a916af3dc53e01fb5e7ee9180222567c4b24d301291b18ec8c514",
+      "expected_issues": [
+        "ASF_MEDIA_OBJECT_REPLICATED_DATA_MISMATCH"
+      ],
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 1,
+      "expected_fragmented_media_objects": 44,
+      "expected_multi_packet_media_objects": 44,
+      "expected_bad_objects": [
+        {
+          "media_object_number": 1,
+          "completion": "REPLICATED_DATA_MISMATCH",
+          "gaps": [],
+          "overlaps": []
+        }
+      ]
+    },
+    "06_terminal_missing_tail_fragment.wma": {
+      "sha256": "428607afb29cba8a0f1bd53287956995ea7fbed2cad9f07a9f96cf9c517d5e4a",
+      "expected_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "expected_format_tag": "0x0161",
+      "expected_sample_rate": 44100,
+      "expected_channels": 2,
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 1,
+      "expected_fragmented_media_objects": 43,
+      "expected_multi_packet_media_objects": 43,
+      "expected_bad_objects": [
+        {
+          "media_object_number": 44,
+          "completion": "MISSING_TAIL",
+          "gaps": [
+            [
+              374,
+              743
+            ]
+          ],
+          "overlaps": []
+        }
+      ]
+    }
+  }
+}

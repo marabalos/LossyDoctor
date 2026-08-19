@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "policy": "validated-recommended-pinned",
+  "lossydoctor_version": "1.1.0",
+  "platform": "windows-x86_64",
+  "minimum_windows": "10.0",
+  "disk": {
+    "initial_free_mb": 1536,
+    "repair_free_mb": 512
+  },
+  "uv": {
+    "version": "0.12.5",
+    "url": "https://github.com/astral-sh/uv/releases/download/0.12.5/uv-x86_64-pc-windows-msvc.zip",
+    "sha256": "4c4d49d8738847d9b71ba319e49a5688c93eac0fe6204b1df24e98528dddf39a"
+  },
+  "python": {
+    "version": "3.12.14",
+    "managed_by": "uv"
+  },
+  "ffmpeg": {
+    "version": "9.0.1",
+    "distribution": "GyanD essentials build",
+    "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.1/ffmpeg-9.0.1-essentials_build.zip",
+    "sha256": "fec81ae03971d9dd4be3ebe02e263bd2ec1d789483f931bdba5f5715e65da2e9"
+  },
+  "python_packages": {
+    "requirements_file": "requirements.txt",
+    "install_mode": "portable-target",
+    "only_binary": true
+  },
+  "mpg123": {
+    "version": "1.33.7",
+    "distribution": "official mpg123 static x86-64 Windows build",
+    "url": "https://www.mpg123.de/download/win64/1.33.7/mpg123-1.33.7-static-x86-64.zip",
+    "sha256": "da58591eb08f7b893136cd8950a187a01355dfdfbb545a3ba99342225ce49a72",
+    "integrity_mode": "pinned-sha256",
+    "binary_sha256": "6c5d77cda39c033b94c51a374ad553b4d4e6f774d418e24e7780e4bfd49305de"
+  }
+}

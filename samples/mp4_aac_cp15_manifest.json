@@ -1,0 +1,18 @@
+{
+  "authority": "SAFE_STSC_DESCRIPTION_REFERENCE_REPAIR",
+  "cases": {
+    "04_invalid_sample_description_reference.m4a": {
+      "expected_aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "expected_output_sha256": "602dd9c75387d2348251c13f26832d4bb2da22fc99376ee828357cd28bc73b08",
+      "expected_pcm_sha256": "09b85e00d7e53e07939ae8f03ae78f0e05a0e672f8c023fe2e2f1cd0f3367ab0",
+      "expected_replacement_index": 1,
+      "original_index": 2,
+      "sha256": "806169f145d1f48723bd7824484ec6d4da2edc7512739df958caaa92eceeca81"
+    }
+  },
+  "checkpoint": "CP15",
+  "control": "samples/mp4_aac_cp6/00_healthy_aac_lc_44100_stereo.m4a",
+  "corpus": "mp4_aac_cp9",
+  "expected_repair_spec_id": "MP4_REWRITE_STSC_DESCRIPTION_TO_UNIQUE_VALID_AAC_ENTRY",
+  "policy": "MP4_AAC_SAFE_STSC_DESCRIPTION_REFERENCE_REPAIR"
+}

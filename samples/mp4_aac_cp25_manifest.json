@@ -1,0 +1,94 @@
+{
+  "authority": "EXACT_COMBINED_PROVENANCE_REQUIRED",
+  "cases": {
+    "00_fragmented_two_contiguous_media_edits.m4a": {
+      "expected_aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "expected_canonical_pcm_sha256": "09b85e00d7e53e07939ae8f03ae78f0e05a0e672f8c023fe2e2f1cd0f3367ab0",
+      "expected_direct_decoder_pcm_sha256": "bf4cdb7ce1a8c4691d1035783330b05ae0f1ed47b3f54e81562e9b3ae18ee755",
+      "expected_direct_decoder_samples": 54272,
+      "expected_issues": [],
+      "expected_mapping_complete": true,
+      "expected_presentation_sample_count": 52920,
+      "expected_segment_pcm_sha256": [
+        "66cfcf29d49d10c103fbb27c80ce469722f5e12e8ce811e52ff7c7e7c28efc6e",
+        "aae7fba87a08dbcc86621ac8fb3a6fd9d3ea058fba4cf83902dca5400b75837a"
+      ],
+      "expected_window_determined": true,
+      "expected_window_model": "FRAGMENTED_MULTI_EDIT_PRESENTATION",
+      "expected_window_reason": "VALIDATED_FRAGMENTED_MULTI_EDIT_PRESENTATION",
+      "sha256": "ec6a655a48c34bbc22fd61a25db6a4a38bf9e3e9fabe1ce06870b4240e42a62c"
+    },
+    "01_fragmented_three_reordered_media_edits.m4a": {
+      "expected_aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "expected_canonical_pcm_sha256": "24a25d073bcd94c5210cec0eb264736bd6f98087254283ecd160ff657988183f",
+      "expected_direct_decoder_pcm_sha256": "bf4cdb7ce1a8c4691d1035783330b05ae0f1ed47b3f54e81562e9b3ae18ee755",
+      "expected_direct_decoder_samples": 54272,
+      "expected_issues": [],
+      "expected_mapping_complete": true,
+      "expected_presentation_sample_count": 52920,
+      "expected_segment_pcm_sha256": [
+        "5067b107db23e0ed73bac06616621a240dd616728fc2115d5d03b984509f0d04",
+        "935a734ef853b01715629f4e288de5efecd5a8dbcf04fa385f80045f3c6c7d5b",
+        "fac973fc6ea288930028a15e90e0b216fd11dbd3b0b797645b9066282f0b5e39"
+      ],
+      "expected_window_determined": true,
+      "expected_window_model": "FRAGMENTED_MULTI_EDIT_PRESENTATION",
+      "expected_window_reason": "VALIDATED_FRAGMENTED_MULTI_EDIT_PRESENTATION",
+      "sha256": "16f4aeb52a1cf09d8320b72cc69e425b8afc47129781b5182992d86613c91c14"
+    },
+    "02_fragmented_empty_then_media_edit.m4a": {
+      "expected_aac_essence_sha256": "c35e51f676aa80415f9a36872e66c4495cd0f9715ef098550ec7210522452ab3",
+      "expected_canonical_pcm_sha256": "9f8264a075126b899dcb4bb397ec8b4e5f96f30b0aad0728d77ffa48ab000bd9",
+      "expected_direct_decoder_pcm_sha256": "3897f1d136db0b735abaef010b8706a70bb52e9ad3e37b017f40aed026367981",
+      "expected_direct_decoder_samples": 53248,
+      "expected_issues": [],
+      "expected_mapping_complete": true,
+      "expected_presentation_sample_count": 52920,
+      "expected_segment_pcm_sha256": [
+        "bbedee5dfcea434db6efff108afd2884244f5c2e8a894824f1c78bd78b70d740",
+        "e6c75a4c9cd5dde517bb37d12acff6c8e7f18d9b44e6e2c928ebb5fd07dafb10"
+      ],
+      "expected_window_determined": true,
+      "expected_window_model": "FRAGMENTED_MULTI_EDIT_PRESENTATION",
+      "expected_window_reason": "VALIDATED_FRAGMENTED_MULTI_EDIT_PRESENTATION",
+      "sha256": "97db0fe33c7c70cdcdc6dc327507d4dc3e2afce7086b05081fe549c4b7d3a8d2"
+    },
+    "03_fragmented_second_edit_rate_unsupported.m4a": {
+      "expected_issues": [
+        "MP4_EDIT_LIST_RATE_UNSUPPORTED"
+      ],
+      "expected_mapping_complete": true,
+      "expected_presentation_sample_count": null,
+      "expected_window_determined": false,
+      "expected_window_model": "UNDETERMINED",
+      "expected_window_reason": "NON_UNIT_MEDIA_RATE",
+      "sha256": "fd0f3113a761020454ab705778a02d871c83975658eae7b4587add067cf46144"
+    },
+    "04_fragmented_second_edit_outside_media.m4a": {
+      "expected_issues": [
+        "MP4_EDIT_LIST_MEDIA_RANGE_INVALID"
+      ],
+      "expected_mapping_complete": true,
+      "expected_presentation_sample_count": null,
+      "expected_window_determined": false,
+      "expected_window_model": "UNDETERMINED",
+      "expected_window_reason": "MEDIA_RANGE_OUTSIDE_MDHD",
+      "sha256": "45575d1be5723853a10020d11b2b2e62df922a007f221e7f81fb3f1a0912ad62"
+    },
+    "05_fragmented_edit_with_ambiguous_data_base.m4a": {
+      "expected_issues": [
+        "MP4_FRAGMENT_BASE_OR_TRACK_UNSUPPORTED",
+        "MP4_FRAGMENT_ACCESS_UNIT_MAPPING_INCOMPLETE"
+      ],
+      "expected_mapping_complete": false,
+      "expected_presentation_sample_count": null,
+      "expected_window_determined": false,
+      "expected_window_model": "UNDETERMINED",
+      "expected_window_reason": "FRAGMENT_MAPPING_OR_TIMESCALE_INCOMPLETE",
+      "sha256": "ec385af0afda243a477fc780abd1e68c3044a9280897f28c64cebcf28048fc15"
+    }
+  },
+  "checkpoint": "CP25",
+  "policy": "MP4_AAC_FRAGMENTED_EDIT_LIST_PRESENTATION",
+  "source": "samples/mp4_aac_cp21/00_healthy_five_fragments.m4a"
+}

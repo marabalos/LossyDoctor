@@ -1,0 +1,58 @@
+{
+  "cases": {
+    "00_healthy_no_xing.mp3": {
+      "expected": "OK / no repair"
+    },
+    "01_damage_truncated_no_xing.mp3": {
+      "expected": "VERIFIED_REPAIRED_COPY_CREATED",
+      "mutation": {
+        "cut_offset": 30667,
+        "kind": "TRUNCATE_TAIL",
+        "removed_bytes": 97
+      },
+      "repair_spec": "DROP_TRUNCATED_TAIL_NO_VBR_METADATA"
+    },
+    "02_damage_single_bit_header.mp3": {
+      "expected": "VERIFIED_REPAIRED_COPY_CREATED",
+      "repair_spec": "LOSSLESS_SINGLE_BIT_HEADER_REPAIR"
+    },
+    "03_damage_xing_byte_count.mp3": {
+      "expected": "BLOCKED",
+      "mutation": {
+        "kind": "XING_BYTE_COUNT_PLUS_2048",
+        "mutated": 33394,
+        "original": 31346
+      },
+      "repair_spec": "REFRESH_XING_METADATA"
+    }
+  },
+  "expected_first_run": {
+    "failed": 0,
+    "ok": 1,
+    "processed": 4,
+    "repair_candidates_rejected": 0,
+    "repaired_outputs_created": 2,
+    "repaired_outputs_reused": 0,
+    "with_findings": 3
+  },
+  "files": {
+    "00_healthy_no_xing.mp3": {
+      "sha256": "5fcbb588fc99237a18a465f2aa0373a3c1804219ee95e77bef65888c78428660",
+      "size": 30764
+    },
+    "01_damage_truncated_no_xing.mp3": {
+      "sha256": "4bab56c76dd9215fe812962c86a3a2ad4f755262a055dcd3c8e148412b8d1b5c",
+      "size": 30667
+    },
+    "02_damage_single_bit_header.mp3": {
+      "sha256": "54d4a1be2a2c59dcdf08f2ae604d5f2a27ce6a5a77a2d5f8e1f48d6fe448632f",
+      "size": 31390
+    },
+    "03_damage_xing_byte_count.mp3": {
+      "sha256": "bd333a1cc9872103be0ea5d7e9893cc411606cc13f94081aaae684b9d44c7c21",
+      "size": 31390
+    }
+  },
+  "purpose": "LossyDoctor v0.4 verified structural repair acceptance corpus",
+  "schema_version": 1
+}

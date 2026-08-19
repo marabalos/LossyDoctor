@@ -1,0 +1,70 @@
+{
+  "app_version": "0.12.0",
+  "cases": {
+    "00_healthy_ffmpeg_xing.mp3": {
+      "expected_final_status": [
+        "OK"
+      ],
+      "sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7"
+    },
+    "01_frame_count_provable.mp3": {
+      "expected_changed_fields": [
+        "XING_FRAME_COUNT"
+      ],
+      "expected_final_status": [
+        "REPAIRED_SAFE"
+      ],
+      "expected_logical_samples": 176400,
+      "expected_output_sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7",
+      "expected_physical_pcm_sha256": "322345836135dd2ea80b466a2b1a2041d08ff6f7ce52c635b8044c0e798fd1f9",
+      "expected_physical_samples": 178560,
+      "expected_repair": "REFRESH_XING_METADATA",
+      "expected_structural_window_pcm_sha256": "bc91dcc5d2081e680610eff97e672da3e10b3635dc348eefab174ff349bae65c",
+      "expected_window_end": 177505,
+      "expected_window_start": 1105,
+      "sha256": "a44289a0e1894c18d5ded2234fb64f71b1649af71ffd77769a33e787f65b83f2"
+    },
+    "02_frame_count_low_padding_unprovable.mp3": {
+      "expected_final_status": [
+        "ANOMALY_UNCHANGED"
+      ],
+      "expected_repair_status": "BLOCKED",
+      "sha256": "951f8efb916eea95a0d23294a28ae2294b7ea8fc38c1fa8ecb81fc9411c6e272"
+    },
+    "03_structural_damage_negative.mp3": {
+      "expected_final_status": [
+        "ANOMALY_UNCHANGED"
+      ],
+      "expected_repair_status": "BLOCKED",
+      "sha256": "97572ab1984848f98a6f7c7244d13fbe663f1e315faaa09308b36ec5f631621d"
+    }
+  },
+  "corpus": "xing_framecount_v12",
+  "expected_first_run": {
+    "candidates_rejected": 0,
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 0,
+    "processed": 4,
+    "repaired_outputs_created": 1,
+    "with_findings": 3
+  },
+  "expected_second_run": {
+    "candidates_rejected": 0,
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 1,
+    "processed": 4,
+    "repaired_outputs_created": 0,
+    "with_findings": 3
+  },
+  "proof_basis": {
+    "decoder_compensation_samples": 529,
+    "physical_decode_mode": "ffmpeg -flags2 +skip_manual to s32le",
+    "profile": "FFmpeg extended Xing/Info + Layer III gapless fields",
+    "window_formula": "start=encoder_delay+529; end=observed_frames*samples_per_frame-end_padding+529"
+  },
+  "schema_version": 1
+}

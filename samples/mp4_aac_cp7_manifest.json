@@ -1,0 +1,83 @@
+{
+  "authority": "AUDIT_ONLY_NO_REPAIR_OR_RECOVERY",
+  "cases": {
+    "00_healthy_aac_lc_44100_stereo.m4a": {
+      "expected_declared_samples": 53,
+      "expected_decode_timeline_complete": true,
+      "expected_hashed_samples": 53,
+      "expected_issues": [],
+      "expected_mapped_samples": 53,
+      "expected_mapping_complete": true,
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS",
+      "sha256": "602dd9c75387d2348251c13f26832d4bb2da22fc99376ee828357cd28bc73b08"
+    },
+    "01_healthy_aac_lc_48000_mono.m4a": {
+      "expected_declared_samples": 39,
+      "expected_decode_timeline_complete": true,
+      "expected_hashed_samples": 39,
+      "expected_issues": [],
+      "expected_mapped_samples": 39,
+      "expected_mapping_complete": true,
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS",
+      "sha256": "f452370423d3676e5b8d6cfd6bad71a1d50d69b06d8a542c1dfbba87948e5cc8"
+    },
+    "02_stsc_sample_coverage_mismatch.m4a": {
+      "expected_declared_samples": 53,
+      "expected_decode_timeline_complete": true,
+      "expected_hashed_samples": 52,
+      "expected_issues": [
+        "MP4_ACCESS_UNIT_MAPPING_INCOMPLETE"
+      ],
+      "expected_mapped_samples": 52,
+      "expected_mapping_complete": false,
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "sha256": "f36ca9750bbccf4e9602b71c39d5394c14bb1967569fc61d9f5f5e9214b09d6c"
+    },
+    "03_access_unit_extent_outside_mdat.m4a": {
+      "expected_declared_samples": 53,
+      "expected_decode_timeline_complete": true,
+      "expected_hashed_samples": 52,
+      "expected_issues": [
+        "MP4_ACCESS_UNIT_OUTSIDE_MDAT"
+      ],
+      "expected_mapped_samples": 53,
+      "expected_mapping_complete": false,
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "sha256": "d0c345d7299268ba642edfe630c653dd6f88e32939ac51a260245cdd8731f572"
+    },
+    "04_access_unit_timeline_incomplete.m4a": {
+      "expected_declared_samples": 53,
+      "expected_decode_timeline_complete": false,
+      "expected_hashed_samples": 53,
+      "expected_issues": [
+        "MP4_ACCESS_UNIT_TIMELINE_INCOMPLETE",
+        "MP4_SAMPLE_COUNT_MISMATCH",
+        "MP4_MEDIA_DURATION_MISMATCH"
+      ],
+      "expected_mapped_samples": 53,
+      "expected_mapping_complete": true,
+      "expected_playability": "PLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "sha256": "efab49dc78e23813dfe54a0bd1799f418e15e953b21081afb05cd041636a91c2"
+    },
+    "05_sample_description_reference_invalid.m4a": {
+      "expected_declared_samples": 53,
+      "expected_decode_timeline_complete": true,
+      "expected_hashed_samples": 53,
+      "expected_issues": [
+        "MP4_ACCESS_UNIT_DESCRIPTION_INVALID"
+      ],
+      "expected_mapped_samples": 53,
+      "expected_mapping_complete": false,
+      "expected_playability": "UNPLAYABLE",
+      "expected_run_status": "SUCCESS_WITH_FINDINGS",
+      "sha256": "806169f145d1f48723bd7824484ec6d4da2edc7512739df958caaa92eceeca81"
+    }
+  },
+  "checkpoint": "CP7",
+  "policy": "MP4_AAC_ACCESS_UNIT_PROVENANCE_AUDIT_ONLY_NO_REPAIR_OR_RECOVERY"
+}

@@ -1,0 +1,31 @@
+[app]
+mode = "repair_safe_verified"
+recursive = true
+follow_symlinks = false
+max_resync_scan_bytes = 262144
+external_timeout_seconds = 300
+
+[analysis]
+canonical_decoder = "ffmpeg"
+canonical_pcm_sample_format = "s32le"
+sha256_chunk_size = 1048576
+
+[repair]
+enabled = true
+publish_verified = true
+
+[lossless_recovery]
+enabled = true
+publish_verified = true
+flac_bits_per_sample = 32
+
+[reports]
+root = "reports"
+json = true
+markdown = true
+
+[schemas]
+config = 3
+analysis = 3
+report = 3
+manifest = 3

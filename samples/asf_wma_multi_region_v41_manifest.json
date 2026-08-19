@@ -1,0 +1,44 @@
+{
+  "app_version": "0.41.0",
+  "cases": {
+    "00_healthy_wmav2_multi_region_control.wma": {
+      "expected_parser_issues": [],
+      "sha256": "e7d1459b8c5321d024998d63dd44ae7cf9129a152534405bba50ce2b7238db76"
+    },
+    "01_healthy_wmav1_multi_region_control.wma": {
+      "expected_parser_issues": [],
+      "sha256": "5399e90ab7b6ae30336c41a18bce94a9532955318e2461e2c0675c758765ee3c"
+    },
+    "02_wmav2_two_independent_gaps.wma": {
+      "expected_parser_issues": [],
+      "sha256": "f428bd5234d2a9563c8f98bff01b0e21022f3d32de9843fd1dc7f947c88d810a"
+    },
+    "03_wmav1_two_independent_gaps.wma": {
+      "expected_parser_issues": [],
+      "sha256": "09dffed99a9800318d0795245fddfdf3a44309241b7aaadced04ec1620302613"
+    },
+    "04_wmav2_mixed_double_single_gaps.wma": {
+      "expected_parser_issues": [],
+      "sha256": "517d7f31983844ed09fd1a7b1341d5487b75ab2f879c15fabd91a693469a8bf6"
+    },
+    "05_wmav2_three_independent_gaps.wma": {
+      "expected_parser_issues": [],
+      "sha256": "4753a292c663c056cd16f022be88612305bf3a9c4db4586e6a1728eff7d3003a"
+    },
+    "06_timestamp_jump_no_missing_objects.wma": {
+      "expected_parser_issues": [],
+      "sha256": "aca12eaa7a29936397ef558fa37c23d125b651abe629fbf369f203ae09152e6d"
+    },
+    "07_incomplete_media_object_blocked.wma": {
+      "expected_parser_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "sha256": "91682105a26c354fc5e5809e1dc4b6ee66a6669021a00bf7f573e47af140ce14"
+    },
+    "08_insufficient_postgap_context.wma": {
+      "expected_parser_issues": [],
+      "sha256": "026b44996d5c91a52dbd73ea71b719abb47fbf6b5c98c6286e9e8f16c2710f1f"
+    }
+  },
+  "policy": "0.41-wma-multi-region-recovery-1"
+}

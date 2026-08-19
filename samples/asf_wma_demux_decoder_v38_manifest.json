@@ -1,0 +1,60 @@
+{
+  "app_version": "0.38.0",
+  "cases": {
+    "00_healthy_wmav2_demux_decoder.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "e4ca4caf327c0ca9e569d3950693bb4ad5f597dcbd39f2b90d53936671f0ce26"
+    },
+    "01_healthy_wmav1_demux_decoder.wma": {
+      "expected_complete_media_objects": 33,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "8e49259fbdc1416fa63c364fdbf0bdd518e21ea3e8e9016d214d3fa648e77c55"
+    },
+    "02_valid_preroll_shift_control.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "b44effba8810810b0effe11dab127f044f5375b7b3a83189d4aecad1c5b5d8f3"
+    },
+    "03_missing_complete_media_object.wma": {
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "99a6d6740fa8cd097ce55816bcb852ccf4ff621dd91e541ff1b1dad595737b4f"
+    },
+    "04_complete_object_presentation_time_jump.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [],
+      "sha256": "95fbc1913dc2ec5563cde2dc540e8400396ea81a143b6c0dc43aff9a1c8415ad"
+    },
+    "05_internal_fragment_gap.wma": {
+      "expected_complete_media_objects": 32,
+      "expected_incomplete_media_objects": 1,
+      "expected_parser_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "sha256": "e8f11615a78342450c8a89dbada1003ad345630bd09b6e9fa8c524d1774b6d0a"
+    },
+    "06_terminal_missing_tail_fragment.wma": {
+      "expected_complete_media_objects": 43,
+      "expected_incomplete_media_objects": 1,
+      "expected_parser_issues": [
+        "ASF_MEDIA_OBJECT_FRAGMENT_GAP"
+      ],
+      "sha256": "14ebcafb059454198fb238ed5d8cfebf0b125e7c3f083584da21d912853aaf67"
+    },
+    "07_invalid_waveformatex_tag.wma": {
+      "expected_complete_media_objects": 44,
+      "expected_incomplete_media_objects": 0,
+      "expected_parser_issues": [
+        "ASF_WMA_WAVEFORMATEX_INVALID"
+      ],
+      "sha256": "1e2d06d57293a1774f8b16842a981122b54d1c9b54c11faabbc99bb652b3797b"
+    }
+  },
+  "policy": "0.38-asf-wma-demux-decoder-timeline-evidence-1"
+}

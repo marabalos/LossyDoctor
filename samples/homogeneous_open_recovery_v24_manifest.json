@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "purpose": "v0.24 homogeneous open/truncated proven-region recovery with verified bitstream-repair priority",
+  "cases": {
+    "00_bitstream_repair_priority.mp3": {
+      "sha256": "ec6cdec51c6e3bd4f46c9dd93838dc39a34638ad965be1031ae73595f8283a49",
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "MPEG_SYNC_LOSS"
+      ],
+      "gap_count": 1,
+      "truncated_final_frame": false,
+      "hard_transition_count": 0,
+      "expected_output_count": 0,
+      "expected_repaired_count": 1
+    },
+    "01_unplayable_terminal_truncation.mp3": {
+      "sha256": "99689ba204706be3f3aad34b76e267dc8a430639116647030bab86c0d678ae08",
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "TRUNCATED_MPEG_FRAME"
+      ],
+      "gap_count": 0,
+      "truncated_final_frame": true,
+      "hard_transition_count": 0,
+      "expected_output_count": 1,
+      "expected_repaired_count": 0,
+      "expected_regions": [
+        {
+          "source_byte_start": 10,
+          "source_byte_end": 25923,
+          "discarded_context_samples": 0,
+          "gap_before_index": null,
+          "gap_after_index": null,
+          "sample_count": 71424,
+          "pcm_sha256": "cec8ac0b7963bb044c0eaa723b47485e7dd428c67072ea5459410dacaf261ed9"
+        }
+      ]
+    },
+    "02_unplayable_internal_gap.mp3": {
+      "sha256": "755ed91b35429f8310b21f7c23df153622a8f54979542b27ed8c69b103c3bbd3",
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "MPEG_SYNC_LOSS"
+      ],
+      "gap_count": 1,
+      "truncated_final_frame": false,
+      "hard_transition_count": 0,
+      "expected_output_count": 2,
+      "expected_repaired_count": 0,
+      "expected_regions": [
+        {
+          "source_byte_start": 10,
+          "source_byte_end": 12966,
+          "discarded_context_samples": 0,
+          "gap_before_index": null,
+          "gap_after_index": 0,
+          "sample_count": 35712,
+          "pcm_sha256": "456baa5064acf2a4fe472f9c71e6ec37be00ca780c08e91acf4b7dee720c07ab"
+        },
+        {
+          "source_byte_start": 13802,
+          "source_byte_end": 26341,
+          "discarded_context_samples": 1152,
+          "gap_before_index": 0,
+          "gap_after_index": null,
+          "sample_count": 34560,
+          "pcm_sha256": "078dc9a99333af766c9efdae92f5f511a9cd36be6879b36697d9bd135dbbc598"
+        }
+      ]
+    },
+    "03_unplayable_gap_plus_truncation.mp3": {
+      "sha256": "46d89c571f53c549a0b25659d81e1389856cead4e92fb97bbbceffd8d352107a",
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "TRUNCATED_MPEG_FRAME",
+        "MPEG_SYNC_LOSS"
+      ],
+      "gap_count": 1,
+      "truncated_final_frame": true,
+      "hard_transition_count": 0,
+      "expected_output_count": 2,
+      "expected_repaired_count": 0,
+      "expected_regions": [
+        {
+          "source_byte_start": 10,
+          "source_byte_end": 12966,
+          "discarded_context_samples": 0,
+          "gap_before_index": null,
+          "gap_after_index": 0,
+          "sample_count": 35712,
+          "pcm_sha256": "456baa5064acf2a4fe472f9c71e6ec37be00ca780c08e91acf4b7dee720c07ab"
+        },
+        {
+          "source_byte_start": 13802,
+          "source_byte_end": 25923,
+          "discarded_context_samples": 1152,
+          "gap_before_index": 0,
+          "gap_after_index": null,
+          "sample_count": 33408,
+          "pcm_sha256": "f4d9ed839762a814e5838d809189636eef453e0cbae7998d6908475b2e7d3428"
+        }
+      ]
+    }
+  }
+}

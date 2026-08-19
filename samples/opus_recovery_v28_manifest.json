@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "purpose": "v0.28 Opus proven-region PCM recovery with RFC7845 80ms pre-roll and unapplied output gain",
+  "cases": {
+    "00_healthy_gain_control.opus": {
+      "expected_issues": [],
+      "expected_regions": 0,
+      "playability": "PLAYABLE",
+      "sha256": "b708ecded258da9dc5e05d8d9e34f26c25c61165dd0cbe5f436f50d5aa4da2a8",
+      "size": 72532
+    },
+    "01_unplayable_missing_page.opus": {
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "OPUS_GRANULE_DELTA_MISMATCH"
+      ],
+      "expected_regions": 2,
+      "playability": "UNPLAYABLE",
+      "sha256": "5ecc65fdde90fab24288b4fa95d247dcfcf92100c3caa8a8e1dddfce98b94770",
+      "size": 68119
+    },
+    "02_unplayable_crc_page.opus": {
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_PAGE_CRC_MISMATCH"
+      ],
+      "expected_regions": 2,
+      "playability": "UNPLAYABLE",
+      "sha256": "fffd9fd267b8e25b0b9d9cfba79fc0d86daf49cbafa851cb56b1f8a27a056729",
+      "size": 72563
+    },
+    "03_unplayable_truncated_tail.opus": {
+      "expected_issues": [
+        "OGG_SYNC_LOSS",
+        "OGG_TRUNCATED_PAGE",
+        "OGG_OPUS_EOS_MISSING"
+      ],
+      "expected_regions": 1,
+      "playability": "UNPLAYABLE",
+      "sha256": "1b25156afee54b50a70c4f339f3d0fbc9119d8e25893fb2cf4e9e7fd8b963bc8",
+      "size": 72008
+    },
+    "04_playable_sequence_gap.opus": {
+      "expected_issues": [
+        "OGG_PAGE_SEQUENCE_DISCONTINUITY",
+        "OPUS_GRANULE_DELTA_MISMATCH"
+      ],
+      "expected_regions": 0,
+      "playability": "PLAYABLE",
+      "sha256": "83ffa96a86a93a1b4b639cf4180de83576a24562e27ab4897c09fb45da51d41b",
+      "size": 68088
+    }
+  }
+}

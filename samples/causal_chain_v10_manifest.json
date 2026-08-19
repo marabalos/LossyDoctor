@@ -1,0 +1,38 @@
+{
+  "app_version": "0.10.0",
+  "cases": {
+    "00_healthy_master_no_xing.mp3": {
+      "expected": "OK",
+      "sha256": "4cc2145c3103997ffbc55e6592727d7aa284cdec56cf46642d34e37d1247cc58"
+    },
+    "01_id3_then_header_chain.mp3": {
+      "expected": "REPAIRED_SAFE",
+      "expected_output_sha256": "4cc2145c3103997ffbc55e6592727d7aa284cdec56cf46642d34e37d1247cc58",
+      "sha256": "ec6cdec51c6e3bd4f46c9dd93838dc39a34638ad965be1031ae73595f8283a49"
+    },
+    "02_xing_coupled_negative.mp3": {
+      "expected": "ANOMALY_UNCHANGED",
+      "sha256": "97572ab1984848f98a6f7c7244d13fbe663f1e315faaa09308b36ec5f631621d"
+    }
+  },
+  "corpus": "causal_chain_v10",
+  "expected_first_run": {
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 0,
+    "processed": 3,
+    "repaired_outputs_created": 1,
+    "with_findings": 2
+  },
+  "expected_second_run": {
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 1,
+    "processed": 3,
+    "repaired_outputs_created": 0,
+    "with_findings": 2
+  },
+  "schema_version": 1
+}

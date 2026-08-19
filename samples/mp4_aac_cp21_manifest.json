@@ -1,0 +1,79 @@
+{
+  "authority": "AUDIT_ONLY_NO_REPAIR_OR_RECOVERY",
+  "cases": {
+    "00_healthy_five_fragments.m4a": {
+      "expected_fragment_count": 5,
+      "expected_issues": [],
+      "expected_mapping_complete": true,
+      "expected_window_determined": true,
+      "expected_window_reason": "VALIDATED_FRAGMENTED_MEDIA_TIMELINE_AUDIT_ONLY",
+      "sha256": "e83e19affcf79388c547646cf0253ef1633c730602647003513a3f14b1960e6b"
+    },
+    "01_fragment_sequence_gap.m4a": {
+      "expected_fragment_count": 5,
+      "expected_issues": [
+        "MP4_FRAGMENT_SEQUENCE_INVALID",
+        "MP4_FRAGMENT_SEQUENCE_INVALID",
+        "MP4_FRAGMENT_ACCESS_UNIT_MAPPING_INCOMPLETE"
+      ],
+      "expected_mapping_complete": false,
+      "expected_window_determined": false,
+      "expected_window_reason": "FRAGMENT_MAPPING_OR_TIMESCALE_INCOMPLETE",
+      "sha256": "1b65c1d05e25a7c8df6e5d8462490252ea8b18f13bcb6f1349d64160337e888e"
+    },
+    "02_first_run_data_offset_plus_one.m4a": {
+      "expected_fragment_count": 5,
+      "expected_issues": [
+        "MP4_FRAGMENT_ACCESS_UNIT_MAPPING_INCOMPLETE"
+      ],
+      "expected_mapping_complete": false,
+      "expected_window_determined": false,
+      "expected_window_reason": "FRAGMENT_MAPPING_OR_TIMESCALE_INCOMPLETE",
+      "sha256": "a1f8b2a995d73cf10f4f12369856f96b0808d8ac3adeed360106be628a9e216a"
+    },
+    "03_second_fragment_decode_time_gap.m4a": {
+      "expected_fragment_count": 5,
+      "expected_issues": [
+        "MP4_FRAGMENT_ACCESS_UNIT_MAPPING_INCOMPLETE"
+      ],
+      "expected_mapping_complete": false,
+      "expected_window_determined": false,
+      "expected_window_reason": "FRAGMENT_MAPPING_OR_TIMESCALE_INCOMPLETE",
+      "sha256": "86569e9f951334ec42b6490ea982a06a2cb4b22961fe66619bb0eedc1ea5fdc1"
+    },
+    "04_ambiguous_fragment_data_base.m4a": {
+      "expected_fragment_count": 5,
+      "expected_issues": [
+        "MP4_FRAGMENT_BASE_OR_TRACK_UNSUPPORTED",
+        "MP4_FRAGMENT_ACCESS_UNIT_MAPPING_INCOMPLETE"
+      ],
+      "expected_mapping_complete": false,
+      "expected_window_determined": false,
+      "expected_window_reason": "FRAGMENT_MAPPING_OR_TIMESCALE_INCOMPLETE",
+      "sha256": "3183920a67b07d13ac6ecf86b8d30408de07eeb8ed1b82f0b57e3666d4341090"
+    }
+  },
+  "checkpoint": "CP21",
+  "generator": {
+    "ffmpeg_arguments": [
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "<source>",
+      "-map",
+      "0:a:0",
+      "-c:a",
+      "copy",
+      "-movflags",
+      "empty_moov+default_base_moof",
+      "-frag_duration",
+      "250000",
+      "-f",
+      "mp4",
+      "<output>"
+    ],
+    "source": "samples/mp4_aac_cp8/00_healthy_single_edit_44100_stereo.m4a"
+  },
+  "policy": "MP4_AAC_FRAGMENTED_MP4_AUDIT_ONLY"
+}

@@ -1,0 +1,51 @@
+{
+  "app_version": "0.11.0",
+  "cases": {
+    "00_healthy_ffmpeg_xing.mp3": {
+      "expected": "OK",
+      "sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7"
+    },
+    "01_ffmpeg_xing_coupled_metadata_corrupt.mp3": {
+      "expected": "REPAIRED_SAFE",
+      "expected_output_sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7",
+      "sha256": "dc630ff32f8649195abc28a73a687f5e84b2a5fe1fdb56f24f8ca523ffe60708"
+    },
+    "02_frame_count_presentation_negative.mp3": {
+      "expected": "ANOMALY_UNCHANGED",
+      "gate": "FRAME_COUNT_PRESENTATION_CHANGE",
+      "sha256": "a44289a0e1894c18d5ded2234fb64f71b1649af71ffd77769a33e787f65b83f2"
+    },
+    "03_structural_damage_negative.mp3": {
+      "expected": "ANOMALY_UNCHANGED",
+      "gate": "STRUCTURAL_DAMAGE",
+      "sha256": "97572ab1984848f98a6f7c7244d13fbe663f1e315faaa09308b36ec5f631621d"
+    },
+    "04_non_ffmpeg_profile_negative.mp3": {
+      "expected": "ANOMALY_UNCHANGED",
+      "gate": "UNKNOWN_ENCODER_PROFILE",
+      "sha256": "d913512611f98fced2085e27c6f1170e3d6ae4a07bb193594dcf90482b2f9f2e"
+    }
+  },
+  "corpus": "xing_refresh_v11",
+  "expected_first_run": {
+    "candidates_rejected": 0,
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 0,
+    "processed": 5,
+    "repaired_outputs_created": 1,
+    "with_findings": 4
+  },
+  "expected_second_run": {
+    "candidates_rejected": 0,
+    "failed": 0,
+    "lossless_outputs_created": 0,
+    "ok": 1,
+    "outputs_reused": 1,
+    "processed": 5,
+    "repaired_outputs_created": 0,
+    "with_findings": 4
+  },
+  "schema_version": 1
+}

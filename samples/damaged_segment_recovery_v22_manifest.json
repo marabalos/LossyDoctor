@@ -1,0 +1,212 @@
+{
+  "schema": 1,
+  "purpose": "v0.22 heterogeneous damaged-stream native clean-region recovery",
+  "expected_first_summary": {
+    "processed": 5,
+    "ok": 0,
+    "findings": 5,
+    "failed": 0,
+    "repaired": 0,
+    "lossless": 7,
+    "reused": 0
+  },
+  "expected_second_summary": {
+    "processed": 5,
+    "ok": 0,
+    "findings": 5,
+    "failed": 0,
+    "repaired": 0,
+    "lossless": 0,
+    "reused": 7
+  },
+  "cases": {
+    "00_playable_reservoir_gap_hetero_control.mp3": {
+      "sha256": "b61da80ebedb384c5681207f2ca1404169076a9f4dba06fe018b4062892fa41d",
+      "size": 26330,
+      "issue_codes": [
+        "MPEG_SYNC_LOSS",
+        "MPEG_COHERENT_PARAMETER_CONCATENATION"
+      ],
+      "gap_count": 1,
+      "hard_transition_count": 1,
+      "truncated_final_frame": false
+    },
+    "01_unplayable_reservoir_gap_hetero.mp3": {
+      "sha256": "4b2c308de9c5b108b8fb5781cc24c50a0a28679c51c37543b8856f7fd93cfa73",
+      "size": 26340,
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "MPEG_SYNC_LOSS",
+        "MPEG_COHERENT_PARAMETER_CONCATENATION"
+      ],
+      "gap_count": 1,
+      "hard_transition_count": 1,
+      "truncated_final_frame": false,
+      "expected_output_count": 3,
+      "expected_regions": [
+        {
+          "part_index": 1,
+          "profile": [
+            1,
+            3,
+            44100,
+            2
+          ],
+          "source_byte_start": 10,
+          "source_byte_end": 5861,
+          "discarded_context_samples": 0,
+          "preclean_tainted_frame_count": 0,
+          "warmup_clean_frame_count": 0,
+          "gap_before_index": null,
+          "sample_count": 16128,
+          "pcm_sha256": "ecb668ebf9b44a92b280c177f35ea8d13306517fc55419a057c1ea61758fa978"
+        },
+        {
+          "part_index": 2,
+          "profile": [
+            1,
+            3,
+            44100,
+            2
+          ],
+          "source_byte_start": 7533,
+          "source_byte_end": 22161,
+          "discarded_context_samples": 3456,
+          "preclean_tainted_frame_count": 2,
+          "warmup_clean_frame_count": 1,
+          "gap_before_index": 0,
+          "sample_count": 40320,
+          "pcm_sha256": "43d3c984f921778c0d62e78d2d67287e010cbccfd57ef6466c389b4f96dabf9c"
+        },
+        {
+          "part_index": 3,
+          "profile": [
+            2,
+            3,
+            22050,
+            2
+          ],
+          "source_byte_start": 22161,
+          "source_byte_end": 26340,
+          "discarded_context_samples": 0,
+          "preclean_tainted_frame_count": 0,
+          "warmup_clean_frame_count": 0,
+          "gap_before_index": null,
+          "sample_count": 11520,
+          "pcm_sha256": "d5e8bd3e7c14e129854b734ce73e679d500f29a262d9cd4d2f0993e7a1c86df3"
+        }
+      ]
+    },
+    "02_unplayable_rate_change_after_gap.mp3": {
+      "sha256": "3379897773fc862526b77462055e012585dea10072bbd32e1ba016f6d9b876b4",
+      "size": 12227,
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "MPEG_SYNC_LOSS",
+        "MPEG_PARAMETER_CHANGE_AFTER_RESYNC"
+      ],
+      "gap_count": 1,
+      "hard_transition_count": 1,
+      "truncated_final_frame": false,
+      "expected_output_count": 2,
+      "expected_regions": [
+        {
+          "part_index": 1,
+          "profile": [
+            1,
+            3,
+            44100,
+            2
+          ],
+          "source_byte_start": 10,
+          "source_byte_end": 7533,
+          "discarded_context_samples": 0,
+          "preclean_tainted_frame_count": 0,
+          "warmup_clean_frame_count": 0,
+          "gap_before_index": null,
+          "sample_count": 20736,
+          "pcm_sha256": "3e64817c7848c7a8fa196ccc83e29531dbb4b1844094361f1cb56c8d73a9558c"
+        },
+        {
+          "part_index": 2,
+          "profile": [
+            2,
+            3,
+            22050,
+            2
+          ],
+          "source_byte_start": 8256,
+          "source_byte_end": 12227,
+          "discarded_context_samples": 576,
+          "preclean_tainted_frame_count": 0,
+          "warmup_clean_frame_count": 1,
+          "gap_before_index": 0,
+          "sample_count": 10944,
+          "pcm_sha256": "7f00243205d7159dc576129b2bfb158321dd98fb527e5d49600bbe181a9ae662"
+        }
+      ]
+    },
+    "03_unplayable_layer_change_after_gap.mpa": {
+      "sha256": "307e40bbac19c4ff389837747498aea51e76db7ba85580309e30e61fe569b912",
+      "size": 19318,
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "MPEG_SYNC_LOSS",
+        "MPEG_PARAMETER_CHANGE_AFTER_RESYNC"
+      ],
+      "gap_count": 1,
+      "hard_transition_count": 1,
+      "truncated_final_frame": false,
+      "expected_output_count": 2,
+      "expected_regions": [
+        {
+          "part_index": 1,
+          "profile": [
+            1,
+            3,
+            44100,
+            2
+          ],
+          "source_byte_start": 10,
+          "source_byte_end": 7533,
+          "discarded_context_samples": 0,
+          "preclean_tainted_frame_count": 0,
+          "warmup_clean_frame_count": 0,
+          "gap_before_index": null,
+          "sample_count": 20736,
+          "pcm_sha256": "3e64817c7848c7a8fa196ccc83e29531dbb4b1844094361f1cb56c8d73a9558c"
+        },
+        {
+          "part_index": 2,
+          "profile": [
+            1,
+            2,
+            44100,
+            2
+          ],
+          "source_byte_start": 8660,
+          "source_byte_end": 19318,
+          "discarded_context_samples": 1152,
+          "preclean_tainted_frame_count": 0,
+          "warmup_clean_frame_count": 1,
+          "gap_before_index": 0,
+          "sample_count": 19584,
+          "pcm_sha256": "454e418a28550cc76b01f5280800f2db5ea1d10928ee2010c7421a40fbf0e1f3"
+        }
+      ]
+    },
+    "04_unplayable_truncated_negative.mp3": {
+      "sha256": "f0c11ce55d10dc42d51d9227b39dfb3010667d00b9e93a9c033cf888b6b60be5",
+      "size": 12127,
+      "issue_codes": [
+        "ID3V2_MALFORMED",
+        "TRUNCATED_MPEG_FRAME",
+        "MPEG_SYNC_LOSS",
+        "MPEG_PARAMETER_CHANGE_AFTER_RESYNC"
+      ],
+      "gap_count": 1,
+      "hard_transition_count": 1,
+      "truncated_final_frame": true
+    }
+  }
+}
