@@ -264,7 +264,8 @@ def analyze(path:Path):
     # Header Object.
     if n<30 or _guid(data,0)!=ASF_HEADER:
         issues.append(Issue('ASF_HEADER_OBJECT_INVALID','container','El Header Object de ASF falta o está mal formado en el byte 0.',integrity='DAMAGED',playability='BLOCKING',repairability='NONE',byte_start=0,byte_end=min(n,30)))
-        return {'codec':'wma','facts':facts,'metadata':meta,'structural_map':struct,'issues':issues}
+        redundant=bool(n>=54 and 30<=_u64(data,16)<=n and _guid(data,30) in OBJ_NAMES)
+        if not redundant:return {'codec':'wma','facts':facts,'metadata':meta,'structural_map':struct,'issues':issues}
     hsize=_u64(data,16);hcount=_u32(data,24);res1=data[28];res2=data[29]
     facts['asf'].update(header_object_size=hsize,header_object_count_declared=hcount,header_reserved_1=res1,header_reserved_2=res2)
     struct.append({'kind':'ASF_OBJECT','name':'Header Object','guid':ASF_HEADER,'byte_start':0,'byte_end':min(hsize,n),'declared_size':hsize})

@@ -38,6 +38,8 @@ def plan(source:Path,parsed:dict):
 
 
 def plan_interframe_recapture(source:Path,parsed:dict):
+    # Un gap de sync también puede ser un frame auténtico con el header dañado.
+    return None
     if source.suffix.lower() not in (".aac",".adts"):return None
     if [issue.code for issue in parsed.get("issues",[])]!=["AAC_ADTS_SYNC_LOSS"]:return None
     facts=parsed.get("facts") or {};adts=facts.get("adts") or {};frames=facts.get("frames") or [];gaps=adts.get("sync_gaps") or []

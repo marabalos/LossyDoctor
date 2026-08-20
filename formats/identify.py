@@ -25,16 +25,16 @@ def identify(path:Path,max_scan=262144):
         # La recaptura vigente admite un prefijo acotado, pero un marcador de codec
         # nunca basta sin confirmación del parser profundo de Ogg.
         ogg_head=head[ogg_at:]
-        if b"OpusHead" in ogg_head:
+        if b"OpusHead" in ogg_head or b"OpusTags" in ogg_head:
             q=ogg_opus.analyze(path)
             if q.get("codec")=="opus":return {"supported":True,"container":"OGG","codec":"opus","confidence":"HIGH","ogg_opus":q,"first_capture_offset":ogg_at}
-        if b"\x01vorbis" in ogg_head:
+        if b"\x01vorbis" in ogg_head or (b"\x03vorbis" in ogg_head and b"\x05vorbis" in ogg_head):
             q=ogg_vorbis.analyze(path)
             if q.get("codec")=="vorbis":return {"supported":True,"container":"OGG","codec":"vorbis","confidence":"HIGH","ogg_vorbis":q,"first_capture_offset":ogg_at}
         return {"supported":False,"container":"OGG","codec":None,"confidence":"HIGH","reason":"el codec Ogg no es compatible o no pudo confirmarse estructuralmente"}
     if aac_adts.looks_like_adts(head):
         q=aac_adts.analyze(path,max_scan);return {"supported":True,"container":"AAC_ADTS","codec":"aac","confidence":"HIGH","aac_adts":q}
-    if len(head)>=12 and head[4:8]==b"ftyp":
+    if len(head)>=12 and (head[4:8]==b"ftyp" or (b"moov" in head and b"mdat" in head)):
         q=mp4_aac.analyze(path);ident=q["facts"]["identification"]
         # El modelo vigente autentica la pista AAC y audita la estructura MP4 básica, pero
         # conserva confianza MEDIUM hasta contar con la auditoría completa de muestras y línea temporal.
@@ -42,7 +42,7 @@ def identify(path:Path,max_scan=262144):
         if ident.get("audio_track_count",0)>1:
             return {"supported":False,"container":"MP4","codec":None,"confidence":"HIGH","reason":"MP4 con varias pistas de audio es incompatible con LossyDoctor V1"}
         return {"supported":False,"container":"MP4","codec":None,"confidence":"HIGH","reason":"la pista de audio AAC en MP4 no pudo confirmarse estructuralmente"}
-    if head.startswith(bytes.fromhex("3026b2758e66cf11a6d900aa0062ce6c")):
+    if head.startswith(bytes.fromhex("3026b2758e66cf11a6d900aa0062ce6c")) or any(bytes.fromhex(g) in head[24:] for g in ("a1dcab8c47a9cf118ee400c00c205365","9107dcb7b7a9cf118ee600c00c205365")):
         q=asf_wma.analyze(path);return {"supported":True,"container":"ASF","codec":"wma","confidence":"HIGH","asf_wma":q}
     result=mpeg.analyze(path,max_scan)
     if result.get("codec") in ("mp3","mp2"):

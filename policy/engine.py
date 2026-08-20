@@ -17,7 +17,9 @@ def classify(a):
     elif 'RECOVERED_SEGMENTED_LOSSLESS' in deriv:a.final_status=['RECOVERED_SEGMENTED_LOSSLESS'];a.run_status='SUCCESS_WITH_RECOVERY'
     elif 'RECOVERED_PARTIAL_LOSSLESS' in deriv:a.final_status=['RECOVERED_PARTIAL_LOSSLESS'];a.run_status='SUCCESS_WITH_RECOVERY'
     elif 'RECOVERED_LOSSLESS' in deriv:a.final_status=['RECOVERED_LOSSLESS'];a.run_status='SUCCESS_WITH_RECOVERY'
-    elif created_repair or reused_repair:a.final_status=['REPAIRED_SAFE']+(['ANOMALY_UNCHANGED'] if any(x.get('status')=='BLOCKED' for x in a.repair_execution) else []);a.run_status='SUCCESS_WITH_REPAIR'
+    elif created_repair or reused_repair:
+        residual=any((x.get('verification') or (x.get('manifest') or {}).get('verification') or {}).get('post_repair_issue_codes') for x in a.repair_execution if x.get('status') in ('CREATED','REUSED'))
+        a.final_status=['REPAIRED_SAFE']+(['ANOMALY_UNCHANGED'] if residual or any(x.get('status')=='BLOCKED' for x in a.repair_execution) else []);a.run_status='SUCCESS_WITH_REPAIR'
     # OK exige evidencia afirmativa de reproducción. Si falta o es desconocida,
     # la ambigüedad sigue la ruta de anomalía con cierre seguro.
     elif has_issue or a.playability!='PLAYABLE':a.final_status=['ANOMALY_UNCHANGED'];a.run_status='SUCCESS_WITH_FINDINGS'
