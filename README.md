@@ -87,14 +87,6 @@ Try to preserve the original bitstream when a demonstrable repair exists or, in 
 **Preservation**  
 Verify lossy material before adding it to a permanent collection, without degrading it through another generation of compression.
 
-## Quick comparison
-
-| Tool | Strength | Compared with LossyDoctor |
-| --- | --- | --- |
-| **LossyDoctor** | Auditing + conservative repair + lossless recovery + post-repair verification | Narrower format coverage; intervenes only in explicitly supported and demonstrated cases |
-| **MP3val** | Very fast, simple, and specialized in MPEG structure | Much more limited in formats and in decoding/PCM evidence |
-| **foobar2000 File Integrity Verifier** | Very convenient and broadly compatible for detecting decoding errors | For most formats, detection is concentrated on errors that abort decoding; it is not an equivalent repair-and-preservation system |
-
 LossyDoctor does not try to be the repair tool that modifies the largest number of files.
 
 Its goal is different:
