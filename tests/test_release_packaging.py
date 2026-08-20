@@ -14,10 +14,11 @@ from release_packaging import CHECKSUM_FILE, ROOT, VERSION, build_zip, git_bytes
 
 
 FORBIDDEN_PREFIXES = (
-    ".git", "cache/", "docs/", "logs/", "reports/", "runtime/", "samples/",
+    ".codex/", ".git", "cache/", "docs/", "logs/", "reports/", "runtime/", "samples/",
     "state/", "temp/", "tests/", "toolchain/",
 )
-FORBIDDEN_NAMES = {".gitattributes", ".gitignore"}
+FORBIDDEN_NAMES = {".gitattributes", ".gitignore", "AGENTS.md", "TESTING.md", "release_packaging.py"}
+PUBLIC_READMES = {"README.md", "README.es.md", "README.zh-CN.md", "README.ru.md", "README.hi.md"}
 HISTORY = re.compile(r"\bv0\.\d+|\bCP\d+\b|checkpoint", re.IGNORECASE)
 AUDIT_ARTIFACTS = re.compile(
     r"@RELEASE_|la autoridad vigente\.0|política vigente evidence|"
@@ -42,6 +43,7 @@ class ReleasePackagingTests(unittest.TestCase):
         self.assertIn("bootstrap_src/main.go", names)
         self.assertIn("V1_BASELINE.md", names)
         self.assertIn(CHECKSUM_FILE, names)
+        self.assertTrue(PUBLIC_READMES.issubset(names))
         for name in names:
             self.assertNotIn(name, FORBIDDEN_NAMES)
             self.assertFalse(any(name == p.rstrip("/") or name.startswith(p) for p in FORBIDDEN_PREFIXES), name)
@@ -62,11 +64,12 @@ class ReleasePackagingTests(unittest.TestCase):
         source = (ROOT / "bootstrap_src/main.go").read_text(encoding="utf-8")
         self.assertEqual(APP_VERSION, VERSION)
         self.assertEqual(manifest["lossydoctor_version"], VERSION)
-        self.assertIn(f'const bootstrapVersion = "{VERSION}-bootstrap.1"', source)
+        self.assertIn('const bootstrapVersion = "1.1.0-bootstrap.1"', source)
         self.assertEqual(POLICY_VERSION, "1.1.0-v1-stable-1")
         self.assertEqual((CONFIG_SCHEMA, ANALYSIS_SCHEMA, REPORT_SCHEMA, MANIFEST_SCHEMA), (3, 3, 3, 3))
-        for name in ("README.md", "V1_BASELINE.md", "CHANGELOG.md", "ROADMAP.md"):
+        for name in (*sorted(PUBLIC_READMES), "CHANGELOG.md"):
             self.assertIn(VERSION, (ROOT / name).read_text(encoding="utf-8"), name)
+        self.assertIn("1.1.0", (ROOT / "V1_BASELINE.md").read_text(encoding="utf-8"))
 
     def test_release_text_has_no_development_history(self):
         for name in release_files():

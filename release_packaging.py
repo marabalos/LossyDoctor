@@ -9,7 +9,7 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parent
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 CHECKSUM_FILE = "PACKAGE_SHA256SUMS.txt"
 
 ROOT_FILES = (
@@ -19,10 +19,13 @@ ROOT_FILES = (
     "config.toml",
     "requirements.txt",
     "README.md",
+    "README.es.md",
+    "README.zh-CN.md",
+    "README.ru.md",
+    "README.hi.md",
     "PRODUCT.md",
     "V1_BASELINE.md",
     "ROADMAP.md",
-    "AGENTS.md",
     "CHANGELOG.md",
     "LICENSE",
     "NOTICE",
@@ -162,7 +165,7 @@ def build_zip(output_dir: Path) -> tuple[Path, str, tuple[str, ...]]:
     commit = git_value("rev-parse", "HEAD")
     commit_epoch = int(git_value("show", "-s", "--format=%ct", "HEAD"))
     output_dir.mkdir(parents=True, exist_ok=True)
-    destination = output_dir / f"LossyDoctor_v{VERSION}_source_{commit[:8]}.zip"
+    destination = output_dir / f"LossyDoctor_v{VERSION}.zip"
     committed = {relative: git_bytes(commit, relative) for relative in release_files()}
     checksum_rows = committed[CHECKSUM_FILE].decode("utf-8").splitlines()
     expected = {name: digest for digest, name in (row.split("  ", 1) for row in checksum_rows)}
@@ -189,7 +192,7 @@ def build_zip(output_dir: Path) -> tuple[Path, str, tuple[str, ...]]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Construye el ZIP reproducible de LossyDoctor V1.1.0")
+    parser = argparse.ArgumentParser(description="Construye el ZIP reproducible de LossyDoctor V1.1.1")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "temp" / "release")
     parser.add_argument("--go", type=Path, help="go.exe fijado para recompilar el bootstrap")
     parser.add_argument("--refresh-checksums", action="store_true", help="regenera checksums del árbol de trabajo y termina")
