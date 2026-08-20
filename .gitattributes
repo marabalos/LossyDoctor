@@ -18,3 +18,16 @@
 *.wma binary
 *.flac binary
 *.zip binary
+
+# Exclude development-only material from source archives
+/.codex export-ignore
+/.codex/** export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/AGENTS.md export-ignore
+/TESTING.md export-ignore
+/release_packaging.py export-ignore
+/tests export-ignore
+/tests/** export-ignore
+/samples export-ignore
+/samples/** export-ignore

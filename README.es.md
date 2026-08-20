@@ -1,6 +1,6 @@
 # LossyDoctor
 
-[English](README.md) | [Español](README.es.md) | [中文](README.zh-CN.md) | [Русский](README.ru.md) | [हिन्दी](README.hi.md)
+[Español 🇦🇷](README.es.md) | [中文 🇨🇳](README.zh-CN.md) | [Русский 🇷🇺](README.ru.md) | [हिन्दी 🇮🇳](README.hi.md) | [English 🇺🇸](README.md)
 
 ---
 
@@ -8,7 +8,7 @@
 
 MP3, AAC, Vorbis, Opus y otros formatos *lossy* reducen el tamaño descartando información de audio de manera irreversible.
 
-Por ese motivo, **un archivo lossy no debería utilizarse NUNCA como fuente maestra, formato de preservación ni intermediario de intercambio**. Recodificarlo a otro formato lossy sólo agrega una nueva generación de pérdidas. Recodificarlo a un formato lossless sólo agrega tamaño, sin recuperar los datos perdidos.
+Por ese motivo, **un archivo lossy no debería utilizarse NUNCA como fuente maestra, formato de preservación ni intermediario de intercambio**. Recodificarlo a otro formato lossy sólo agrega una nueva generación de pérdidas. Recodificarlo simplemente a un formato lossless sólo agrega tamaño, sin recuperar los datos ya perdidos.
 
 Sin embargo, una enorme cantidad de música, grabaciones, emisiones, bootlegs, archivos históricos y material distribuido digitalmente **sólo existe o sólo circula en formatos lossy**.
 
@@ -26,7 +26,7 @@ Su principio fundamental es simple:
 
 Si el archivo puede corregirse conservando su audio comprimido original, LossyDoctor genera una copia reparada y la verifica.
 
-Si eso ya no es posible pero todavía puede demostrarse exactamente el PCM genuino recuperable, puede preservarlo como **FLAC lossless**. El archivo resultante será más grande, pero no agrega una nueva pérdida: conserva exactamente ese PCM recuperado, haciendo reproducible un archivo que de otro modo no lo sería.
+Si eso ya no es posible pero todavía puede demostrarse exactamente PCM genuino recuperable, puede preservarlo como **FLAC lossless**. El archivo resultante será más grande, pero no agrega una nueva pérdida: conserva exactamente ese PCM recuperado en un formato reproducible y apto para preservación.
 
 El original permanece siempre intacto.
 
@@ -36,13 +36,13 @@ El original permanece siempre intacto.
 - Audita estructura, bitstream, timeline y decodificación.
 - Detecta archivos corruptos aunque todavía puedan reproducirse.
 - Repara únicamente cuando existe una corrección demostrable.
-- Siempre conserva el bitstream comprimido original.
+- Prioriza siempre la conservación del bitstream comprimido original.
 - Verifica nuevamente cada archivo reparado.
 - Puede preservar PCM genuino recuperable como FLAC cuando reparar el original ya no es seguro.
 - Procesa archivos individuales o colecciones completas.
 - Nunca modifica ni sobrescribe el archivo fuente.
 
-La versión 1.1.0 cubre, dentro de la autoridad comprobada para cada familia, MPEG Layer II/III, AAC/ADTS, MP4/AAC de una sola pista, Ogg/Opus, Ogg/Vorbis y ASF/WMA.
+La versión 1.1.1 cubre, dentro de la autoridad comprobada para cada familia, MPEG Layer II/III, AAC/ADTS, MP4/AAC de una sola pista, Ogg/Opus, Ogg/Vorbis y ASF/WMA.
 
 ## Qué NO hace
 
@@ -51,7 +51,7 @@ La versión 1.1.0 cubre, dentro de la autoridad comprobada para cada familia, MP
 - No inventa ni reconstruye audio cuya existencia no pueda demostrarse.
 - No considera que un archivo esté sano simplemente porque un decoder consiga reproducirlo.
 - No promete reparar cualquier corrupción.
-- No convierte automáticamente todo archivo problemático a FLAC: la recuperación lossless es una alternativa de preservación cuando conservar correctamente el bitstream original ya no es posible sin recodificar.
+- No convierte automáticamente todo archivo problemático a FLAC: la recuperación lossless es una alternativa de preservación cuando conservar correctamente el bitstream original ya no es posible.
 
 ## ¿Qué clase de problemas puede encontrar?
 
@@ -71,7 +71,7 @@ Entre otros casos, LossyDoctor puede detectar:
 
 **Detectar el problema no significa automáticamente que pueda repararse.**
 
-Cuando existe una única reparación segura, LossyDoctor puede aplicarla. Cuando el bitstream ya no puede preservarse pero existe PCM genuino demostrable, puede recuperar ese audio sin una nueva pérdida. Cuando ninguna de las dos cosas puede probarse, informa el daño y no fabrica una solución.
+Cuando existe una única reparación segura, LossyDoctor puede aplicarla. Cuando el bitstream ya no puede preservarse pero existe PCM genuino demostrable, puede preservar ese audio sin introducir una nueva pérdida. Cuando ninguna de las dos cosas puede probarse, informa el daño y no fabrica una solución.
 
 ## Casos de uso
 
@@ -87,13 +87,9 @@ Intentar conservar el bitstream original cuando existe una reparación demostrab
 **Preservación**  
 Verificar material lossy antes de incorporarlo a una colección permanente, sin degradarlo mediante otra generación de compresión.
 
-## Comparación rápida
+## Una sola herramienta para todo el proceso
 
-| Herramienta | Ventaja | Frente a LossyDoctor |
-| --- | --- | --- |
-| **LossyDoctor** | Auditoría + reparación conservadora + recuperación lossless + verificación posterior | Menor cobertura de formatos; sólo interviene en casos expresamente soportados y demostrados |
-| **MP3val** | Muy rápido, simple y especializado en estructura MPEG | Mucho más limitado en formatos y en evidencia de decodificación/PCM |
-| **foobar2000 File Integrity Verifier** | Muy cómodo y con amplia compatibilidad para detectar errores de decodificación | En la mayoría de los formatos su detección se concentra en errores que abortan la decodificación; no constituye un sistema de reparación y preservación equivalente |
+Las herramientas más comunes de verificación de audio permiten detectar muchos problemas estructurales o de decodificación, pero suelen concentrarse en funciones, formatos o etapas concretas del proceso. **LossyDoctor busca centralizar ese trabajo en una sola herramienta**: realiza las comprobaciones habituales y suma verificaciones adicionales, analiza si una anomalía puede corregirse de forma segura, aplica reparaciones únicamente cuando existe un procedimiento expresamente soportado, verifica objetivamente el resultado y preserva siempre intacto el archivo original. Cuando la reparación directa no es posible pero el contenido de audio puede recuperarse de manera fiable, también contempla su recuperación a un formato lossless. El objetivo es que el usuario pueda auditar, diagnosticar y resolver estos casos mediante un flujo único y consistente, sin tener que recurrir a distintas herramientas y procesos para completar la misma tarea.
 
 LossyDoctor no intenta ser el reparador que más archivos modifica.
 
