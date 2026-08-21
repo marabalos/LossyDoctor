@@ -116,8 +116,7 @@ def _xing_plan(mpeg:dict,issues:set[str]):
     if not (issues & XING_CODES):return None
     facts=mpeg.get('facts',{}); x=((facts.get('vbr_header') or {}).get('xing') or {})
     spec=SPECS['REFRESH_XING_METADATA']
-    checksum_only=bool('XING_AUDIO_CRC_MISMATCH' in issues and not (issues-{'XING_AUDIO_CRC_MISMATCH','XING_TAG_CRC_MISMATCH'}))
-    if 'MPEG_UNEXPECTED_STREAM_HEADER' in issues or checksum_only:
+    if 'MPEG_UNEXPECTED_STREAM_HEADER' in issues or 'XING_AUDIO_CRC_MISMATCH' in issues:
         return {'spec':spec,'status':'BLOCKED','reason':'la metadata Xing/Info global queda ambigua por otro header global posterior o por un checksum que no localiza la corrupción','actions':[]}
     if mpeg.get('codec')!='mp3' or facts.get('layer')!=3:
         return {'spec':spec,'status':'BLOCKED','reason':'la actualización Xing/Info sólo está implementada para MPEG Layer III','actions':[]}

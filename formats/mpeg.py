@@ -603,7 +603,14 @@ def analyze(path:Path,max_scan=262144):
     first=_find_chain(data,start,terminal,max_scan)
     if not first:
         return {'codec':None,'facts':{'identified':False},'metadata':md,'issues':issues+[Issue('MPEG_SYNC_NOT_FOUND','framing','No se encontró una cadena MPEG Layer II/III coherente',integrity='DAMAGED',playability='BLOCKING')],'structural_map':[],'frames':[],'gaps':[],'data':data}
-    first_off,h0=first; sig=_sig(h0); current_free_format=bool(h0.get('free_format')); free_base=h0.get('_free_base_length'); frames=[];gaps=[];pos=first_off;after_gap=False;reservoir_bytes_since_gap=0;logical_audio_idx=0;gap_seq=0;last_frame_idx=None;reservoir_segment_id=0;unexpected_stream_headers=[]
+    first_off,h0=first
+    # No baja la exigencia general de aceptación: sólo incorpora al audit una
+    # corrida previa de dos frames cuando ya existe un ancla de tres frames.
+    for candidate in range(start,first_off):
+        prior=_coherent_at(data,candidate,terminal,2)
+        if prior:
+            first_off,h0=candidate,prior;break
+    sig=_sig(h0); current_free_format=bool(h0.get('free_format')); free_base=h0.get('_free_base_length'); frames=[];gaps=[];pos=first_off;after_gap=False;reservoir_bytes_since_gap=0;logical_audio_idx=0;gap_seq=0;last_frame_idx=None;reservoir_segment_id=0;unexpected_stream_headers=[]
     if first_off>start and not (id3 and id3.get('malformed')):
         issues.append(Issue('MPEG_SYNC_LOSS','framing','Hay una región inicial no explicada antes del ancla MPEG coherente.',integrity='DAMAGED',compatibility='LIKELY',playability='DEGRADED',byte_start=start,byte_end=first_off,repairability='RECOVERY_ONLY'))
     xing=None; vbri=None; first_is_vbr=False; audio_frames_observed=0
