@@ -24,6 +24,9 @@ def sha256(path:Path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 class Mp4PreservationHierarchyCP12(unittest.TestCase):
+    def test_extension_fix_is_outside_codec_repair_domain(self):
+        extension=[{"status":"CREATED","repair_spec_id":"FIX_EXTENSION_BYTE_IDENTICAL","manifest":{"derivation_kind":"EXTENSION_FIXED"}}]
+        self.assertIsNone(resolve(extension,[],{},"PLAYABLE",{"EXTENSION_CONTENT_MISMATCH"})["policy_violation"])
     def test_manifest_reuses_the_byte_distinct_cp9_corpus(self):
         self.assertEqual((MANIFEST["checkpoint"],MANIFEST["policy"]),("CP12",POLICY))
         seen=set()

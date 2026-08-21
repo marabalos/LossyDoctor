@@ -11,6 +11,7 @@ from app.aac_adts_repair import INTERFRAME_RECAPTURE_SPEC_ID
 from app.aac_adts_preservation_hierarchy import ORDER
 from app.config import load_config
 from app.pipeline import analyze_file
+from formats.aac_adts import analyze
 
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -26,6 +27,11 @@ def sha(path:Path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 @unittest.skipUnless(FFMPEG and FFPROBE,"ffmpeg/ffprobe required")
 class AacAdtsInterframeRecaptureCP33(unittest.TestCase):
+    def test_damaged_authentic_frame_header_is_never_deleted(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source=Path(directory)/"damaged-frame.aac";data=bytearray((BASE/"00_healthy_aac_lc_44100_stereo.aac").read_bytes());parsed=analyze(BASE/"00_healthy_aac_lc_44100_stereo.aac");frame=parsed["facts"]["frames"][len(parsed["facts"]["frames"])//2];data[frame["byte_start"]]^=1;source.write_bytes(data);before=sha(source);size=source.stat().st_size
+            row=analyze_file(source,CFG,ROOT,FFMPEG,FFPROBE)
+            self.assertIn("AAC_ADTS_SYNC_LOSS",[x.code for x in row.issues]);self.assertFalse(any(x.get("repair_spec_id")==INTERFRAME_RECAPTURE_SPEC_ID for x in row.repair_execution));self.assertEqual((source.stat().st_size,sha(source)),(size,before));self.assertFalse(list(source.parent.glob("*repaired*.aac")))
     def test_parser_gap_does_not_authorize_destructive_recapture(self):
         with tempfile.TemporaryDirectory() as directory:
             source=Path(directory)/"damaged.aac";shutil.copy2(BASE/"06_interframe_sync_gap.aac",source);before=sha(source)

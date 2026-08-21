@@ -40,6 +40,7 @@ class CanonicalTimelineFlacCP23(unittest.TestCase):
             temp=Path(directory);sources=self._copy_cases(temp);originals={name:sha256(path) for name,path in sources.items()}
             first={name:analyze_file(path,CFG,ROOT,FFMPEG,FFPROBE) for name,path in sources.items()}
             for name,row in first.items():
+                self.assertNotIn("MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH",[issue.code for issue in row.issues],name)
                 expected=MANIFEST["cases"][name];created=outputs(row);self.assertEqual((row.run_status,row.final_status),("SUCCESS_WITH_RECOVERY",["RECOVERED_LOSSLESS"]),name);self.assertEqual(len(created),1,name)
                 output=created[0];self.assertEqual(output["status"],"CREATED",name);manifest=output["manifest"]
                 self.assertEqual((manifest["derivation_kind"],manifest["materialization"]),("RECOVERED_LOSSLESS",MANIFEST["materialization"]),name)
