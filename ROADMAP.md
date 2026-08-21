@@ -8,7 +8,7 @@ LossyDoctor V1.1.2 consolida la línea V1 estable. `V1_BASELINE.md` conserva la 
 
 No queda hardening funcional obligatorio identificado para la línea V1 antes de avanzar hacia V2. El contrato funcional vigente continúa definido por `PRODUCT.md`.
 
-La reproducibilidad de la suite multimedia completa desde un clone limpio sigue pendiente porque el corpus binario local no se publica actualmente en Git. Debe resolverse como gate técnico separado antes de comenzar P0, sin debilitar el ground truth independiente ni incorporar el corpus al ZIP de distribución.
+El gate de reproducibilidad del corpus quedó resuelto al versionar en Git únicamente los fixtures fuente congelados. Los derivados generados permanecen fuera de Git; `samples/` y `tests/` siguen fuera del ZIP de distribución. No queda un gate de reproducibilidad del corpus que bloquee el inicio de P0.
 
 ## Próximo objetivo
 

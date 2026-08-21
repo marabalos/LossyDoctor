@@ -43,7 +43,8 @@ venv/
 * \[extension-fixed*\].*
 * \[recovered-*\].*
 
-# Local-only multimedia test corpus
+# Untracked multimedia under samples is ignored by default.
+# Frozen source fixtures required by the test corpus are explicitly tracked in Git.
 /samples/**/*.mp3
 /samples/**/*.mp2
 /samples/**/*.aac

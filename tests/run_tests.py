@@ -28,15 +28,26 @@ def _declared_fixture_hashes() -> dict[Path, str]:
         data = json.loads(manifest.read_text(encoding="utf-8"))
         corpus = data.get("corpus") or manifest.stem.removesuffix("_manifest")
         base = samples / corpus
-        for section in ("cases", "files", "mutations"):
-            for name, facts in (data.get(section) or {}).items():
-                if not isinstance(facts, dict) or not facts.get("sha256"):
+        for facts in data.values():
+            if not isinstance(facts, dict):
+                continue
+            if facts.get("file") and facts.get("sha256"):
+                fixtures = ((facts["file"], facts),)
+            else:
+                fixtures = facts.items()
+            for name, fixture in fixtures:
+                if (
+                    not isinstance(name, str)
+                    or not Path(name).suffix
+                    or not isinstance(fixture, dict)
+                    or not fixture.get("sha256")
+                ):
                     continue
                 path = base / name
                 previous = declared.get(path)
-                if previous is not None and previous != facts["sha256"]:
+                if previous is not None and previous != fixture["sha256"]:
                     raise RuntimeError(f"conflicting fixture hashes for {path}")
-                declared[path] = facts["sha256"]
+                declared[path] = fixture["sha256"]
     return declared
 
 
@@ -55,28 +66,33 @@ def _verify_corpus(declared: dict[Path, str]) -> list[str]:
     return errors
 
 
-declared = _declared_fixture_hashes()
-before_errors = _verify_corpus(declared)
-if before_errors:
-    print("Acceptance corpus is not pristine:", file=sys.stderr)
-    print("\n".join(before_errors), file=sys.stderr)
-    raise SystemExit(1)
+def main() -> int:
+    declared = _declared_fixture_hashes()
+    before_errors = _verify_corpus(declared)
+    if before_errors:
+        print("Acceptance corpus is not pristine:", file=sys.stderr)
+        print("\n".join(before_errors), file=sys.stderr)
+        return 1
 
-with tempfile.TemporaryDirectory(prefix="lossydoctor-test-journal-") as journal_root:
-    previous_journal_root = os.environ.get("LOSSYDOCTOR_JOURNAL_ROOT")
-    os.environ["LOSSYDOCTOR_JOURNAL_ROOT"] = journal_root
-    try:
-        suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"), pattern="test_*.py")
-        result = unittest.TextTestRunner(verbosity=2).run(suite)
-    finally:
-        if previous_journal_root is None:
-            os.environ.pop("LOSSYDOCTOR_JOURNAL_ROOT", None)
-        else:
-            os.environ["LOSSYDOCTOR_JOURNAL_ROOT"] = previous_journal_root
+    with tempfile.TemporaryDirectory(prefix="lossydoctor-test-journal-") as journal_root:
+        previous_journal_root = os.environ.get("LOSSYDOCTOR_JOURNAL_ROOT")
+        os.environ["LOSSYDOCTOR_JOURNAL_ROOT"] = journal_root
+        try:
+            suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"), pattern="test_*.py")
+            result = unittest.TextTestRunner(verbosity=2).run(suite)
+        finally:
+            if previous_journal_root is None:
+                os.environ.pop("LOSSYDOCTOR_JOURNAL_ROOT", None)
+            else:
+                os.environ["LOSSYDOCTOR_JOURNAL_ROOT"] = previous_journal_root
 
-after_errors = _verify_corpus(declared)
-if after_errors:
-    print("Acceptance corpus changed during the test run:", file=sys.stderr)
-    print("\n".join(after_errors), file=sys.stderr)
+    after_errors = _verify_corpus(declared)
+    if after_errors:
+        print("Acceptance corpus changed during the test run:", file=sys.stderr)
+        print("\n".join(after_errors), file=sys.stderr)
 
-raise SystemExit(0 if result.wasSuccessful() and not after_errors else 1)
+    return 0 if result.wasSuccessful() and not after_errors else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

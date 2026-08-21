@@ -15,6 +15,6 @@ runtime\python\cpython-3.12.14-windows-x86_64-none\python.exe tests\run_tests.py
 
 El runner valida los SHA-256 declarados para el corpus antes y después de la suite. Los derivados y sidecars junto al corpus no son entradas. Toda prueba que materialice salidas usa copias o temporales.
 
-El corpus multimedia completo usado para la aceptación V1 se mantiene fuera de Git por la política actual del repositorio. Por lo tanto, un clone limpio no reproduce todavía la suite multimedia completa. Resolver esa reproducibilidad es un gate técnico previo al trabajo V2 y no cambia la autoridad funcional vigente.
+Los fixtures fuente congelados requeridos por la suite de aceptación están versionados en Git y, según la decisión de provenance del proyecto, son material propio o sintético. Los manifests aportan ground truth SHA-256 independiente, verificado antes y después de la suite; los outputs generados por LossyDoctor permanecen sin trackear. Un clone limpio puede reproducir la suite multimedia una vez preparado el toolchain fijado.
 
 La evidencia distingue implementación, prueba automatizada, resultado esperado independiente y ejecución real. Debe cubrir detección positiva y negativa, límites, clasificación, bloqueo de intervenciones ambiguas, preservación del original, verificación posterior y reutilización idempotente.
