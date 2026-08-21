@@ -25,7 +25,7 @@ import (
 	"unsafe"
 )
 
-const bootstrapVersion = "1.1.1-bootstrap.1"
+const bootstrapVersion = "1.1.2-bootstrap.1"
 
 const (
 	errorAlreadyExists      = syscall.Errno(183)
@@ -167,7 +167,7 @@ func runMain() int {
 	if err != nil {
 		a.fail("preparacion", err)
 		fmt.Fprintln(os.Stderr, "")
-		fmt.Fprintln(os.Stderr, "Si es la primera ejecucion, revise README.md -> Requisitos de conectividad web.")
+		fmt.Fprintln(os.Stderr, "Si es la primera ejecucion, revise README.md para los requisitos de conexion a Internet.")
 		fmt.Fprintln(os.Stderr, "El detalle queda en:", a.logPath)
 		return 12
 	}

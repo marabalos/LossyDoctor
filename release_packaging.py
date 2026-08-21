@@ -9,7 +9,7 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parent
-VERSION = "1.1.1"
+VERSION = "1.1.2"
 CHECKSUM_FILE = "PACKAGE_SHA256SUMS.txt"
 
 ROOT_FILES = (
@@ -192,7 +192,7 @@ def build_zip(output_dir: Path) -> tuple[Path, str, tuple[str, ...]]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Construye el ZIP reproducible de LossyDoctor V1.1.1")
+    parser = argparse.ArgumentParser(description="Construye el ZIP reproducible de LossyDoctor V1.1.2")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "temp" / "release")
     parser.add_argument("--go", type=Path, help="go.exe fijado para recompilar el bootstrap")
     parser.add_argument("--refresh-checksums", action="store_true", help="regenera checksums del árbol de trabajo y termina")

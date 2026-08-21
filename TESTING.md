@@ -1,4 +1,4 @@
-# LossyDoctor 1.1.1
+# LossyDoctor 1.1.2
 
 ## Autoridad de validación V1
 
@@ -14,5 +14,7 @@ runtime\python\cpython-3.12.14-windows-x86_64-none\python.exe tests\run_tests.py
 ```
 
 El runner valida los SHA-256 declarados para el corpus antes y después de la suite. Los derivados y sidecars junto al corpus no son entradas. Toda prueba que materialice salidas usa copias o temporales.
+
+El corpus multimedia completo usado para la aceptación V1 se mantiene fuera de Git por la política actual del repositorio. Por lo tanto, un clone limpio no reproduce todavía la suite multimedia completa. Resolver esa reproducibilidad es un gate técnico previo al trabajo V2 y no cambia la autoridad funcional vigente.
 
 La evidencia distingue implementación, prueba automatizada, resultado esperado independiente y ejecución real. Debe cubrir detección positiva y negativa, límites, clasificación, bloqueo de intervenciones ambiguas, preservación del original, verificación posterior y reutilización idempotente.

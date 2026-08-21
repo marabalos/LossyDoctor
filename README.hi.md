@@ -44,7 +44,7 @@ LossyDoctor lossy ऑडियो फ़ाइलों का audit करत�
 - एकल फ़ाइलों या पूरे संग्रहों को process कर सकता है।
 - source फ़ाइल को कभी modify या overwrite नहीं करता।
 
-संस्करण 1.1.1 प्रत्येक format family के लिए सिद्ध authority की सीमा के भीतर MPEG Layer II/III, AAC/ADTS, single-track MP4/AAC, Ogg/Opus, Ogg/Vorbis और ASF/WMA को कवर करता है।
+संस्करण 1.1.2 प्रत्येक format family के लिए सिद्ध authority की सीमा के भीतर MPEG Layer II/III, AAC/ADTS, single-track MP4/AAC, Ogg/Opus, Ogg/Vorbis और ASF/WMA को कवर करता है।
 
 ## इंस्टॉलेशन और इंटरनेट कनेक्शन
 
