@@ -44,7 +44,7 @@ LossyDoctor 用于审计有损音频文件，检测损坏、结构异常、bitst
 - 可处理单个文件或完整音频收藏。
 - 从不修改或覆盖源文件。
 
-1.1.1 版本在各格式已经证明的处理权限范围内支持 MPEG Layer II/III、AAC/ADTS、单音轨 MP4/AAC、Ogg/Opus、Ogg/Vorbis 和 ASF/WMA。
+1.1.2 版本在各格式已经证明的处理权限范围内支持 MPEG Layer II/III、AAC/ADTS、单音轨 MP4/AAC、Ogg/Opus、Ogg/Vorbis 和 ASF/WMA。
 
 ## 安装与网络连接
 

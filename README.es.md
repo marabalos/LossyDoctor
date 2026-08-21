@@ -42,7 +42,7 @@ El original permanece siempre intacto.
 - Procesa archivos individuales o colecciones completas.
 - Nunca modifica ni sobrescribe el archivo fuente.
 
-La versión 1.1.1 cubre, dentro de la autoridad comprobada para cada familia, MPEG Layer II/III, AAC/ADTS, MP4/AAC de una sola pista, Ogg/Opus, Ogg/Vorbis y ASF/WMA.
+La versión 1.1.2 cubre, dentro de la autoridad comprobada para cada familia, MPEG Layer II/III, AAC/ADTS, MP4/AAC de una sola pista, Ogg/Opus, Ogg/Vorbis y ASF/WMA.
 
 ## Instalación y conexión a Internet
 

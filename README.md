@@ -44,7 +44,7 @@ The original always remains untouched.
 - Processes individual files or entire collections.
 - Never modifies or overwrites the source file.
 
-Version 1.1.1 covers, within the proven authority for each family, MPEG Layer II/III, AAC/ADTS, single-track MP4/AAC, Ogg/Opus, Ogg/Vorbis, and ASF/WMA.
+Version 1.1.2 covers, within the proven authority for each family, MPEG Layer II/III, AAC/ADTS, single-track MP4/AAC, Ogg/Opus, Ogg/Vorbis, and ASF/WMA.
 
 ## Installation and Internet connection
 

@@ -36,7 +36,7 @@ como redistribución propia la descarga inicial de binarios de terceros.
 
 ## Condiciones para una eventual redistribución futura de binarios
 
-El paquete V1.1.1 actual no redistribuye los ejecutables de terceros de la
+El paquete V1.1.2 actual no redistribuye los ejecutables de terceros de la
 tabla. Si una publicación futura decidiera incluir alguno, antes de distribuir
 ese nuevo paquete deberán cumplirse las obligaciones aplicables: avisos,
 licencias y, cuando corresponda, disponibilidad del código fuente completo de
