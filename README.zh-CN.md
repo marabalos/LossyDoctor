@@ -46,6 +46,14 @@ LossyDoctor 用于审计有损音频文件，检测损坏、结构异常、bitst
 
 1.1.1 版本在各格式已经证明的处理权限范围内支持 MPEG Layer II/III、AAC/ADTS、单音轨 MP4/AAC、Ogg/Opus、Ogg/Vorbis 和 ASF/WMA。
 
+## 安装与网络连接
+
+首次准备 LossyDoctor 时需要连接互联网，因为 `LossyDoctorBootstrap.exe` 会下载项目固定版本的依赖项。之后的运行会复用这些本地组件，通常无需再次下载。
+
+如需仅准备依赖项而不启动分析，请运行：
+
+`LossyDoctorBootstrap.exe --prepare-only`
+
 ## 它不会做什么
 
 - **不会把 MP3 重新编码成 MP3、把 AAC 重新编码成 AAC，也不会通过新的有损压缩来“修复”文件。**

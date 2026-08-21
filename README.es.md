@@ -44,6 +44,14 @@ El original permanece siempre intacto.
 
 La versión 1.1.1 cubre, dentro de la autoridad comprobada para cada familia, MPEG Layer II/III, AAC/ADTS, MP4/AAC de una sola pista, Ogg/Opus, Ogg/Vorbis y ASF/WMA.
 
+## Instalación y conexión a Internet
+
+La primera preparación de LossyDoctor necesita conexión a Internet porque `LossyDoctorBootstrap.exe` descarga las dependencias fijadas por el proyecto. Las ejecuciones posteriores reutilizan esos componentes locales y normalmente no necesitan volver a descargarlos.
+
+Para preparar las dependencias sin iniciar un análisis, ejecutar:
+
+`LossyDoctorBootstrap.exe --prepare-only`
+
 ## Qué NO hace
 
 - **No recodifica MP3 a MP3, AAC a AAC ni realiza ninguna reparación mediante nueva compresión lossy.**

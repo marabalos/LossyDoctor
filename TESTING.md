@@ -1,4 +1,4 @@
-# LossyDoctor 1.1.0
+# LossyDoctor 1.1.1
 
 ## Autoridad de validación V1
 

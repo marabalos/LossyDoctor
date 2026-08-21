@@ -15,17 +15,18 @@ class BootstrapPackageTests(unittest.TestCase):
 
  def test_documentation_version_surfaces_are_coherent(self):
   from app.version import APP_VERSION
-  self.assertTrue((ROOT/'README.md').read_text(encoding='utf-8').startswith(f'# LossyDoctor {APP_VERSION}'))
+  readmes=[(ROOT/name).read_text(encoding='utf-8') for name in ('README.md','README.es.md','README.zh-CN.md','README.ru.md','README.hi.md')]
+  self.assertTrue(readmes[0].startswith('# LossyDoctor\n'))
+  self.assertTrue(all(APP_VERSION in text for text in readmes))
   self.assertTrue((ROOT/'TESTING.md').read_text(encoding='utf-8').startswith(f'# LossyDoctor {APP_VERSION}'))
   self.assertIn(f'## {APP_VERSION}', (ROOT/'CHANGELOG.md').read_text(encoding='utf-8')[:600])
   self.assertTrue((ROOT/'PRODUCT.md').read_text(encoding='utf-8').startswith('# LossyDoctor'))
 
  def test_readme_explains_the_bootstrap_connectivity_message(self):
-  readme=(ROOT/'README.md').read_text(encoding='utf-8')
-  self.assertIn('## Requisitos de conectividad web',readme)
-  self.assertIn('primera ejecución necesita conexión a Internet',readme)
-  self.assertIn('reutilizan esos\ncomponentes locales',readme)
-  self.assertIn('LossyDoctorBootstrap.exe --prepare-only',readme)
+  readmes=[(ROOT/name).read_text(encoding='utf-8') for name in ('README.md','README.es.md','README.zh-CN.md','README.ru.md','README.hi.md')]
+  self.assertIn('## Installation and Internet connection',readmes[0])
+  self.assertIn('first preparation of LossyDoctor requires an Internet connection',readmes[0])
+  self.assertTrue(all('LossyDoctorBootstrap.exe --prepare-only' in text for text in readmes))
 
  def test_bootstrap_manifest_schema_matches_loader(self):
   m=json.loads((ROOT/'bootstrap_manifest.json').read_text(encoding="utf-8"))

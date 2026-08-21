@@ -46,6 +46,14 @@ LossyDoctor lossy ऑडियो फ़ाइलों का audit करत�
 
 संस्करण 1.1.1 प्रत्येक format family के लिए सिद्ध authority की सीमा के भीतर MPEG Layer II/III, AAC/ADTS, single-track MP4/AAC, Ogg/Opus, Ogg/Vorbis और ASF/WMA को कवर करता है।
 
+## इंस्टॉलेशन और इंटरनेट कनेक्शन
+
+LossyDoctor की पहली तैयारी के लिए इंटरनेट कनेक्शन आवश्यक है, क्योंकि `LossyDoctorBootstrap.exe` प्रोजेक्ट द्वारा निश्चित की गई dependencies डाउनलोड करता है। बाद के रन इन्हीं स्थानीय components का दोबारा उपयोग करते हैं, इसलिए सामान्यतः उन्हें फिर से डाउनलोड करने की आवश्यकता नहीं होती।
+
+विश्लेषण शुरू किए बिना dependencies तैयार करने के लिए चलाएँ:
+
+`LossyDoctorBootstrap.exe --prepare-only`
+
 ## यह क्या नहीं करता
 
 - **MP3 को MP3 में, AAC को AAC में दोबारा encode नहीं करता और किसी भी repair के लिए नई lossy compression का उपयोग नहीं करता।**
