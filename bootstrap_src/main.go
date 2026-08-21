@@ -25,7 +25,7 @@ import (
 	"unsafe"
 )
 
-const bootstrapVersion = "1.1.0-bootstrap.1"
+const bootstrapVersion = "1.1.1-bootstrap.1"
 
 const (
 	errorAlreadyExists      = syscall.Errno(183)

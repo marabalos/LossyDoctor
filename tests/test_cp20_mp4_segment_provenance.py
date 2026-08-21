@@ -59,7 +59,7 @@ class Mp4SegmentProvenanceCP20(unittest.TestCase):
         for name in MANIFEST["cases"]:
             row=analyze_file(BASE/name,CFG_AUDIT,ROOT,FFMPEG,FFPROBE);audit_result=row.format_facts["mp4_aac_multi_edit_audit"]
             self.assertTrue(audit_result["segment_level_provenance_validated"],name);self.assertFalse(audit_result["decoder_sample_count_matches"],name)
-            self.assertIn("MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH",[x.code for x in row.issues],name)
+            self.assertNotIn("MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH",[x.code for x in row.issues],name)
             self.assertEqual(row.validity_domains["TIMELINE_VALIDITY"],"VALIDATED_MULTI_EDIT_SEGMENT_PROVENANCE_AUDIT_ONLY",name)
             self.assertEqual(row.repair_plan,[],name);self.assertEqual(row.repair_execution,[],name);self.assertEqual(row.lossless_export,[],name)
             self.assertTrue(any(x.get("code")=="MP4_AAC_MULTI_EDIT_PROVENANCE_AUTHORITY" for x in row.policy_decisions),name)

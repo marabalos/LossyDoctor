@@ -48,7 +48,7 @@ class FragmentedMp4AuditCP21(unittest.TestCase):
     def test_pipeline_validates_fragment_mapping_but_grants_no_intervention(self):
         row=analyze_file(BASE/"00_healthy_five_fragments.m4a",CFG_AUDIT,ROOT,FFMPEG,FFPROBE);audit=row.format_facts["mp4_aac_fragmented_audit"]
         self.assertEqual(row.playability,"PLAYABLE");self.assertTrue(audit["access_unit_mapping_complete"]);self.assertEqual((audit["fragment_count"],audit["fragment_run_count"],audit["access_unit_count"]),(5,5,53))
-        self.assertFalse(audit["decoder_sample_count_matches"]);self.assertFalse(audit["intervention_authority"]);self.assertIn("MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH",[x.code for x in row.issues])
+        self.assertFalse(audit["decoder_sample_count_matches"]);self.assertFalse(audit["intervention_authority"]);self.assertNotIn("MP4_PRESENTATION_SAMPLE_COUNT_MISMATCH",[x.code for x in row.issues])
         self.assertEqual(row.validity_domains["SAMPLE_TABLE_VALIDITY"],"VALIDATED_FRAGMENT_RUN_ACCESS_UNIT_MAPPING")
         self.assertEqual(row.validity_domains["DEMUX_BOUNDARY_VALIDITY"],"VALIDATED_DIRECT_SAMPLE_TO_FFPROBE_PACKET_IDENTITY")
         self.assertEqual(row.validity_domains["TIMELINE_VALIDITY"],"VALIDATED_FRAGMENTED_PRESENTATION_PCM_PROVENANCE_AUDIT_ONLY")

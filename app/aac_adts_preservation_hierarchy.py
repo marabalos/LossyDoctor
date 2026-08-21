@@ -8,7 +8,7 @@ RECOVERY_MATERIALIZATION="AAC_ADTS_COMPLETE_CLEAN_FROM_PROVEN_HEADER_REPAIR"
 
 
 def resolve(repair_execution:list[dict],lossless_export:list[dict],recovery_assessment:dict|None=None,playability=None,issue_codes=None):
-    published=[x for x in repair_execution or [] if x.get("status") in ("CREATED","REUSED")]
+    published=[x for x in repair_execution or [] if x.get("status") in ("CREATED","REUSED") and (x.get("manifest") or {}).get("derivation_kind")!="EXTENSION_FIXED"]
     repairs=[]
     for execution in published:
         manifest=execution.get("manifest") or {};verification=manifest.get("verification") or execution.get("verification") or {}

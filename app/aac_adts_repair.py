@@ -38,24 +38,8 @@ def plan(source:Path,parsed:dict):
 
 
 def plan_interframe_recapture(source:Path,parsed:dict):
-    if source.suffix.lower() not in (".aac",".adts"):return None
-    if [issue.code for issue in parsed.get("issues",[])]!=["AAC_ADTS_SYNC_LOSS"]:return None
-    facts=parsed.get("facts") or {};adts=facts.get("adts") or {};frames=facts.get("frames") or [];gaps=adts.get("sync_gaps") or []
-    if len(gaps)!=1 or len(frames)<2 or adts.get("invalid_header_count") or adts.get("truncated_final_frame"):return None
-    if adts.get("first_frame_offset")!=0 or adts.get("last_complete_frame_end")!=source.stat().st_size:return None
-    signatures={(row.get("mpeg_id"),row.get("object_type"),row.get("sampling_frequency_index"),row.get("channel_configuration"),row.get("raw_data_blocks"),row.get("protection_mode")) for row in frames}
-    if len(signatures)!=1:return None
-    _,object_type,sampling_index,channel_configuration,raw_blocks,protection_mode=next(iter(signatures))
-    if object_type!=2 or sampling_index not in range(13) or channel_configuration not in range(1,8) or raw_blocks!=1 or protection_mode!="CRC_ABSENT":return None
-    gap=gaps[0];before=[row for row in frames if row.get("byte_end")==gap.get("byte_start")];after=[row for row in frames if row.get("byte_start")==gap.get("byte_end")]
-    if len(before)!=1 or len(after)!=1 or before[0].get("frame_index")+1!=after[0].get("frame_index"):return None
-    structural=[row for row in parsed.get("structural_map",[]) if row.get("type")=="SYNC_GAP"]
-    if len(structural)!=1 or any(structural[0].get(key)!=gap.get(key) for key in ("byte_start","byte_end","length")):return None
-    return {"spec":{"id":INTERFRAME_RECAPTURE_SPEC_ID},"policy":INTERFRAME_RECAPTURE_POLICY,"status":"ELIGIBLE",
-        "reason":"un rango acotado de bytes ajenos a frames separa una secuencia de frames AAC-LC homogénea, completa y sin CRC",
-        "byte_start":gap["byte_start"],"byte_end":gap["byte_end"],"removed_byte_count":gap["length"],
-        "frame_before":before[0]["frame_index"],"frame_after":after[0]["frame_index"],
-        "sample_rate":frames[0]["sample_rate"],"channels":{1:1,2:2,3:3,4:4,5:5,6:6,7:8}[channel_configuration]}
+    # Un gap de sync también puede ser un frame auténtico con el header dañado.
+    return None
 
 
 def _matching_reuse(source:Path,source_sha:str,repair:dict):

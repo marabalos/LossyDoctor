@@ -33,6 +33,8 @@ class AacAdtsPreservationHierarchyCP29(unittest.TestCase):
         self.assertEqual(resolve(repair,recovery,{},"PLAYABLE",{"X"})["policy_violation"],"MULTIPLE_AAC_ADTS_PRESERVATION_TIERS_PUBLISHED_SIMULTANEOUSLY")
         bad=copy.deepcopy(repair);bad[0]["repair_spec_id"]="UNKNOWN";self.assertEqual(resolve(bad,[],{},"PLAYABLE",{"X"})["policy_violation"],"UNKNOWN_OR_UNVERIFIED_AAC_ADTS_REPAIR_FAMILY")
         bad=copy.deepcopy(recovery);bad[0]["outputs"][0]["manifest"]["materialization"]="UNKNOWN";self.assertEqual(resolve([],bad,{},"PLAYABLE",{"X"})["policy_violation"],"UNKNOWN_AAC_ADTS_PRESERVATION_DERIVATION_FAMILY")
+        extension=[{"status":"CREATED","repair_spec_id":"FIX_EXTENSION_BYTE_IDENTICAL","manifest":{"derivation_kind":"EXTENSION_FIXED"}}]
+        self.assertIsNone(resolve(extension,[],{},"PLAYABLE",{"EXTENSION_CONTENT_MISMATCH"})["policy_violation"])
 
     def test_second_run_reuses_one_selected_tier_without_new_files(self):
         with tempfile.TemporaryDirectory() as directory:

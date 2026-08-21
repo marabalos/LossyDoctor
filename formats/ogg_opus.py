@@ -138,7 +138,7 @@ def analyze(path:Path):
     opus_serial=None;sp=[]
     for serial in byserial:
         sp=[x for x in packets if x['serial']==serial]
-        if sp and sp[0]['data'].startswith(b'OpusHead'):opus_serial=serial;break
+        if sp and (sp[0]['data'].startswith(b'OpusHead') or (len(sp)>1 and sp[1]['data'].startswith(b'OpusTags'))):opus_serial=serial;break
     if opus_serial is None:return {'codec':'ogg_unknown','facts':{'pages':pages,'logical_stream_count':len(byserial)},'metadata':{},'structural_map':pages,'issues':issues}
     sp=[x for x in packets if x['serial']==opus_serial];ps=byserial[opus_serial]
     head=_parse_head(sp[0]['data']) if sp else {};tags=_parse_tags(sp[1]['data']) if len(sp)>1 else {}

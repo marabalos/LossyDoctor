@@ -18,6 +18,7 @@ externos: `requirements.txt` declara sólo la biblioteca estándar.
 ## Evidencia local verificada
 
 - `bootstrap_manifest.json` fija versiones, URL y SHA-256 de cada descarga.
+- mpg123 se valida mediante `PINNED_SHA256`, de acuerdo con el manifest y el bootstrap.
 - La propia compilación distribuida de FFmpeg informa `--enable-gpl --enable-version3`
   y `ffmpeg -L` declara GPLv3 o posterior.
 - El `README.txt` incluido en el archivo de Gyan identifica la compilación GPLv3 y el
@@ -35,7 +36,7 @@ como redistribución propia la descarga inicial de binarios de terceros.
 
 ## Condiciones para una eventual redistribución futura de binarios
 
-El paquete V1.1.0 actual no redistribuye los ejecutables de terceros de la
+El paquete V1.1.1 actual no redistribuye los ejecutables de terceros de la
 tabla. Si una publicación futura decidiera incluir alguno, antes de distribuir
 ese nuevo paquete deberán cumplirse las obligaciones aplicables: avisos,
 licencias y, cuando corresponda, disponibilidad del código fuente completo de

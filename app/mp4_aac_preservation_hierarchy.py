@@ -22,7 +22,7 @@ _RECOVERY_MATERIALIZATIONS = {
 
 
 def _published_repairs(executions: list[dict]) -> list[dict]:
-    return [x for x in executions or [] if x.get("status") in ("CREATED", "REUSED")]
+    return [x for x in executions or [] if x.get("status") in ("CREATED", "REUSED") and (x.get("manifest") or {}).get("derivation_kind") != "EXTENSION_FIXED"]
 
 
 def _verified_repairs(executions: list[dict]) -> list[dict]:

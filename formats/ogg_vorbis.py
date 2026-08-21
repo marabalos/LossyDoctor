@@ -307,7 +307,7 @@ def analyze(path:Path):
     serial=None;sp=[]
     for s in byserial:
         q=[x for x in packets if x['serial']==s]
-        if q and q[0]['data'].startswith(b'\x01vorbis'):serial=s;sp=q;break
+        if q and (q[0]['data'].startswith(b'\x01vorbis') or (len(q)>2 and q[1]['data'].startswith(b'\x03vorbis') and q[2]['data'].startswith(b'\x05vorbis'))):serial=s;sp=q;break
     if serial is None:return {'codec':'ogg_unknown','facts':{'pages':pages,'logical_stream_count':len(byserial)},'metadata':{},'structural_map':pages,'issues':issues}
     ps=byserial[serial];ident=_parse_ident(sp[0]['data']) if sp else {};comment=_parse_comment(sp[1]['data']) if len(sp)>1 else {};setup=_parse_setup(sp[2]['data'],ident.get('channels',0)) if len(sp)>2 else {}
     if not ident.get('valid'):issues.append(Issue('VORBIS_IDENTIFICATION_HEADER_INVALID','codec_header','El header de identificación Vorbis está mal formado o es incompatible con Vorbis I.',integrity='DAMAGED',playability='BLOCKING',repairability='NONE',evidence=[ident]))

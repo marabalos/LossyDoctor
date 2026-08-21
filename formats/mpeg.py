@@ -603,7 +603,16 @@ def analyze(path:Path,max_scan=262144):
     first=_find_chain(data,start,terminal,max_scan)
     if not first:
         return {'codec':None,'facts':{'identified':False},'metadata':md,'issues':issues+[Issue('MPEG_SYNC_NOT_FOUND','framing','No se encontró una cadena MPEG Layer II/III coherente',integrity='DAMAGED',playability='BLOCKING')],'structural_map':[],'frames':[],'gaps':[],'data':data}
-    first_off,h0=first; sig=_sig(h0); current_free_format=bool(h0.get('free_format')); free_base=h0.get('_free_base_length'); frames=[];gaps=[];pos=first_off;after_gap=False;reservoir_bytes_since_gap=0;logical_audio_idx=0;gap_seq=0;last_frame_idx=None;reservoir_segment_id=0
+    first_off,h0=first
+    # No baja la exigencia general de aceptación: sólo incorpora al audit una
+    # corrida previa de dos frames cuando ya existe un ancla de tres frames.
+    for candidate in range(start,first_off):
+        prior=_coherent_at(data,candidate,terminal,2)
+        if prior:
+            first_off,h0=candidate,prior;break
+    sig=_sig(h0); current_free_format=bool(h0.get('free_format')); free_base=h0.get('_free_base_length'); frames=[];gaps=[];pos=first_off;after_gap=False;reservoir_bytes_since_gap=0;logical_audio_idx=0;gap_seq=0;last_frame_idx=None;reservoir_segment_id=0;unexpected_stream_headers=[]
+    if first_off>start and not (id3 and id3.get('malformed')):
+        issues.append(Issue('MPEG_SYNC_LOSS','framing','Hay una región inicial no explicada antes del ancla MPEG coherente.',integrity='DAMAGED',compatibility='LIKELY',playability='DEGRADED',byte_start=start,byte_end=first_off,repairability='RECOVERY_ONLY'))
     xing=None; vbri=None; first_is_vbr=False; audio_frames_observed=0
     while pos+4<=terminal:
         h=parse_header(data[pos:pos+4])
@@ -643,6 +652,11 @@ def analyze(path:Path,max_scan=262144):
         frame=data[pos:pos+fl]
         if not frames:
             xing=_parse_xing(frame,h);vbri=None if xing else _parse_vbri(frame,h);first_is_vbr=bool(xing or vbri)
+        else:
+            later_xing=_parse_xing(frame,h);later_vbri=None if later_xing else _parse_vbri(frame,h)
+            xing_layout_valid=bool(later_xing and not (later_xing.get('flags',0)&~0x0f) and (not later_xing.get('flags')&1 or later_xing.get('frames') is not None) and (not later_xing.get('flags')&2 or later_xing.get('bytes') is not None) and (not later_xing.get('flags')&4 or later_xing.get('toc_present')))
+            if xing_layout_valid or (later_vbri and later_vbri.get('layout_valid')):
+                unexpected_stream_headers.append({'frame_index':len(frames),'byte_start':pos,'kind':later_xing.get('kind') if xing_layout_valid else 'VBRI'})
         is_header_frame=(len(frames)==0 and first_is_vbr);mdb=_mdb(data,pos,h);clean=True
         if after_gap and h['layer']==3:
             clean=(mdb is not None and mdb<=reservoir_bytes_since_gap);reservoir_bytes_since_gap += _main_data_capacity(h)
@@ -669,6 +683,9 @@ def analyze(path:Path,max_scan=262144):
             g['logical_audio_frame_start']=gap_frame_pos
     for g in gaps:
         issues.append(Issue('MPEG_SYNC_LOSS','framing','La secuencia coherente de frames MPEG se interrumpe y luego se resincroniza.',integrity='DAMAGED',compatibility='LIKELY',playability='DEGRADED',byte_start=g['byte_start'],byte_end=g['byte_end'],repairability='RECOVERY_ONLY',evidence=[{'missing_frame_count':g['missing_frame_count'],'timeline_known':g['timeline_known']}]))
+    if unexpected_stream_headers:
+        u=unexpected_stream_headers[0]
+        issues.append(Issue('MPEG_UNEXPECTED_STREAM_HEADER','stream_structure','Se encontró un header global Xing, Info o VBRI estructuralmente válido en un frame MPEG posterior al primer stream header.',integrity='SUSPICIOUS',compatibility='POSSIBLE',playability='UNAFFECTED',repairability='NONE',byte_start=u['byte_start'],byte_end=u['byte_start']+4,evidence=unexpected_stream_headers[:16]))
     parameter_map=_build_parameter_segments(frames,gaps)
     coherent=[t for t in parameter_map.get('transitions',[]) if t.get('interpretation')=='COHERENT_CONCATENATION']
     damaged_change=[t for t in parameter_map.get('transitions',[]) if t.get('interpretation')=='PARAMETER_CHANGE_AFTER_RESYNC']

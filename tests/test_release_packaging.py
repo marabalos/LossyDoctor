@@ -64,7 +64,7 @@ class ReleasePackagingTests(unittest.TestCase):
         source = (ROOT / "bootstrap_src/main.go").read_text(encoding="utf-8")
         self.assertEqual(APP_VERSION, VERSION)
         self.assertEqual(manifest["lossydoctor_version"], VERSION)
-        self.assertIn('const bootstrapVersion = "1.1.0-bootstrap.1"', source)
+        self.assertIn(f'const bootstrapVersion = "{APP_VERSION}-bootstrap.1"', source)
         self.assertEqual(POLICY_VERSION, "1.1.0-v1-stable-1")
         self.assertEqual((CONFIG_SCHEMA, ANALYSIS_SCHEMA, REPORT_SCHEMA, MANIFEST_SCHEMA), (3, 3, 3, 3))
         for name in (*sorted(PUBLIC_READMES), "CHANGELOG.md"):

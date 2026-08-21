@@ -8,7 +8,7 @@
     "01_ffmpeg_xing_coupled_metadata_corrupt.mp3": {
       "expected": "REPAIRED_SAFE",
       "expected_output_sha256": "12f614e3fc507471071c20426f511aa4698b8349e8356be2831e943adf7574a7",
-      "sha256": "dc630ff32f8649195abc28a73a687f5e84b2a5fe1fdb56f24f8ca523ffe60708"
+      "sha256": "187094daf1fc184500bd7a2db3e888e356e9fe197190c20574b3328940929405"
     },
     "02_frame_count_presentation_negative.mp3": {
       "expected": "ANOMALY_UNCHANGED",
